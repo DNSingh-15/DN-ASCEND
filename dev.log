@@ -1,0 +1,76 @@
+
+> fullstack-ai-notes@0.1.0 dev
+> node ./node_modules/next/dist/bin/next dev
+
+▲ Next.js 16.4.3 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.102:3000
+✓ Ready in 2.1s
+✓ Running next.config.ts took 122ms
+
+✓ Generated AGENTS.md for AI agents. Set `agentRules: false` in next.config to disable.
+○ Compiling / ...
+ GET / 200 in 2.5s (next.js: 1536ms, application-code: 942ms)
+ GET / 200 in 338ms (next.js: 10ms, application-code: 328ms)
+ GET /favicon.ico 404 in 2.2s (next.js: 64ms, generate-params: 1718ms, application-code: 397ms)
+ GET /azure 200 in 410ms (next.js: 16ms, generate-params: 25ms, application-code: 369ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>) {
+  page: '/azure/microsoft-entra-id'
+}
+⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>) {
+  page: '/azure/resource-groups'
+}
+ GET /azure/what-is-azure 200 in 2.9s (next.js: 201ms, generate-params: 2.0s, application-code: 685ms)
+ GET /azure/what-is-azure 200 in 300ms (next.js: 10ms, generate-params: 0.1ms, application-code: 290ms)
+ GET /azure/azure-app-service 200 in 1128ms (next.js: 13ms, generate-params: 26ms, application-code: 1089ms)
+ GET /azure/app-service-publishing-and-deployment-center 200 in 570ms (next.js: 12ms, generate-params: 0.1ms, application-code: 558ms)
+ GET /azure/what-is-azure 200 in 340ms (next.js: 9ms, generate-params: 0.1ms, application-code: 331ms)
+ GET /azure/app-service-scaling 200 in 774ms (next.js: 15ms, generate-params: 0.1ms, application-code: 759ms)
+○ Compiling /_error ...
+ GET /azure/app-service-deployment-slots 200 in 911ms (next.js: 15ms, generate-params: 0.1ms, application-code: 896ms)
+ GET /azure/app-service-general-settings 200 in 353ms (next.js: 26ms, generate-params: 27ms, application-code: 300ms)
+ GET /azure/resource-groups 307 in 5.2s
+ GET /azure/microsoft-entra-id 307 in 6.1s
+ GET /azure/resource-groups 307 in 26ms
+ GET /azure/microsoft-entra-id 307 in 18ms
+ GET /azure/resource-groups 200 in 520ms (next.js: 27ms, generate-params: 30ms, application-code: 463ms)
+ GET /azure/microsoft-entra-id 200 in 509ms (next.js: 284ms, generate-params: 0.1ms, application-code: 224ms)
+ GET /azure/azure-blob-storage 200 in 359ms (next.js: 13ms, generate-params: 26ms, application-code: 320ms)
+ GET / 200 in 285ms (next.js: 12ms, application-code: 273ms)
+ GET /ai-fundamentals 200 in 314ms (next.js: 11ms, generate-params: 28ms, application-code: 275ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+ GET /ai-fundamentals/what-is-generative-ai 200 in 321ms (next.js: 16ms, generate-params: 27ms, application-code: 278ms)
+✓ Compiled in 133ms
+✓ Compiled in 117ms
+ GET /ai-fundamentals/what-is-generative-ai 200 in 193ms (next.js: 8ms, generate-params: 16ms, application-code: 169ms)
+ GET /ai-fundamentals/what-is-generative-ai 200 in 123ms (next.js: 9ms, generate-params: 0.1ms, application-code: 114ms)
+⨯ Failed to generate static paths for /[tech]/[topic]:
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+✓ Compiled in 150ms
+✓ Compiled in 172ms
+ GET /ai-fundamentals/what-is-generative-ai 200 in 118ms (next.js: 7ms, generate-params: 15ms, application-code: 96ms)
+✓ Compiled in 163ms
+✓ Compiled in 101ms
+ GET /ai-fundamentals/what-is-generative-ai 200 in 143ms (next.js: 10ms, generate-params: 20ms, application-code: 113ms)
+✓ Compiled in 112ms
+ GET /ai-fundamentals/what-is-generative-ai 200 in 124ms (next.js: 14ms, generate-params: 0.1ms, application-code: 110ms)
+✓ Compiled in 101ms
+ GET /ai-fundamentals/what-is-generative-ai 200 in 140ms (next.js: 7ms, generate-params: 16ms, application-code: 118ms)
+✓ Compiled in 176ms
+ GET / 200 in 518ms (next.js: 163ms, application-code: 355ms)
+ GET / 200 in 222ms (next.js: 11ms, application-code: 211ms)
+ GET /mcp 200 in 455ms (next.js: 92ms, generate-params: 34ms, application-code: 330ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+ GET /mcp/end-to-end-flow 200 in 383ms (next.js: 13ms, generate-params: 25ms, application-code: 345ms)
+ GET /mcp/what-mcp-is 200 in 340ms (next.js: 12ms, generate-params: 26ms, application-code: 302ms)
+ GET /mcp/architecture-host-client-and-server 200 in 323ms (next.js: 11ms, generate-params: 28ms, application-code: 284ms)
+ GET /dsa-basics 200 in 461ms (next.js: 25ms, generate-params: 39ms, application-code: 397ms)
+ GET /dsa-data-structures 200 in 298ms (next.js: 14ms, generate-params: 24ms, application-code: 259ms)
+ GET /system-design 200 in 369ms (next.js: 12ms, generate-params: 27ms, application-code: 330ms)
+ GET /ai-fundamentals/what-is-generative-ai 200 in 423ms (next.js: 11ms, generate-params: 35ms, application-code: 377ms)
+ GET / 200 in 231ms (next.js: 11ms, application-code: 220ms)
+[?25h
