@@ -9,619 +9,762 @@ order: 30
 description: The big picture - how servers, databases, caches and queues fit together to handle millions of users.
 ---
 
-## What is System Design?
-video: system design for beginners
-summary: System design means building systems that are scalable, reliable, performant and fault-tolerant.
+# Step 1: Fundamentals
 
-System design is deciding how the parts of a software system fit together so it can handle real traffic, real data and real failures. A system is **scalable** if it keeps working as load grows, **reliable** if it keeps working when parts break, and **performant** if it responds quickly.
+## Serverless vs Serverful
+video: serverless vs serverful architecture
+summary: Serverful means you run and manage the servers yourself; serverless means the cloud runs your code only when needed and you pay per use.
 
-Think of it as answering three questions:
+**Real-life example:** Serverful is owning a car (always yours, you pay for fuel, parking and repairs). Serverless is taking a taxi (you pay only for the ride).
 
-1. What must the system do? (functional requirements)
-2. How well must it do it? (scale, latency, availability)
-3. What are the trade-offs of each choice?
-
-> "System design is about handling real-world scale and failures."
-
-### Key Points
-* Scalable, reliable, performant, fault-tolerant are the four goals.
-* There is no perfect design, only designs that fit the requirements and their trade-offs.
-
-## HLD vs LLD
-video: high level design vs low level design
-summary: High-level design covers architecture and services, while low-level design covers classes, schemas and APIs.
-
-| Type | Focus |
-|------|-------|
-| **HLD** (High-Level Design) | Architecture, services, scaling, data flow |
-| **LLD** (Low-Level Design) | Classes, DB schema, APIs, algorithms |
-
-Tip for interviews: start with **HLD**, then go deeper into any component the interviewer asks about.
+| | Serverful | Serverless |
+|---|---|---|
+| Who manages servers | You | Cloud provider |
+| Cost | Pay even when idle | Pay per request |
+| Scaling | You set it up | Automatic |
+| Good for | Steady, heavy traffic | Spiky or small workloads |
+| Example | EC2, your own VM | AWS Lambda, Azure Functions |
 
 ### Key Points
-* HLD answers "what are the big pieces?"
-* LLD answers "how is each piece built?"
+* Serverless still uses servers, you just do not manage them.
+* Watch out for cold starts (the first request can be slow).
 
-## Core Architecture Flow
-video: system design architecture load balancer cache database
-summary: A typical request flows from client through CDN, API gateway, load balancer, app servers, cache, database and queue.
-
-This is the standard flow to draw in almost every design:
-
-```flow
-title: A request's journey
-Client | browser, app or another service
-CDN | static files from a server near the user
-API Gateway | login check, rate limit, routing
-Load Balancer | spreads requests across servers
-App 1 || App 2 || App 3
-Cache (Redis) | fast answers for repeated reads
-Database | the source of truth
-Queue | slow jobs run later (emails, videos)
-```
-
-What each layer does:
-
-* **Client** - browser, mobile app, or another service.
-* **CDN** - serves static files (images, JS, CSS) from servers close to the user.
-* **API Gateway** - single entry point for APIs: authentication, rate limiting, routing.
-* **Load Balancer** - spreads requests over many app servers.
-* **App Servers** - run your business logic (stateless, so any server can handle any request).
-* **Cache** - Redis/Memcached answers repeated reads quickly.
-* **Database** - the source of truth.
-* **Queue** - holds work to be done later (emails, video processing).
-
-### Key Points
-* Always walk through this flow when designing.
-* Keep app servers stateless so you can add or remove them freely.
-
-## Scalability
+## Horizontal vs Vertical Scaling
 video: horizontal vs vertical scaling
-summary: Horizontal scaling adds more machines and is preferred for high availability; vertical scaling adds power to one machine but has limits.
+summary: Vertical scaling makes one machine bigger; horizontal scaling adds more machines.
 
-**Vertical scaling (scale up)** means giving one server more CPU or RAM. It is simple, but limited by the biggest machine you can buy and creates a single point of failure.
-
-**Horizontal scaling (scale out)** means adding more servers and spreading the load with a load balancer. It is the preferred approach for high availability.
+**Real-life example:** If one cook cannot handle the rush, you can buy him a faster stove (vertical) or hire more cooks (horizontal).
 
 ```flow
 title: Two ways to scale
 direction: right
-One small server | 4 CPU
-> scale up
-One big server | 32 CPU - has a limit
-> or scale out
-Many servers | behind a load balancer
+Vertical | one bigger server (more CPU and RAM)
+Horizontal | many normal servers behind a load balancer
 ```
 
-Horizontal scaling requires stateless services (session data stored in Redis or a database, not in memory).
+### Key Points
+* Vertical is simple but has a hard limit and a single point of failure.
+* Horizontal has no real limit and survives failures, but needs a load balancer and stateless servers.
+* Big systems almost always scale horizontally.
 
-> "I prefer horizontal scaling for high availability."
+## What are Threads
+video: threads and processes explained
+summary: A thread is the smallest unit of work a CPU can run, and one program can run many threads at the same time.
+
+**Real-life example:** A restaurant (process) has many waiters (threads) serving different tables at once, all sharing the same kitchen (memory).
 
 ### Key Points
-* Vertical = bigger machine (limited). Horizontal = more machines (preferred).
-* Stateless services make horizontal scaling easy.
+* A **process** has its own memory; threads inside it **share** memory.
+* Sharing memory is fast but needs locks to avoid two threads changing the same data at once.
+* Web servers use a thread (or an event loop) per request to serve many users.
 
-## Load Balancing
-video: load balancing algorithms round robin
-summary: A load balancer distributes incoming requests across servers using algorithms such as round robin or least response time.
+## What are Pages
+video: paging in operating system virtual memory
+summary: A page is a small fixed-size block of memory (usually 4 KB) that the OS moves between RAM and disk.
 
-A **load balancer** sits in front of your servers and decides which one handles each request. This prevents any single server from overloading and lets you remove unhealthy servers from rotation.
+**Real-life example:** A big book is split into pages, so you keep only the pages you are reading on your desk and the rest on the shelf.
 
-Common algorithms:
+### Key Points
+* Databases also store data in pages (for example 8 KB), and read or write a whole page at a time.
+* If a needed page is not in RAM, it is loaded from disk, which is called a **page fault** and is slow.
+* This is why keeping hot data in memory makes systems fast.
 
-* **Round Robin** - sends requests to servers one by one in order.
-* **Least Connections** - sends to the server with the fewest active connections.
-* **Least Response Time** - chooses the server responding the fastest.
-* **IP Hash** - the same client always goes to the same server (useful for sticky sessions).
+## How Does the Internet Work
+video: how does the internet work
+summary: The internet is a global network of computers that send each other small packets of data using agreed rules like IP, TCP and HTTP.
 
 ```flow
-title: Load balancer
-Requests | from users
-Load Balancer | checks which servers are healthy
-App 1 || App 2 || App 3
+title: Opening a website
+Browser | you type www.example.com
+DNS | turns the name into an IP address
+> IP address
+TCP connection | browser and server shake hands
+HTTP request | "give me the page"
+Server | sends the page back as packets
 ```
 
-Load balancers also perform **health checks**: if App 2 stops responding, traffic is routed to App 1 and 3.
+### Key Points
+* **DNS** is the phone book (name to IP address).
+* **IP** gets packets to the right machine, **TCP** makes sure they all arrive in order.
+* Data travels through many routers and is often served from a nearby CDN.
 
-> "Load balancer distributes traffic and prevents overload."
+# Step 2: Databases
+
+## SQL vs NoSQL
+video: sql vs nosql database
+summary: SQL databases store data in tables with fixed structure and strong rules; NoSQL databases store flexible data and scale out more easily.
+
+**Real-life example:** SQL is an Excel sheet with fixed columns. NoSQL is a folder of notes where every note can look different.
+
+| | SQL | NoSQL |
+|---|---|---|
+| Structure | Tables, fixed schema | Flexible (documents, key-value, graph) |
+| Strength | Joins, transactions (ACID) | Easy horizontal scaling, speed |
+| Examples | PostgreSQL, MySQL | MongoDB, Cassandra, DynamoDB |
+| Pick when | Data is related and correctness matters | Data is huge or changes shape often |
 
 ### Key Points
-* Round Robin is simple; Least Response Time adapts to slow servers.
-* Always pair load balancers with health checks.
-
-## Caching Strategy
-video: caching strategy cdn redis
-summary: Caching happens at multiple levels - CDN, API cache and database cache - to reduce load and latency.
-
-Caching stores results closer to where they are needed. There are three common levels:
-
-1. **CDN** - caches static and some dynamic content at edge locations worldwide.
-2. **API cache** - caches responses of API endpoints (e.g. HTTP `Cache-Control`, gateway cache).
-3. **DB cache (Redis)** - caches query results and computed values.
-
-Cache patterns:
-
-* **Cache-aside** - app reads cache first; on miss, reads DB and fills the cache.
-* **Write-through** - writes go to cache and DB together; cache is always fresh.
-* **Write-back** - writes go to cache first and are flushed to DB later; fast but risky.
-
-Eviction and expiry: set a **TTL** (time to live) and use an eviction policy such as LRU (least recently used) when memory is full.
-
-The hard problem is **cache invalidation**: keeping the cache correct when data changes.
-
-> "Caching reduces DB load and improves latency."
-
-### Key Points
-* Caching trades freshness for speed - decide how stale data may be.
-* Always set TTLs and plan invalidation.
-
-## CDN
-video: what is cdn content delivery network
-summary: A CDN stores copies of static content on edge servers near users to reduce latency and origin load.
-
-A **Content Delivery Network (CDN)** is a network of servers spread across the world. It stores copies of your static files (images, videos, CSS, JS) and, in some cases, dynamic responses at **edge locations**.
-
-```flow
-title: CDN cache hit vs miss
-User in Mumbai
-CDN edge (Mumbai) | has the file? Answer in about 20 ms
-> cache miss
-Origin server (US-East) | slower, about 250 ms
-```
-
-Benefits: lower latency for users far from your server, less load and bandwidth on your origin, and protection against traffic spikes.
-
-Use a CDN for anything static, and for large video or file downloads. Set correct `Cache-Control` headers so the CDN knows what to cache and for how long.
-
-### Key Points
-* CDN = caching at the network edge, close to users.
-* Static assets are the first thing to put behind a CDN.
-
-## API Gateway
-video: api gateway microservices explained
-summary: An API gateway is the single entry point for APIs that handles authentication, rate limiting and routing to backend services.
-
-An **API Gateway** sits between clients and your backend services. Clients call one URL, and the gateway forwards each request to the right service.
-
-Responsibilities:
-
-* **Routing** - `/users/*` goes to the user service, `/orders/*` to the order service.
-* **Authentication** - verify JWT/API keys once, at the edge.
-* **Rate limiting** - protect services from abuse.
-* **Request transformation, logging and caching.**
-
-```flow
-title: API Gateway
-Client | calls one URL
-API Gateway | auth, rate limit, routing
-User Service || Order Service
-```
-
-Benefits: clients do not need to know your internal service layout, and cross-cutting concerns live in one place.
-
-### Key Points
-* One entry point, many services behind it.
-* Typical tools: AWS API Gateway, Azure API Management, Kong, NGINX.
-
-## Database Design
-video: database design sql vs nosql
-summary: Choose between relational SQL databases with ACID guarantees and flexible NoSQL databases based on the data and consistency needs.
-
-Database choice is one of the most important design decisions.
-
-| SQL (Relational) | NoSQL |
-|------------------|-------|
-| ACID transactions | Often eventual consistency (BASE) |
-| Structured, fixed schema | Flexible schema |
-| Joins across tables | Data stored denormalized, joins done in app |
-| Scales up well; sharding is harder | Designed to scale out horizontally |
-| Examples: PostgreSQL, MySQL | Examples: MongoDB, DynamoDB, Cassandra |
-
-Use **SQL** when data is relational and correctness matters (payments, bookings, inventory). Use **NoSQL** for huge scale, simple access patterns, or flexible documents (sessions, activity logs, catalogs).
-
-### Key Points
-* SQL = strong consistency and relationships.
-* NoSQL = flexible schema and easy horizontal scaling.
+* Start with SQL unless you have a clear reason not to.
 * Many real systems use both.
 
-## ACID Transactions
-video: acid properties database transactions
-summary: ACID guarantees that transactions are atomic, consistent, isolated and durable, so data stays reliable.
+## In-Memory Databases
+video: in memory database redis
+summary: An in-memory database keeps all its data in RAM, so reads and writes are extremely fast.
 
-**ACID** is the set of guarantees that SQL databases give for transactions:
+**Real-life example:** Keeping your notes on your desk instead of walking to the library each time.
 
-* **Atomicity** - all or nothing. If one step fails, everything is rolled back.
-* **Consistency** - data always follows the rules (constraints, foreign keys).
-* **Isolation** - concurrent transactions do not interfere with each other.
-* **Durability** - once committed, data survives crashes (written to disk/log).
+### Key Points
+* Examples: Redis, Memcached.
+* RAM is expensive and can lose data on restart, so they often save snapshots to disk.
+* Great for sessions, leaderboards, counters and caching.
+
+## Data Replication & Migration
+video: database replication explained
+summary: Replication keeps copies of the same data on several servers; migration moves data from one system to another.
+
+**Real-life example:** Replication is photocopying an important file and keeping copies in different offices. Migration is moving the files to a new office.
 
 ```flow
-title: Transfer 500 from A to B
-Debit A | take 500 from A
-Credit B | give 500 to B
-COMMIT or ROLLBACK | both steps happen, or neither does
+title: Primary and replicas
+Primary | takes all writes
+> copies changes
+Replica 1 || Replica 2 || Replica 3
 ```
 
-> One-liner: ACID ensures reliable and consistent database transactions.
+### Key Points
+* Replicas serve reads (more speed) and take over if the primary dies (more safety).
+* Copies can lag a little behind the primary.
+* Migrate safely: copy data, keep both in sync, switch traffic, then retire the old one.
+
+## Data Partition
+video: database partitioning explained
+summary: Partitioning splits one big table into smaller parts so each part is faster to search and manage.
+
+**Real-life example:** A phone book split into A-F, G-M, N-Z volumes instead of one giant book.
 
 ### Key Points
-* ACID is what SQL databases promise; many NoSQL databases relax it for scale.
-* Atomicity protects money transfers; isolation protects concurrent updates.
+* **Horizontal** partitioning splits rows (users 1-1M, 1M-2M).
+* **Vertical** partitioning splits columns (profile data apart from big photo data).
+* Usually the parts stay on the same database server.
 
-## Eventual Consistency
-video: eventual consistency distributed systems
-summary: Eventual consistency means replicas may briefly disagree but converge to the same value over time.
+## Sharding
+video: database sharding explained
+summary: Sharding is partitioning the data across many separate database servers, so no single server holds everything.
 
-In **eventually consistent** systems, after a write, different replicas may return different values for a short time. Given no new writes, all replicas eventually converge.
-
-Example: you post a comment; a friend on a different replica does not see it for 200 ms. That is acceptable for a social feed but not for a bank balance.
-
-This trade-off buys higher availability and speed. It is common in NoSQL and in systems using asynchronous replication.
-
-### Key Points
-* Eventual consistency = temporary disagreement, eventual agreement.
-* Acceptable for feeds, likes, counters; not for money.
-
-## Scaling the Database
-video: database replication partitioning sharding
-summary: Scale a database first with read replicas, then partitioning, and finally sharding when data is very large.
-
-Scaling a database follows the same ladder covered in the PostgreSQL notes:
-
-* **Read replicas** - copies of the database that serve read queries.
-* **Partitioning** - split a big table inside one database (e.g. by date).
-* **Sharding** - split data across multiple database servers by a shard key.
-
-> "I scale reads using replicas and large data using partitioning."
-
-### Key Points
-* Replicas scale reads; partitioning manages big tables; sharding scales writes and storage.
-* Start with the simplest option that solves the bottleneck.
-
-## Consistent Hashing
-video: consistent hashing explained
-summary: Consistent hashing maps keys and servers onto a ring so adding or removing a server moves only a small share of keys.
-
-Plain modulo hashing (`hash(key) % N`) breaks when N changes: adding one server remaps almost every key, flushing caches and moving data everywhere.
-
-**Consistent hashing** places servers (and keys) on a circular hash ring. A key belongs to the first server clockwise from its position. When a server is added or removed, only the keys between it and its neighbour move.
+**Real-life example:** A library too big for one building, so books are split across several branches by author's first letter.
 
 ```flow
-title: Consistent hashing
-Hash the key | key K1 becomes a point on the ring
-Walk clockwise | first server found owns the key
-Server A || Server B || Server C
-Add Server D | only the keys next to D move
+title: Sharding by user id
+App | picks the shard from the user id
+> id 1-1M || id 1M-2M || id 2M-3M
+Shard 1 || Shard 2 || Shard 3
 ```
 
-Virtual nodes (several points per server) spread load more evenly. Used by Cassandra, DynamoDB, and many caches.
+### Key Points
+* The **shard key** (like user id) decides where data lives; choose it carefully.
+* A bad key creates a "hot" shard that gets all the traffic.
+* Joins across shards are hard, so keep related data together.
+
+# Step 3: Consistency vs Availability
+
+## Data Consistency & Its Levels
+video: data consistency levels strong eventual
+summary: Consistency means every user sees the same, latest data, and the levels say how strictly that is promised.
+
+**Real-life example:** You transfer money and your friend should see the new balance. Strong consistency shows it instantly; eventual consistency shows it a moment later.
+
+| Level | Meaning |
+|---|---|
+| **Strong** | Every read sees the latest write, always |
+| **Eventual** | Replicas catch up after a short delay |
+| **Causal** | Related actions appear in the right order (reply after question) |
+| **Read-your-writes** | You always see your own changes immediately |
 
 ### Key Points
-* Solves the "adding a server remaps everything" problem.
-* Common in distributed caches and sharded databases.
+* Stronger consistency means slower and less available.
+* Use strong for money, eventual for likes and views.
 
-## Messaging and Queues
-video: message queue kafka producer consumer
-summary: Message queues decouple services and absorb traffic spikes by processing work asynchronously.
+## Isolation & Its Levels
+video: transaction isolation levels explained
+summary: Isolation decides how much one running transaction can see of another transaction's unfinished changes.
 
-A **message queue** holds messages between a producer (sender) and a consumer (worker). The producer does not wait for the work to finish, so services are **decoupled** and traffic spikes are absorbed.
+**Real-life example:** Two people editing the same document, should one see the other's half-typed sentence?
 
-```flow
-title: Queue in action
-User signs up
-API | replies fast
-Queue | holds the job
-Email worker | sends the welcome mail later
-```
-
-Example: **Kafka** (a distributed event log):
-
-* **Producer** - sends messages.
-* **Consumer** - reads messages.
-* **Topic** - a named category of messages (e.g. `orders`).
-* **Partition** - splits a topic so it can be processed in parallel and scaled.
-
-Other options: RabbitMQ, AWS SQS/SNS, Azure Service Bus.
+| Level | Stops |
+|---|---|
+| **Read Uncommitted** | Nothing (can see unsaved changes) |
+| **Read Committed** | Dirty reads |
+| **Repeatable Read** | Dirty and non-repeatable reads |
+| **Serializable** | Everything, as if transactions ran one by one |
 
 ### Key Points
-* Queues make slow work asynchronous and protect services from spikes.
-* Kafka partitions give ordering per partition and parallelism across them.
-
-## Event-Driven Design (Pub/Sub)
-video: publish subscribe pattern event driven architecture
-summary: Publish/subscribe lets one event notify many independent services without the sender knowing who listens.
-
-In **publish/subscribe**, a publisher emits an event (e.g. `OrderPlaced`) to a topic, and any number of subscribers react independently: inventory updates stock, billing charges the card, notifications send an email.
-
-```flow
-title: Publish / subscribe
-Order Service | publishes OrderPlaced
-Topic | every subscriber gets a copy
-Inventory || Billing || Notifications
-```
-
-A queue usually delivers each message to one worker; pub/sub delivers each event to every subscriber.
-
-### Key Points
-* Publisher does not know its subscribers - easy to add new features.
-* Pair with idempotent consumers, since messages can be delivered more than once.
+* Higher isolation is safer but slower.
+* Most databases default to Read Committed or Repeatable Read.
 
 ## CAP Theorem
 video: cap theorem system design
-summary: CAP says a distributed system must choose between consistency and availability when a network partition happens.
+summary: When the network breaks, a distributed system must choose between staying consistent and staying available.
 
-The **CAP theorem** says that a distributed data system can guarantee at most two of these three properties at the same time:
+**Real-life example:** Two bank branches lose their phone line. Either they stop serving customers (consistent but unavailable) or keep serving with possibly old balances (available but inconsistent).
 
 | Letter | Meaning |
-|--------|---------|
-| **C** - Consistency | Every read returns the most recent write |
-| **A** - Availability | Every request gets a (non-error) response |
-| **P** - Partition tolerance | System keeps working when network messages between nodes are lost |
-
-The key point: network partitions happen in real distributed systems, so you must tolerate them (P is not optional). That means **during a partition you must choose between C and A**:
-
-* **CP** - refuse or delay some requests to stay consistent (e.g. a bank, HBase, MongoDB in default mode).
-* **AP** - keep answering, possibly with stale data (e.g. DNS, Cassandra, DynamoDB default reads).
-
-When there is no partition, a system can offer both consistency and availability; the trade-off applies only during failures.
+|---|---|
+| **C** Consistency | Everyone sees the same latest data |
+| **A** Availability | Every request gets an answer |
+| **P** Partition tolerance | Works even when the network between nodes breaks |
 
 ### Key Points
-* It is not "pick any 2" - partitions are unavoidable, so the real choice is C vs A during a partition.
-* Say: "In distributed systems, trade-offs are unavoidable."
+* Network failures will happen, so P is a must; the real choice is **C or A**.
+* **CP** examples: banks, HBase. **AP** examples: Cassandra, DynamoDB, DNS.
 
-## Fault Tolerance
-video: fault tolerance retry circuit breaker
-summary: Fault tolerance uses retries, circuit breakers and multi-AZ deployment so systems keep working when components fail.
+# Step 4: Cache
 
-Failures are normal: servers crash, networks drop packets, third-party APIs time out. Fault-tolerant systems expect this and degrade gracefully.
+## What is Cache (Redis, Memcached)
+video: what is cache redis memcached
+summary: A cache is a small, very fast storage that keeps frequently used data close, so you do not fetch it from the slow source again.
 
-* **Retry mechanism** - retry failed calls with **exponential backoff** and jitter (wait 1s, 2s, 4s, with random delay), and only for idempotent operations.
-* **Circuit breaker** - after too many failures, stop calling the failing service for a while and return a fallback. This prevents cascading failures.
-* **Multi-AZ deployment** - run copies of your system in multiple availability zones (separate data centres), so one zone failing does not take you down.
-* **Timeouts and fallbacks** - never wait forever; return cached or default data when possible.
+**Real-life example:** Keeping your favourite snacks in your bag instead of going to the shop every time.
 
 ```flow
-title: Circuit breaker
-CLOSED | normal, calls go through
-> too many failures
-OPEN | calls blocked, fallback returned
-> after a timeout
-HALF-OPEN | try one request
-> it works? go back to CLOSED
+title: Cache in front of the database
+App | needs some data
+Cache (Redis) | is it here?
+> miss
+Database | slow, but has everything
 ```
 
-> "System should handle failures gracefully."
+### Key Points
+* **Redis**: rich data types, can save to disk. **Memcached**: simple, very fast key-value.
+* Cache hit = found (fast). Cache miss = not found (go to the database).
+* Cached data can become stale, so set an expiry (TTL).
+
+## Write Policies: Write Back, Through & Around
+video: cache write policies write through write back write around
+summary: A write policy decides when new data is written to the cache and when it reaches the database.
+
+| Policy | How it works | Trade-off |
+|---|---|---|
+| **Write-through** | Write to cache and database together | Safe but slower |
+| **Write-back** | Write to cache first, database later | Fast but can lose data on a crash |
+| **Write-around** | Write straight to the database, skip the cache | Avoids filling cache with rarely read data |
 
 ### Key Points
-* Retry only safe (idempotent) operations.
-* Circuit breakers stop cascading failures.
-* Multi-AZ protects against a whole data centre failing.
+* Write-through for important data, write-back for speed-heavy writes like counters.
+* Write-around suits data that is written once and rarely read.
 
-## Security
-video: system design security jwt oauth https
-summary: Secure systems with JWT or OAuth authentication, HTTPS everywhere, rate limiting and least-privilege IAM roles.
+## Replacement Policies: LFU, LRU, Segmented LRU
+video: cache eviction policies lru lfu
+summary: A replacement policy decides which item to throw out of a full cache to make room for a new one.
 
-Security must be designed in from the start:
+**Real-life example:** A small shelf is full, so you remove the thing you have not touched for the longest time.
 
-* **Authentication** - who are you? Use **OAuth 2.0 / OpenID Connect** for login, and **JWT** (JSON Web Tokens) to carry signed identity between services.
-* **Authorization** - what may you do? Role-based access control (RBAC) and least privilege.
-* **HTTPS (TLS)** - encrypt data in transit.
-* **Rate limiting** - stop abuse and brute-force attacks.
-* **IAM roles** - give services only the permissions they need (cloud).
-* **Secrets management** - store keys in a vault (AWS Secrets Manager, Azure Key Vault), never in code.
+| Policy | Removes |
+|---|---|
+| **LRU** (Least Recently Used) | The item not used for the longest time |
+| **LFU** (Least Frequently Used) | The item used the fewest times |
+| **Segmented LRU** | Uses two lists (new and proven items) so one-time items do not push out popular ones |
+| **FIFO** | The oldest item |
+
+### Key Points
+* LRU is the most common default.
+* LFU is better when some items are popular for a long time.
+
+## Content Delivery Networks (CDNs)
+video: what is cdn content delivery network
+summary: A CDN keeps copies of your files on servers around the world so users download them from a place near them.
+
+**Real-life example:** A shop chain with a branch in every city, so you do not order from the faraway head office.
 
 ```flow
-title: Secure request
-Client | sends over HTTPS
-API Gateway | verifies JWT, rate limits
-Service | checks the user's role
+title: CDN hit and miss
+User | in Delhi
+Nearest CDN server | has the file?
+> miss: fetch once
+Origin server | your main server
 ```
 
-> "Security is critical, especially for sensitive systems."
+### Key Points
+* Best for images, videos, CSS and JavaScript.
+* Lower latency for users and less load on your own servers.
+* Examples: Cloudflare, Akamai, CloudFront.
+
+# Step 5: Networking
+
+## TCP vs UDP
+video: tcp vs udp
+summary: TCP is reliable and ordered but slower; UDP is fast but does not guarantee delivery.
+
+**Real-life example:** TCP is a registered courier with delivery confirmation. UDP is shouting across a street, quick but some words may be missed.
+
+| | TCP | UDP |
+|---|---|---|
+| Delivery | Guaranteed, in order | No guarantee |
+| Speed | Slower | Faster |
+| Used for | Web pages, email, file transfer | Video calls, gaming, live streams |
 
 ### Key Points
-* JWT proves identity; authorization decides permissions.
-* Never store secrets in source code.
+* TCP first does a "handshake" to set up a connection.
+* If a late packet is useless (live video), UDP wins.
 
-## Monitoring and Observability
-video: logging metrics alerting monitoring system design
-summary: Monitoring uses logs, metrics and alerts to show system health and warn you before users notice problems.
+## What is HTTP (1/2/3) & HTTPS
+video: http 1.1 vs http 2 vs http 3
+summary: HTTP is the language browsers and servers use to talk, and HTTPS is the same language but encrypted.
 
-You cannot run what you cannot see. Observability has three pillars:
-
-* **Logs** - detailed records of events ("payment failed for order 42").
-* **Metrics** - numbers over time (requests per second, error rate, p95 latency, CPU).
-* **Alerts** - notifications when a metric crosses a threshold (error rate above 2% for 5 minutes).
-
-Add **tracing** (e.g. OpenTelemetry) to follow one request across many services.
-
-Tools: CloudWatch (AWS), Azure Monitor, Prometheus + Grafana, Datadog.
-
-> "Without monitoring, system reliability cannot be ensured."
+| Version | Main idea |
+|---|---|
+| **HTTP/1.1** | One request at a time per connection |
+| **HTTP/2** | Many requests share one connection (multiplexing) |
+| **HTTP/3** | Runs on QUIC (UDP), faster to connect and handles bad networks better |
 
 ### Key Points
-* Measure the user experience (latency, errors), not only server CPU.
-* Good alerts are actionable; too many alerts get ignored.
+* **HTTPS = HTTP + TLS**, so nobody in the middle can read or change the data.
+* Always use HTTPS, it also helps SEO and browser trust.
+
+## WebSockets
+video: websockets explained
+summary: A WebSocket keeps one connection open so the server and client can send messages to each other any time.
+
+**Real-life example:** Normal HTTP is sending a letter and waiting for a reply. A WebSocket is a phone call that stays connected.
+
+### Key Points
+* Great for chat, live scores, notifications and multiplayer games.
+* No need to keep asking "any news?" (polling).
+* Many open connections use server memory, so plan for scale.
+
+## WebRTC & Video Streaming
+video: webrtc and video streaming explained
+summary: WebRTC lets browsers send audio and video directly to each other in real time, while video streaming sends video in small chunks to many viewers.
+
+**Real-life example:** WebRTC is a direct video call between two people. Streaming is a TV channel broadcasting to millions.
+
+| | WebRTC | Streaming (HLS / DASH) |
+|---|---|---|
+| Delay | Under 1 second | A few seconds |
+| Best for | Calls, meetings | Netflix, YouTube, live events |
+
+### Key Points
+* Streaming splits video into small chunks and picks quality based on your internet speed (adaptive bitrate).
+* Chunks are served through a CDN.
+
+# Step 6: Load Balancers
+
+## Load Balancing Algorithms (Stateless & Stateful)
+video: load balancing algorithms round robin
+summary: A load balancer spreads incoming requests across many servers using a rule so no single server is overloaded.
+
+```flow
+title: Load balancer
+Users | many requests
+Load Balancer | picks a server for each request
+> spreads the load
+Server 1 || Server 2 || Server 3
+```
+
+| Algorithm | How it picks |
+|---|---|
+| **Round robin** | Servers one by one in turn |
+| **Least connections** | The server with the fewest active requests |
+| **IP hash** | Same user always goes to the same server (stateful / sticky) |
+| **Weighted** | Stronger servers get more requests |
+
+### Key Points
+* **Stateless** servers keep no user data, so any server can handle any request (preferred).
+* **Stateful** servers remember the user, so the user must keep returning to the same one.
+
+## Consistent Hashing
+video: consistent hashing explained
+summary: Consistent hashing places servers and keys on a ring so that adding or removing a server moves only a small part of the data.
+
+**Real-life example:** Seats around a round table; when one person leaves, only their neighbour shifts, not everybody.
+
+### Key Points
+* Normal hashing (key mod N) reshuffles almost everything when N changes.
+* Each key goes to the next server clockwise on the ring.
+* **Virtual nodes** spread the load evenly.
+* Used in caches, databases like Cassandra and DynamoDB, and CDNs.
+
+## Proxy & Reverse Proxy
+video: proxy vs reverse proxy
+summary: A proxy sits in front of clients and talks to the internet for them; a reverse proxy sits in front of servers and talks to clients for them.
+
+**Real-life example:** A proxy is an assistant who makes calls for you. A reverse proxy is a receptionist who answers calls for a company.
+
+| | Proxy (forward) | Reverse proxy |
+|---|---|---|
+| Hides | The client | The servers |
+| Used for | Privacy, filtering, caching | Load balancing, SSL, caching, security |
+| Examples | Corporate proxy, VPN | Nginx, HAProxy, Cloudflare |
+
+### Key Points
+* A load balancer is a kind of reverse proxy.
+* It protects your real servers from direct exposure.
 
 ## Rate Limiting
 video: rate limiting algorithms token bucket
-summary: Rate limiting caps how many requests a client can make in a time window to prevent abuse and protect backends.
+summary: Rate limiting caps how many requests a user can make in a given time, to stop abuse and overload.
 
-**Rate limiting** restricts how many requests a user, IP or API key can make in a period (e.g. 100 requests per minute). Requests over the limit get HTTP `429 Too Many Requests`.
+**Real-life example:** A club that lets only 100 people in per hour, no matter how many are waiting.
 
-Common algorithms:
+| Algorithm | Idea |
+|---|---|
+| **Token bucket** | Tokens refill at a steady rate, each request uses one |
+| **Fixed window** | Max N requests per minute |
+| **Sliding window** | Like fixed, but the minute keeps moving, so it is fairer |
+| **Leaky bucket** | Requests leave at a constant speed |
 
-* **Fixed window** - count requests per clock minute. Simple, but allows bursts at window edges.
-* **Sliding window** - smoother counting over the last N seconds.
-* **Token bucket** - a bucket refills at a steady rate; each request takes a token. Allows short bursts.
-* **Leaky bucket** - requests drain at a constant rate.
+### Key Points
+* Return HTTP **429 Too Many Requests** when the limit is hit.
+* Keep counters in Redis so all servers share them.
 
-Counters are usually stored in Redis so all servers share the same limit.
+# Step 7: Message Queues
+
+## Asynchronous Processing (Kafka, RabbitMQ)
+video: message queue kafka rabbitmq
+summary: A message queue holds tasks so a slow job can be done later in the background, and the user does not have to wait.
+
+**Real-life example:** You order food and get a token number; the kitchen cooks in the background while you wait.
 
 ```flow
-title: Token bucket (5 tokens, refills 1 per second)
-Request arrives
-Token available? | yes, take one and let it through
-> no tokens left
-Reject with 429 | too many requests
+title: Queue in action
+Web server | accepts the order quickly
+> puts a message
+Queue (Kafka / RabbitMQ) | holds the jobs safely
+> worker picks it
+Worker | sends email, processes video
 ```
 
-> "Rate limiting protects system from overload."
+| | RabbitMQ | Kafka |
+|---|---|---|
+| Style | Classic message broker | Distributed event log |
+| Strength | Flexible routing | Huge throughput, replay old events |
 
 ### Key Points
-* Protects backends, controls cost, and blocks abuse.
-* Typically enforced at the API gateway, with Redis for shared counters.
+* Absorbs traffic spikes and keeps services independent.
+* Make workers **idempotent** because a message may be delivered twice.
 
-## Deployment Strategies
-video: blue green canary rolling deployment
-summary: Blue-green, rolling and canary deployments release new versions with zero or minimal downtime and easy rollback.
+## Publisher-Subscriber Model
+video: publish subscribe pattern
+summary: In pub/sub, a publisher sends an event to a topic and every subscriber of that topic receives it.
 
-Deploying carelessly causes downtime. Safer strategies:
-
-* **Rolling** - replace servers a few at a time. Some old and new versions run together briefly.
-* **Blue-Green** - run two identical environments. Deploy to *green*, test, then switch the router from *blue* (old) to *green* (new). Rollback = switch back.
-* **Canary** - send 1-5% of traffic to the new version first; if metrics look good, increase gradually.
+**Real-life example:** A YouTube channel posts a video and all subscribers get notified, the channel does not know who they are.
 
 ```flow
-title: Blue-green deploy
-Router | sends users to BLUE (v1)
-Deploy GREEN (v2) | test it while BLUE is live
-Switch the router | users now see GREEN
-Keep BLUE | instant rollback if needed
+title: Publish / subscribe
+Order service | publishes "order placed"
+> topic
+Inventory || Billing || Notifications
 ```
 
-> "I prefer zero-downtime deployment strategies."
+### Key Points
+* A queue gives each message to **one** worker; pub/sub gives it to **every** subscriber.
+* Easy to add new features without changing the publisher.
+
+# Step 8: Monoliths vs Microservices
+
+## Why Microservices?
+video: monolith vs microservices
+summary: Microservices split one big application into small independent services that can be built, deployed and scaled separately.
+
+**Real-life example:** A monolith is one giant shop that does everything. Microservices are a mall with separate specialised shops.
+
+| | Monolith | Microservices |
+|---|---|---|
+| Deploy | All together | Each service alone |
+| Scaling | Whole app | Only the busy part |
+| Complexity | Simple to start | Harder (network, monitoring) |
+| Failure | One bug can stop everything | Failure stays mostly local |
 
 ### Key Points
-* Blue-green gives instant rollback; canary limits blast radius.
-* Keep database changes backward-compatible so old and new code can run together.
+* Start with a monolith, move to microservices when the team and traffic grow.
+* Each service should own its own data.
 
-## Microservices vs Monolith
-video: monolith vs microservices architecture
-summary: A monolith is one simple deployable unit, while microservices are independent services that scale separately but add complexity.
+## Concept of Single Point of Failure
+video: single point of failure system design
+summary: A single point of failure (SPOF) is any one part that, if it breaks, brings the whole system down.
 
-| Monolith | Microservices |
-|----------|---------------|
-| One codebase, one deployable | Many small services, each deployable alone |
-| Simple to build and debug | Complex: networking, tracing, data consistency |
-| Tight coupling | Loose coupling |
-| Scale the whole app | Scale only the hot services |
-
-Start with a well-structured **monolith** for most products. Move to microservices when teams, scale or release frequency demand independent services.
-
-> "Microservices improve scalability but add complexity."
+**Real-life example:** A house with one door; if it jams, nobody gets in or out.
 
 ### Key Points
-* Microservices solve organisational and scaling problems; they are not automatically better.
-* Avoid microservices before you have the team and tooling for them.
+* Find SPOFs by asking "what if this one thing dies?" for every box in your diagram.
+* Fix with **redundancy**: two load balancers, database replicas, servers in many zones.
+* Add **failover** so the backup takes over automatically.
 
-## Capacity Estimation
-video: system design back of envelope estimation
-summary: Back-of-the-envelope math converts users and traffic into requests per second, storage and bandwidth before you design.
+## Avoiding Cascading Failures
+video: cascading failures circuit breaker
+summary: A cascading failure is when one failing service overloads the next one, and the problem spreads like falling dominoes.
 
-Interviewers expect you to estimate scale before designing. Use round numbers and show your work.
+**Real-life example:** One slow cashier makes the queue long, people crowd the next counter, and soon the whole shop is stuck.
 
-Example:
+### Key Points
+* **Timeouts**: never wait forever for another service.
+* **Retries with backoff**: retry slowly, not instantly.
+* **Circuit breaker**: stop calling a failing service for a while.
+* **Rate limiting and load shedding**: reject extra work early.
+* **Bulkheads**: keep resources separate so one failure cannot use them all.
+
+## Containerization (Docker)
+video: docker explained in hindi
+summary: A container packs an app with everything it needs, so it runs the same way on any machine.
+
+**Real-life example:** A lunchbox that holds the food, spoon and sauce together, so it works the same wherever you open it.
+
+### Key Points
+* **Image** is the blueprint, **container** is the running copy.
+* Lighter and faster than virtual machines because containers share the host OS.
+* Kubernetes runs and scales many containers for you.
+
+## Migrating to Microservices
+video: migrating monolith to microservices strangler pattern
+summary: Move to microservices step by step by carving out one piece at a time, instead of rewriting everything at once.
 
 ```flow
-title: Capacity math
-10M requests per day
-Divide by 86,400 seconds | about 115 requests/sec
-Peak is about 3x | about 350 requests/sec
+title: Strangler pattern
+Monolith | the old big app
+> move one feature out
+New service | handles that feature
+> repeat
+Monolith shrinks | until nothing is left
 ```
 
-Estimate storage too:
+### Key Points
+* Pick a clear, low-risk part first (like notifications).
+* Put an API gateway in front to route requests to old or new code.
+* Split the database last, it is the hardest part.
 
-```text
-1M new users/day × 1 KB each = 1 GB/day ≈ 365 GB/year
-```
+# Step 9: Monitoring & Logging
 
-Useful numbers: 1 day = 86,400 s; 1 million/day ≈ 12 per second; 1 KB × 1M = 1 GB.
+## Logging Events & Monitoring Metrics
+video: logging monitoring metrics observability
+summary: Logs record what happened, and metrics measure how the system is doing, so you can see problems and fix them fast.
 
-> "I always estimate scale before designing."
+**Real-life example:** Logs are the CCTV recording (what happened). Metrics are the car dashboard (speed, fuel, temperature right now).
+
+| | Logs | Metrics |
+|---|---|---|
+| Answer | What exactly happened? | How healthy is it? |
+| Example | "Payment 42 failed: timeout" | CPU 80%, 500 errors per minute |
+| Tools | ELK, Loki | Prometheus, Grafana |
 
 ### Key Points
-* Average vs peak matters - design for peak.
-* Estimates decide whether you need sharding, caching or a single database.
+* Together with **traces** (the path of one request) they make up observability.
+* Watch latency, error rate, traffic and saturation.
+* Set alerts so you hear about problems before users do.
 
-## Performance Optimization
-video: system design performance optimization caching async
-summary: Speed up systems with caching, indexing, asynchronous processing and CDNs.
+## Anomaly Detection
+video: anomaly detection in monitoring
+summary: Anomaly detection automatically spots unusual behaviour in your data, like a sudden spike in errors or a drop in orders.
 
-The main levers for performance:
-
-* **Caching** - serve repeated reads from memory.
-* **Indexing** - let the database find rows quickly.
-* **Async processing** - move slow work (emails, reports, image resizing) to queues so the user does not wait.
-* **CDN** - serve static content from close to the user.
+**Real-life example:** Your bank texts you when your card is used in another country at 3 AM.
 
 ### Key Points
-* Measure first; optimize the actual bottleneck.
-* Move anything the user does not need immediately into async processing.
+* Compare current numbers with the normal pattern for that time of day or week.
+* Catches problems that fixed alert limits miss.
+* Too sensitive means false alarms, too relaxed means missed problems.
 
-## How to Answer in an Interview
-video: how to answer system design interview questions
-summary: Follow a fixed structure - requirements, high-level design, scaling, trade-offs and bottlenecks - to stay organised.
+# Step 10: Security
 
-Always structure your answer the same way:
+## Tokens for Auth
+video: jwt authentication explained
+summary: After you log in, the server gives you a token that proves who you are on every later request.
 
-1. **Requirements** - clarify functional needs and scale (users, read/write ratio, latency, availability).
-2. **High-Level Design** - draw the main components and the request flow.
-3. **Scaling** - show how each component grows (replicas, sharding, load balancers).
-4. **Trade-offs** - explain why you chose each option and what you gave up.
-5. **Bottlenecks** - name the weakest point and how you would monitor or fix it.
+**Real-life example:** A wristband at a festival; you show it at every gate instead of re-checking your ticket.
+
+### Key Points
+* **JWT** is a signed token holding the user id and expiry, so servers do not need to look it up.
+* Keep tokens short-lived and use a refresh token to get new ones.
+* Send them over HTTPS only.
+* **Authentication** = who you are. **Authorization** = what you may do.
+
+## SSO & OAuth
+video: sso and oauth explained
+summary: SSO lets you log in once to use many apps, and OAuth lets an app act for you without ever getting your password.
+
+**Real-life example:** SSO is one office ID card that opens every door. OAuth is "Sign in with Google": Google vouches for you, the app never sees your password.
+
+### Key Points
+* **OAuth** is about giving limited access (permission).
+* **OpenID Connect** adds login (identity) on top of OAuth.
+* Users get fewer passwords to remember and you store fewer secrets.
+
+## Access Control Lists & Rule Engines
+video: access control list rbac abac
+summary: An access control list says who may do what, and a rule engine decides it automatically using rules.
+
+**Real-life example:** A guest list at a party door, plus a few rules like "only adults after 10 PM".
+
+| Model | Idea |
+|---|---|
+| **ACL** | A list per resource of who can access it |
+| **RBAC** | Permissions come from roles (admin, editor, viewer) |
+| **ABAC** | Rules use attributes (department, time, location) |
+
+### Key Points
+* Give the **least privilege** needed, nothing more.
+* Keep rules in one place so they are easy to audit.
+
+## Encryption
+video: encryption symmetric asymmetric explained
+summary: Encryption scrambles data so only someone with the right key can read it.
+
+**Real-life example:** Locking a message in a box that only the right key can open.
+
+| | Symmetric | Asymmetric |
+|---|---|---|
+| Keys | One shared key | Public key + private key |
+| Speed | Fast | Slower |
+| Example | AES | RSA |
+
+### Key Points
+* **In transit**: HTTPS/TLS. **At rest**: encrypted disks and databases.
+* Never store passwords as plain text; **hash** them with salt (bcrypt).
+
+# Step 11: System Design Tradeoffs
+
+## Push vs Pull Architecture
+video: push vs pull architecture system design
+summary: In push the server sends updates to clients as they happen; in pull the client asks the server for updates.
+
+**Real-life example:** Push is a newspaper delivered to your door. Pull is you walking to the shop to buy it.
+
+| | Push | Pull |
+|---|---|---|
+| Freshness | Instant | Depends on how often you ask |
+| Load | Server does the work | Client does the work, many empty requests |
+| Example | Notifications, WebSockets | Polling, RSS |
+
+### Key Points
+* Push for real-time needs, pull for simplicity.
+* Hybrid works too: push for normal users, pull for celebrities with millions of followers.
+
+## Consistency vs Availability
+video: consistency vs availability tradeoff
+summary: When parts of the system cannot talk to each other, you choose between always-correct data and always-answering.
+
+### Key Points
+* Choose **consistency** for money, stock and bookings.
+* Choose **availability** for feeds, likes and recommendations.
+* See CAP Theorem in Step 3.
+
+## SQL vs NoSQL: Which to Pick
+video: sql vs nosql when to use
+summary: Pick SQL when your data is related and correctness matters, and NoSQL when scale and flexibility matter more.
+
+### Key Points
+* SQL: orders, payments, users with relations.
+* NoSQL: logs, chats, product catalogs, huge write volume.
+* Real systems often mix both (polyglot persistence).
+
+## Memory vs Latency
+video: memory vs latency tradeoff caching
+summary: Using more memory (caches, precomputed results) makes responses faster, but costs more money.
+
+**Real-life example:** Keeping more tools on your table saves time, but the table needs to be bigger.
+
+### Key Points
+* Cache only the hot data that gets read often.
+* Memory is limited and costly, disk is cheap but slow.
+
+## Throughput vs Latency
+video: throughput vs latency
+summary: Latency is how long one request takes, and throughput is how many requests are handled per second.
+
+**Real-life example:** A bus carries many people at once (high throughput) but is slower per person than a bike (low latency).
+
+### Key Points
+* Batching improves throughput but makes each item wait longer.
+* Real-time apps want low latency; data pipelines want high throughput.
+
+## Accuracy vs Latency
+video: accuracy vs latency tradeoff approximate algorithms
+summary: Getting an exact answer takes more time, so sometimes a fast, nearly-right answer is the better choice.
+
+**Real-life example:** "About 1.2M views" loads instantly, while the exact count would need counting every single view.
+
+### Key Points
+* Approximate tools: **Bloom filter**, **HyperLogLog**, sampling.
+* Use exact answers for money, approximate for analytics and counters.
+
+# Step 12: For Practice
+
+## Design YouTube
+video: design youtube system design
+summary: A video platform where users upload, process and stream videos to millions of viewers.
 
 ```flow
-title: Interview flow (about 45 min)
-direction: right
-Requirements | 5 min
-HLD | 10 min
-Deep dive | 20 min
-Scaling and bottlenecks | 10 min
+title: YouTube design
+Upload | video goes to storage
+Queue | triggers processing
+Workers | convert to many sizes and formats
+CDN | serves chunks to viewers
 ```
 
 ### Key Points
-* Talk through trade-offs out loud - that is what interviewers grade.
-* Ask clarifying questions before drawing anything.
+* Store videos in object storage (S3), details in a database.
+* Adaptive streaming (HLS/DASH) picks quality by internet speed.
+* Recommendations, search and view counts are separate services.
 
-## Common Design Questions
-video: system design interview common questions
-summary: Typical design problems map to a small set of building blocks such as load balancers, caches, CDNs, auto-scaling and queues.
-
-| Question | Typical answer |
-|----------|----------------|
-| Design a scalable system | Load balancer + stateless app servers + cache + DB scaling |
-| Handle high traffic | CDN + auto scaling + queue |
-| Avoid a DB bottleneck | Cache + read replicas |
-| Send notifications to millions | Queue + workers + pub/sub |
+## Design Twitter
+video: design twitter system design
+summary: A social feed where users post short messages and see posts from people they follow.
 
 ### Key Points
-* Most designs reuse the same handful of building blocks.
-* Know the trade-off behind each building block.
+* **Fan-out on write**: push a new tweet into followers' timelines (fast reads).
+* **Fan-out on read** for celebrities, to avoid millions of writes.
+* Cache timelines in Redis, use a search index for tweet search.
 
-## Golden Rule for Answers
-video: system design interview tips
-summary: Explain the reason and the measurable benefit behind each technology choice instead of just naming it.
-
-Do not just name a tool. Explain the problem it solves and the result you expect.
-
-Weak answer:
-
-> "Use Redis."
-
-Strong answer:
-
-> "Use Redis to reduce DB load and improve latency under high read traffic."
+## Design WhatsApp
+video: design whatsapp system design
+summary: A chat app that delivers messages instantly between users, even when one of them is offline.
 
 ### Key Points
-* Name the problem, the tool, and the expected outcome.
-* Mention the trade-off you accept.
+* WebSockets keep a live connection for real-time messages.
+* A message queue stores messages for offline users until they return.
+* Tick marks: sent, delivered, read are status events.
+* End-to-end encryption keeps messages private.
 
-## One-Line Summary
-video: system design summary
-summary: System design is about scalability, reliability, trade-offs and real-world thinking.
-
-**System design = scalability + reliability + trade-offs + real-world thinking.**
+## Design Uber
+video: design uber system design
+summary: A ride service that matches riders with nearby drivers in real time.
 
 ### Key Points
-* Start simple, scale the bottleneck, and always justify the trade-offs.
+* Drivers send their location every few seconds.
+* Use geospatial indexing (geohash, quadtree) to find nearby drivers fast.
+* A matching service picks a driver; a trip service tracks the ride.
+* Pricing, payments and notifications are separate services.
+
+## Design Netflix
+video: design netflix system design
+summary: A video streaming service that delivers movies to millions of people with very little buffering.
+
+### Key Points
+* Videos are encoded in many qualities and stored close to users in its own CDN (Open Connect).
+* The app picks quality automatically based on network speed.
+* Microservices handle login, recommendations, billing and search.
+
+## Design Amazon
+video: design amazon e-commerce system design
+summary: An online store with product search, cart, orders and payments that must stay correct under heavy traffic.
+
+### Key Points
+* Search with Elasticsearch; product pages cached heavily.
+* The cart can be eventually consistent, but **orders and payments need strong consistency**.
+* Inventory and checkout use transactions or a saga to avoid overselling.
+* Queues handle order emails and shipping updates.
+
+## Design Instagram
+video: design instagram system design
+summary: A photo-sharing app where users post pictures and follow a feed of others' posts.
+
+### Key Points
+* Photos go to object storage and are delivered via a CDN, with several sizes generated.
+* The feed works like Twitter (fan-out on write, hybrid for big accounts).
+* Likes and comments can be eventually consistent.
+
+## Design Zoom
+video: design zoom video conferencing system design
+summary: A video meeting service that connects many people with live audio and video.
+
+### Key Points
+* **WebRTC / UDP** is used for low-delay audio and video.
+* An SFU server receives each person's stream and forwards it to the others, instead of everyone connecting to everyone.
+* Quality adapts to each person's network; chat and signalling use WebSockets.

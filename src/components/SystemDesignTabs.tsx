@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 
 export type TabData = {
   slug: string;
   label: string;
   note: string;
   color: string;
-  topics: { slug: string; title: string; summary: string }[];
+  topics: { slug: string; title: string; summary: string; group: string }[];
 };
 
 export default function SystemDesignTabs({ tabs }: { tabs: TabData[] }) {
@@ -27,19 +27,27 @@ export default function SystemDesignTabs({ tabs }: { tabs: TabData[] }) {
 
   const current = tabs.find((t) => t.slug === active) ?? tabs[0];
 
+  // Keep topics in order, starting a new section whenever the step heading changes.
+  const groups: { group: string; topics: TabData["topics"] }[] = [];
+  for (const topic of current.topics) {
+    const last = groups[groups.length - 1];
+    if (last && last.group === topic.group) last.topics.push(topic);
+    else groups.push({ group: topic.group, topics: [topic] });
+  }
+
   return (
     <div className="space-y-6">
-      <div role="tablist" className="inline-flex rounded-xl border border-[var(--border)] bg-[var(--card)] p-1">
+      <div role="tablist" className="glass inline-flex rounded-2xl p-1.5">
         {tabs.map((t) => (
           <button
             key={t.slug}
             role="tab"
             aria-selected={t.slug === current.slug}
             onClick={() => select(t.slug)}
-            className={`rounded-lg px-5 py-2 text-sm font-semibold transition ${
-              t.slug === current.slug ? "text-white shadow" : "text-muted hover:text-[var(--fg)]"
+            className={`rounded-xl px-5 py-2 text-sm font-semibold transition ${
+              t.slug === current.slug ? "accent-chip" : "text-muted hover:text-[var(--fg)]"
             }`}
-            style={t.slug === current.slug ? { background: t.color } : undefined}
+            style={{ "--accent": t.color } as CSSProperties}
           >
             {t.label}
           </button>
@@ -48,27 +56,44 @@ export default function SystemDesignTabs({ tabs }: { tabs: TabData[] }) {
 
       <p className="text-muted">{current.note}</p>
 
-      <ol className="grid gap-3 md:grid-cols-2">
-        {current.topics.map((topic, i) => (
-          <li key={topic.slug}>
-            <Link
-              href={`/${current.slug}/${topic.slug}`}
-              className="card group flex h-full gap-4 rounded-xl p-4 transition hover:-translate-y-0.5 hover:shadow-md"
-            >
-              <span
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-bold text-white"
-                style={{ background: current.color }}
-              >
-                {i + 1}
-              </span>
-              <div className="min-w-0">
-                <h3 className="font-semibold group-hover:underline">{topic.title}</h3>
-                <p className="mt-1 line-clamp-2 text-sm text-muted">{topic.summary}</p>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ol>
+      <div className="space-y-8" style={{ "--accent": current.color } as CSSProperties}>
+        {groups.map(({ group, topics }) => {
+          // "Step 3: Cache" -> badge "Step 3" + title "Cache"
+          const [badge, ...rest] = group.split(":");
+          const title = rest.join(":").trim();
+          return (
+            <section key={group || "all"} className="space-y-3">
+              {group && (
+                <h2 className="flex items-center gap-3">
+                  <span className="accent-chip rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide">
+                    {title ? badge : group}
+                  </span>
+                  {title && <span className="text-lg font-semibold">{title}</span>}
+                </h2>
+              )}
+              <ul className="grid gap-3 md:grid-cols-2">
+                {topics.map((topic) => (
+                  <li key={topic.slug}>
+                    <Link
+                      href={`/${current.slug}/${topic.slug}`}
+                      className="glass glass-hover group flex h-full items-start gap-3 rounded-2xl p-4"
+                    >
+                      <span
+                        className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--accent)] shadow-[0_0_10px_var(--accent)]"
+                        aria-hidden
+                      />
+                      <div className="min-w-0">
+                        <h3 className="font-semibold leading-snug">{topic.title}</h3>
+                        <p className="mt-1 line-clamp-2 text-sm text-muted">{topic.summary}</p>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          );
+        })}
+      </div>
     </div>
   );
 }

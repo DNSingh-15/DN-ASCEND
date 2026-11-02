@@ -27,13 +27,21 @@ export function parseTech(slug, raw) {
   const { meta, body } = parseFrontmatter(raw);
   const topics = [];
   let current = null;
+  let group = "";
   let inFence = false;
 
   for (const line of body.split(/\r?\n/)) {
     if (/^\s*(```|~~~)/.test(line)) inFence = !inFence;
+    // "# Step 1: Fundamentals" starts a group; the "## " topics after it belong to that group.
+    const groupHeading = !inFence && line.match(/^# (.+)$/);
+    if (groupHeading) {
+      group = groupHeading[1].trim();
+      current = null;
+      continue;
+    }
     const heading = !inFence && line.match(/^## (.+)$/);
     if (heading) {
-      current = { title: heading[1].trim(), video: "", summary: "", lines: [] };
+      current = { title: heading[1].trim(), group, video: "", summary: "", lines: [] };
       topics.push(current);
       continue;
     }
@@ -67,6 +75,7 @@ export function parseTech(slug, raw) {
       return {
         slug: s,
         title: t.title,
+        group: t.group,
         videoQuery: t.video || `${meta.name ?? slug} ${t.title}`,
         summary: t.summary,
         body: t.lines.join("\n").trim(),

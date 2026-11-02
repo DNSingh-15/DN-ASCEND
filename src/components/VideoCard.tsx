@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import type { Video } from "@/lib/content";
 
 export default function VideoCard({ video, featured }: { video: Video; featured?: boolean }) {
@@ -8,7 +8,7 @@ export default function VideoCard({ video, featured }: { video: Video; featured?
   const isApna = /apna college|shradha/i.test(video.channel);
 
   return (
-    <div className="card overflow-hidden rounded-xl">
+    <div className="glass glass-hover overflow-hidden rounded-2xl" style={{ "--accent": "#ef4444" } as CSSProperties}>
       <div className="relative aspect-video w-full bg-black">
         {playing ? (
           <iframe
@@ -32,19 +32,19 @@ export default function VideoCard({ video, featured }: { video: Video; featured?
               className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"
             />
             <span className="absolute inset-0 flex items-center justify-center">
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-2xl text-white shadow-lg transition group-hover:scale-110">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600/90 text-2xl text-white shadow-lg shadow-red-600/40 ring-4 ring-white/20 backdrop-blur transition group-hover:scale-110">
                 ▶
               </span>
             </span>
             {video.length && (
-              <span className="absolute bottom-2 right-2 rounded bg-black/80 px-1.5 py-0.5 text-xs text-white">
+              <span className="absolute bottom-2 right-2 rounded-md bg-black/60 px-1.5 py-0.5 text-xs text-white backdrop-blur">
                 {video.length}
               </span>
             )}
           </button>
         )}
       </div>
-      <div className="space-y-1 p-3">
+      <div className="space-y-1.5 p-4">
         <p className={`line-clamp-2 font-medium ${featured ? "text-base" : "text-sm"}`}>{video.title}</p>
         <div className="flex flex-wrap items-center gap-2 text-xs">
           <span className="text-muted">{video.channel}</span>

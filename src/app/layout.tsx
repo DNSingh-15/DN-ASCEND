@@ -21,10 +21,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-screen antialiased">
-        <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[color-mix(in_srgb,var(--bg)_85%,transparent)] backdrop-blur">
-          <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 px-4">
-            <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-fuchsia-500 text-white">
+        <header className="sticky top-3 z-40 px-4">
+          <div className="glass mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 rounded-2xl px-3 sm:px-4">
+            <Link href="/" className="flex items-center gap-2.5 font-semibold tracking-tight">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500 text-white shadow-lg shadow-indigo-500/30">
                 ⚡
               </span>
               <span>Full Stack &amp; AI</span>
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <ThemeToggle />
           </div>
         </header>
-        <main className="mx-auto max-w-7xl px-4 py-8">{children}</main>
+        <main className="mx-auto max-w-7xl px-4 py-10">{children}</main>
       </body>
     </html>
   );

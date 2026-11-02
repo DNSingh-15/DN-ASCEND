@@ -38,9 +38,9 @@ function parse(source: string) {
 
 function Box({ cell, n }: { cell: Cell; n?: number }) {
   return (
-    <div className="flex min-w-[9rem] max-w-xs flex-1 items-start gap-3 rounded-xl border border-indigo-300/70 bg-indigo-50 px-4 py-3 text-left shadow-sm dark:border-indigo-400/30 dark:bg-indigo-500/10">
+    <div className="flex min-w-[9rem] max-w-xs flex-1 items-start gap-3 rounded-xl border border-indigo-300/50 bg-indigo-500/[0.07] px-4 py-3 text-left shadow-sm shadow-indigo-500/10 backdrop-blur-sm dark:border-indigo-400/25 dark:bg-indigo-500/10">
       {n !== undefined && (
-        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-xs font-bold text-white">
+        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 text-xs font-bold text-white shadow-md shadow-indigo-500/40">
           {n}
         </span>
       )}
@@ -72,7 +72,7 @@ export default function Flow({ source }: { source: string }) {
 
   // Number only rows with a single box; a parallel row counts as one step.
   return (
-    <figure className="not-prose my-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6">
+    <figure className="not-prose glass my-6 rounded-2xl p-4 sm:p-6">
       {title && (
         <figcaption className="mb-4 text-center text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
           {title}

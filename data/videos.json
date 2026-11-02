@@ -7389,261 +7389,6 @@
       "lang": "hi"
     }
   ],
-  "system-design-hld/what-is-system-design": [
-    {
-      "id": "CuQmQpvw04I",
-      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
-      "channel": "Apna College",
-      "length": "20:33",
-      "lang": "hi"
-    },
-    {
-      "id": "5XmZK5fls5w",
-      "title": "System Design Complete Course 2026 | Hindi + English | 10+ Hours | SDE Interview Preparation",
-      "channel": "designKarle - System Design By Shivam Tiwari",
-      "length": "10:00:45",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/hld-vs-lld": [
-    {
-      "id": "CuQmQpvw04I",
-      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
-      "channel": "Apna College",
-      "length": "20:33",
-      "lang": "hi"
-    },
-    {
-      "id": "0CAW1nLIBwo",
-      "title": "What is LLD? | Low Level Design",
-      "channel": "Chai aur Code",
-      "length": "3:15",
-      "lang": "hi"
-    },
-    {
-      "id": "emosrl1QkwE",
-      "title": "Launching Low Level Design (System Design)",
-      "channel": "Coder Army",
-      "length": "17:34",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/core-architecture-flow": [
-    {
-      "id": "CuQmQpvw04I",
-      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
-      "channel": "Apna College",
-      "length": "20:33",
-      "lang": "hi"
-    },
-    {
-      "id": "IqAh0cY7cTE",
-      "title": "Cloud Load Balancer in System Design Explained in Hindi | System Design Series ",
-      "channel": "5 Minutes Engineering",
-      "length": "6:55",
-      "lang": "hi"
-    },
-    {
-      "id": "GJfoKhTXEkk",
-      "title": "1 Million RPS System Design Explained in Hindi | Load Balancing, Caching, DynamoDB, Kafka",
-      "channel": "AI & code",
-      "length": "18:06",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/scalability": [
-    {
-      "id": "yRG1iXPuNsk",
-      "title": "Horizontal or Vertical Scaling 🤔? Explained in Hindi | Day 6/100",
-      "channel": "Coder's Gyan",
-      "length": "16:35",
-      "lang": "hi"
-    },
-    {
-      "id": "3GGPsX-s5-M",
-      "title": "Horizontal vs. Vertical Scaling - Learn Now!",
-      "channel": "CodeWithHarry",
-      "length": "6:29",
-      "lang": "hi"
-    },
-    {
-      "id": "I0qeKn28qHo",
-      "title": "Vertical vs Horizontal Scaling Kya Hai? Learn System Design Under 10 Minute | Hindi",
-      "channel": "The Coding Monkey",
-      "length": "4:19",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/load-balancing": [
-    {
-      "id": "-jFGYDfWkXI",
-      "title": "Round Robin(RR) CPU Scheduling Algorithm in OS with example",
-      "channel": "Jenny's Lectures CS IT",
-      "length": "19:47",
-      "lang": "hi"
-    },
-    {
-      "id": "USnb3E6mTeA",
-      "title": "Round Robin and Weighted Round Robin Algorithms Explained in Hindi (Load Balancing) Cloud Computing",
-      "channel": "5 Minutes Engineering",
-      "length": "6:43",
-      "lang": "hi"
-    },
-    {
-      "id": "6PEyXwdxeIc",
-      "title": "Round Robin Scheduling Algorithm With Example | Operation System In Hindi",
-      "channel": "Start Practicing",
-      "length": "17:00",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/caching-strategy": [
-    {
-      "id": "bbMBfl7eqsE",
-      "title": "How Caching Actually Works — Redis, CDN, TTL and Cache Invalidation Explained",
-      "channel": "CodersAura",
-      "length": "11:55",
-      "lang": "hi"
-    },
-    {
-      "id": "DlYvNCaq2tE",
-      "title": "Redis Caching Explained in Hindi | Cache Hit, Miss, TTL, Invalidation | Real-World Example #Caching",
-      "channel": "WebDevYT and Code With Avanish",
-      "length": "10:11",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/cdn": [
-    {
-      "id": "wR-qDDgCLfw",
-      "title": "CDN Kya Hai? 🌍 Content Delivery Network Explained in Hindi | How CDN Works",
-      "channel": "A4coders",
-      "length": "3:16",
-      "lang": "hi"
-    },
-    {
-      "id": "b2scqJYSFf0",
-      "title": "[HINDI] What is Content Delivery Network (CDN)? | Architecture, Working and Advantages",
-      "channel": "Bitten Tech",
-      "length": "21:09",
-      "lang": "hi"
-    },
-    {
-      "id": "9vzUYnVMGiw",
-      "title": "What is content delivery network-Hindi/Urdu | Lec-20 | Microsoft Azure Tutorial for beginners",
-      "channel": "Technical Guftgu",
-      "length": "11:58",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/api-gateway": [
-    {
-      "id": "XGa4onZP66Q",
-      "title": "What is an API ? Simply Explained",
-      "channel": "Apna College",
-      "length": "5:21",
-      "lang": "hi"
-    },
-    {
-      "id": "XqIxJxd0AIA",
-      "title": "🔥 Lets understand API GATEWAY with Example | Microservices Tutorial in Hindi",
-      "channel": "Learn Code With Durgesh",
-      "length": "13:38",
-      "lang": "hi"
-    },
-    {
-      "id": "Chdlr7WDdy0",
-      "title": "What is API gateway in AWS FULL DEMO in Hindi | AWS Beginner to Advanced | Cloud Tech Burner",
-      "channel": "Cloud Tech Burner",
-      "length": "14:50",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/database-design": [
-    {
-      "id": "srCmC9DL3NM",
-      "title": "SQL Vs NoSQL Databases in System Design Explained in Hindi | System Design Series ",
-      "channel": "5 Minutes Engineering",
-      "length": "10:17",
-      "lang": "hi"
-    },
-    {
-      "id": "xoGF2ipUqEI",
-      "title": "NoSQL - The Database Revolution – [Hindi] – Quick Support",
-      "channel": "Quick Support",
-      "length": "29:50",
-      "lang": "hi"
-    },
-    {
-      "id": "Oqz6Jp5raCo",
-      "title": "SQL vs NOSQL in Hindi",
-      "channel": "Perfect Computer Engineer",
-      "length": "3:04",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/acid-transactions": [
-    {
-      "id": "sS4gadQw5iM",
-      "title": "Lecture 12: ACID Properties && Transactions in DBMS",
-      "channel": "CodeHelp - by Babbar",
-      "length": "36:39",
-      "lang": "hi"
-    },
-    {
-      "id": "rgF-Pe_88GA",
-      "title": "SQL Transaction | Transaction And ACID Properties In SQL | SQL Tutorial | SQL Server (Hindi/Urdu)",
-      "channel": "Programentor",
-      "length": "32:37",
-      "lang": "hi"
-    },
-    {
-      "id": "dTcOGgprCAM",
-      "title": "#17 SQL ACID Properties (Hindi) #coding  #programming #acid #hindi",
-      "channel": "Just Start TechHub",
-      "length": "14:09",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/eventual-consistency": [
-    {
-      "id": "2GKay0Mwk4U",
-      "title": "What is Consistency in System Design in Hindi ( Strong vs Eventual Consistency )",
-      "channel": "Engineering Digest",
-      "length": "6:22",
-      "lang": "hi"
-    },
-    {
-      "id": "yoyBizZI5UI",
-      "title": "Consistency | Strong Consistency vs. Eventual Consistency | System Design for Beginners Hindi",
-      "channel": "The CS Study Hindi",
-      "length": "13:00",
-      "lang": "hi"
-    },
-    {
-      "id": "-wh5RvIrr1M",
-      "title": "Consistency Models क्या हैं? ⚡ | Strong vs Eventual Consistency Explained #consistency ##technology",
-      "channel": "StudyOracle",
-      "length": "7:18",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/scaling-the-database": [
-    {
-      "id": "TlIX427wKDg",
-      "title": "Lecture 18: What is Partitioning and Sharding in DBMS || DB Optimisation",
-      "channel": "CodeHelp - by Babbar",
-      "length": "31:25",
-      "lang": "hi"
-    },
-    {
-      "id": "qnDgDebDEQ0",
-      "title": "Database Sharding in System Design Explained in Hindi with Real Life Example | System Design Series ",
-      "channel": "5 Minutes Engineering",
-      "length": "7:37",
-      "lang": "hi"
-    }
-  ],
   "system-design-hld/consistent-hashing": [
     {
       "id": "zaRkONvyGr8",
@@ -7660,56 +7405,10 @@
       "lang": "hi"
     },
     {
-      "id": "kpeAl_N2wYs",
-      "title": "Consistent Hashing Explained | System Design Interview Prep | HINDI",
-      "channel": "Code Kage",
-      "length": "9:12",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/messaging-and-queues": [
-    {
-      "id": "QSwsDf3FVO4",
-      "title": "Message Queue Explained in Hindi | Kafka vs RabbitMQ",
+      "id": "rEqmjbD5v-k",
+      "title": "Consistent Hashing Explained in Hindi 💍 | System Design, Dynamo & Cassandra",
       "channel": "The Codrammers",
-      "length": "5:01",
-      "lang": "hi"
-    },
-    {
-      "id": "0cwRRCBpPPM",
-      "title": "Apache Kafka Idempotency की व्याख्या | डुप्लिकेट संदेशों को रोकें | Kafka Idempotent Producer",
-      "channel": "Coding with Neeraj",
-      "length": "10:14",
-      "lang": "hi"
-    },
-    {
-      "id": "oqNRsfUtlVQ",
-      "title": "kafka tutorial in hindi | kafka producer | kafka consumer | kafka partition | kafka topic",
-      "channel": "CodeWithRajesh",
-      "length": "9:11",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/event-driven-design-pub-sub": [
-    {
-      "id": "DvXZDrUccjA",
-      "title": "Event Driven Architecture Explained | EDA in Microservices | Kafka Example | System Design Hindi",
-      "channel": "Code Wale Bhaiyaji",
-      "length": "4:23",
-      "lang": "hi"
-    },
-    {
-      "id": "YuR7g7rpHL4",
-      "title": "Event Driven Architecture in Node.js | Event Emitter | Explained in Hindi | Day 71/100",
-      "channel": "Coder's Gyan",
-      "length": "41:09",
-      "lang": "hi"
-    },
-    {
-      "id": "2xQ7CVUvj8g",
-      "title": "40 | Cloud Pub/Sub Hands-On with Live Demo | Build Event-Driven Architecture | GCP Level-2 (Hindi)",
-      "channel": "Implovate",
-      "length": "30:58",
+      "length": "6:45",
       "lang": "hi"
     }
   ],
@@ -7736,67 +7435,12 @@
       "lang": "hi"
     }
   ],
-  "system-design-hld/fault-tolerance": [
-    {
-      "id": "HxZy6XxRU00",
-      "title": "🔥 Master Microservices Resiliency in one shot | CricuitBreaker Pattern | Retry Pattern [Hindi]",
-      "channel": "Learn Code With Durgesh",
-      "length": "1:50:23",
-      "lang": "hi"
-    },
-    {
-      "id": "Pz7w_JZI148",
-      "title": "🔥 Implementing Circuit Breaker using Resilience4J in one shot | Microservice Tutorial in Hindi",
-      "channel": "Learn Code With Durgesh",
-      "length": "38:39",
-      "lang": "hi"
-    },
-    {
-      "id": "4sL00jc5BPc",
-      "title": "Spring Boot Resilience4j ट्यूटोरियल: Circuit Breaker और Retry का कार्यान्वयन",
-      "channel": "Coding with Aman",
-      "length": "15:05",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/security": [
-    {
-      "id": "pkKn8q5AvsY",
-      "title": "Complete Authentication System | JWT, Refresh Token, OTP, Logout All Devices",
-      "channel": "Sheryians Coding School",
-      "length": "2:43:17",
-      "lang": "hi"
-    },
-    {
-      "id": "xJA8tP74KD0",
-      "title": "API प्रमाणीकरण: JWT, OAuth2, और अधिक",
-      "channel": "ByteMonk",
-      "length": "6:12",
-      "lang": "hi"
-    },
-    {
-      "id": "carQCkU2LY4",
-      "title": "ऑथेंटिकेशन सिस्टम डिज़ाइन की व्याख्या | OAuth, JWT, गूगल लॉगिन, सुरक्षा | HLD",
-      "channel": "Mohit Chhabra",
-      "length": "1:15:33",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/monitoring-and-observability": [
-    {
-      "id": "CuQmQpvw04I",
-      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
-      "channel": "Apna College",
-      "length": "20:33",
-      "lang": "hi"
-    }
-  ],
   "system-design-hld/rate-limiting": [
     {
-      "id": "qjmuD5F7JDU",
-      "title": "Token Bucket Algorithm In Hindi | Congestion Control In Hindi | Token Bucket",
-      "channel": "GATE CSE LECTURES BY AMIT KHURANA",
-      "length": "46:41",
+      "id": "2T7_MTo1gRQ",
+      "title": "Rate Limiting Explained in Hindi | Token Bucket & System Design",
+      "channel": "The Codrammers",
+      "length": "5:00",
       "lang": "hi"
     },
     {
@@ -7807,23 +7451,496 @@
       "lang": "hi"
     },
     {
-      "id": "2T7_MTo1gRQ",
-      "title": "Rate Limiting Explained in Hindi | Token Bucket & System Design",
-      "channel": "The Codrammers",
-      "length": "5:00",
+      "id": "qjmuD5F7JDU",
+      "title": "Token Bucket Algorithm In Hindi | Congestion Control In Hindi | Token Bucket",
+      "channel": "GATE CSE LECTURES BY AMIT KHURANA",
+      "length": "46:41",
       "lang": "hi"
     }
   ],
-  "system-design-hld/deployment-strategies": [
+  "system-design-hld/serverless-vs-serverful": [
     {
-      "id": "HFMTbScRk3M",
-      "title": "Software Deployment Blue Green Deployment Rolling Upgrade Zero Downtime Deployment Explaind in Hindi",
-      "channel": "SoftWiz Circle",
-      "length": "27:39",
+      "id": "-GCFr9fe4ac",
+      "title": "🔥Serverless Architecture ? Serverless is best ? | Detail video in Hindi",
+      "channel": "Learn Code With Durgesh",
+      "length": "24:02",
+      "lang": "hi"
+    },
+    {
+      "id": "V_oI_mQQaWE",
+      "title": "What is Serverless Architecture in AWS, Oracle, Azure and GCP Cloud Urdu and Hindi | DGITAC",
+      "channel": "DGITAC",
+      "length": "1:44",
       "lang": "hi"
     }
   ],
-  "system-design-hld/microservices-vs-monolith": [
+  "system-design-hld/horizontal-vs-vertical-scaling": [
+    {
+      "id": "yRG1iXPuNsk",
+      "title": "Horizontal or Vertical Scaling 🤔? Explained in Hindi | Day 6/100",
+      "channel": "Coder's Gyan",
+      "length": "16:35",
+      "lang": "hi"
+    },
+    {
+      "id": "3GGPsX-s5-M",
+      "title": "Horizontal vs. Vertical Scaling - Learn Now!",
+      "channel": "CodeWithHarry",
+      "length": "6:29",
+      "lang": "hi"
+    },
+    {
+      "id": "dHjHXis1r24",
+      "title": "Difference between horizontal and vertical scaling in Hindi",
+      "channel": "Engineering Digest",
+      "length": "4:19",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/what-are-threads": [
+    {
+      "id": "OrM7nZcxXZU",
+      "title": "Process Management (Processes and Threads)",
+      "channel": "Neso Academy",
+      "length": "7:32",
+      "lang": "en"
+    },
+    {
+      "id": "h_HwkHobfs0",
+      "title": "Processes and threads - Gary explains",
+      "channel": "Android Authority",
+      "length": "7:36",
+      "lang": "en"
+    }
+  ],
+  "system-design-hld/what-are-pages": [
+    {
+      "id": "FhRJx33g8ew",
+      "title": "Virtual Memory & Paging concept in Hindi  | COA | Computer Organization and Architecture Lectures",
+      "channel": "Last moment tuitions",
+      "length": "10:50",
+      "lang": "hi"
+    },
+    {
+      "id": "rBlMk2EUPxI",
+      "title": "Virtual Memory ll Need Of Virtual Memory ll Operating System ll Explained in Hindi",
+      "channel": "5 Minutes Engineering",
+      "length": "7:15",
+      "lang": "hi"
+    },
+    {
+      "id": "B3MiDjJ_ZQw",
+      "title": "Paging in OS (Operating System) in Hindi",
+      "channel": "CS Engineering Gyan",
+      "length": "5:41",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/how-does-the-internet-work": [
+    {
+      "id": "YtxLexm-9pI",
+      "title": "How Internet Works ? In-depth animated video for students",
+      "channel": "Apna College",
+      "length": "7:42",
+      "lang": "hi"
+    },
+    {
+      "id": "RY32wSQDekE",
+      "title": "Computer Networking Full Course - Internet Explained Step by Step (Real-Life Examples)",
+      "channel": "Sheryians Coding School",
+      "length": "2:37:30",
+      "lang": "hi"
+    },
+    {
+      "id": "ofHYRdWQESo",
+      "title": "How the INTERNET Works - A Simple Explanation || Episode - 3",
+      "channel": "CodeHelp - by Babbar",
+      "length": "34:46",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/sql-vs-nosql": [
+    {
+      "id": "hl65apHxp64",
+      "title": "Lecture 15: What are NoSQL Databases || SQL vs NoSQL",
+      "channel": "CodeHelp - by Babbar",
+      "length": "1:06:23",
+      "lang": "hi"
+    },
+    {
+      "id": "Oqz6Jp5raCo",
+      "title": "SQL vs NOSQL in Hindi",
+      "channel": "Perfect Computer Engineer",
+      "length": "3:04",
+      "lang": "hi"
+    },
+    {
+      "id": "srCmC9DL3NM",
+      "title": "SQL Vs NoSQL Databases in System Design Explained in Hindi | System Design Series ",
+      "channel": "5 Minutes Engineering",
+      "length": "10:17",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/in-memory-databases": [
+    {
+      "id": "rsHq4NPDEs0",
+      "title": "Redis: This can change your Database Game - Here how!",
+      "channel": "CodeWithHarry",
+      "length": "11:09",
+      "lang": "hi"
+    },
+    {
+      "id": "x_G9a0DmxF0",
+      "title": "Redis Full Course 2026 🔥 In-Memory Database Se Caching Tak (Hindi)",
+      "channel": "The Coding Monkey",
+      "length": "1:46:15",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/data-replication-migration": [
+    {
+      "id": "XHgZ1DvatPs",
+      "title": "MS SQL Server Replication Architecture Explained in Hindi | Industry-Grade High Availability #sqldba",
+      "channel": "IBharat Software",
+      "length": "38:40",
+      "lang": "hi"
+    },
+    {
+      "id": "adTDMkYENGE",
+      "title": "Data Replication in System Design Explained in Hindi with Real Life Example | System Design Series ",
+      "channel": "5 Minutes Engineering",
+      "length": "8:45",
+      "lang": "hi"
+    },
+    {
+      "id": "1gHaC-vqaek",
+      "title": "Database Replication Explained in Hindi 🗄️ | Leader, Followers & Split Brain",
+      "channel": "The Codrammers",
+      "length": "5:39",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/data-partition": [
+    {
+      "id": "5qbPGFUu4OU",
+      "title": "🔥Data Partitioning | Why Big Databases Never Slow Down? | Q23/50 System Design Interview | Hindi",
+      "channel": "No Stack To Full Stack",
+      "length": "19:46",
+      "lang": "hi"
+    },
+    {
+      "id": "jQz_o0MxZrk",
+      "title": "Database Optimization in System Design | Indexing and Partitioning of Database Hindi",
+      "channel": "The CS Study Hindi",
+      "length": "22:41",
+      "lang": "hi"
+    },
+    {
+      "id": "qnDgDebDEQ0",
+      "title": "Database Sharding in System Design Explained in Hindi with Real Life Example | System Design Series ",
+      "channel": "5 Minutes Engineering",
+      "length": "7:37",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/sharding": [
+    {
+      "id": "qnDgDebDEQ0",
+      "title": "Database Sharding in System Design Explained in Hindi with Real Life Example | System Design Series ",
+      "channel": "5 Minutes Engineering",
+      "length": "7:37",
+      "lang": "hi"
+    },
+    {
+      "id": "5Zj6m7QsWr4",
+      "title": "Database Sharding Explained in Hindi | Shard Key & Consistent Hashing",
+      "channel": "The Codrammers",
+      "length": "4:55",
+      "lang": "hi"
+    },
+    {
+      "id": "R-SxcwzOZJY",
+      "title": "Database Sharding kya hota hai? | Explained in Hindi | Database Scaling Technique",
+      "channel": "Code Hindi Blog",
+      "length": "2:31",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/data-consistency-its-levels": [
+    {
+      "id": "2GKay0Mwk4U",
+      "title": "What is Consistency in System Design in Hindi ( Strong vs Eventual Consistency )",
+      "channel": "Engineering Digest",
+      "length": "6:22",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/isolation-its-levels": [
+    {
+      "id": "E_Sb48BFoF0",
+      "title": "Spring @Transactional Propagation & Isolation Levels Explained | Spring Boot Full Course #34",
+      "channel": "Coder Army",
+      "length": "1:00:44",
+      "lang": "hi"
+    },
+    {
+      "id": "AR1zdsSgqps",
+      "title": "Database Isolation Levels | System Design in Hindi | EP33",
+      "channel": "SimplifiedByRajat",
+      "length": "15:12",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/what-is-cache-redis-memcached": [
+    {
+      "id": "5YqP18Gyop0",
+      "title": "01 What is Redis and why it exists",
+      "channel": "Chai aur Code",
+      "length": "30:26",
+      "lang": "hi"
+    },
+    {
+      "id": "1sCuqxMZYzc",
+      "title": "Cloud Memorystore-Hindi/Urdu | Lec-52 | Memorystore for redis | Memorystore for Memcached | Redis",
+      "channel": "Technical Guftgu",
+      "length": "58:43",
+      "lang": "hi"
+    },
+    {
+      "id": "QRts6homGqc",
+      "title": "What is Azure Cache for Redis - In Hindi",
+      "channel": "Tech learning",
+      "length": "18:07",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/write-policies-write-back-through-around": [
+    {
+      "id": "m7zFzgG1bKE",
+      "title": "Caching Techniques: Cache-Aside, Write-Through & Write-Back Explained (Hindi) with Real Life Example",
+      "channel": "5 Minutes Engineering",
+      "length": "9:05",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/replacement-policies-lfu-lru-segmented-lru": [
+    {
+      "id": "GsY6y0iPaHw",
+      "title": "L76. Implement LRU Cache | Linked List",
+      "channel": "Shradha Khapra",
+      "length": "35:34",
+      "lang": "hi"
+    },
+    {
+      "id": "IaDU8_KjrpY",
+      "title": "Cache Eviction Techniques in Hindi ( LRU, LFU, MRU, LIFO, FIFO & RR )",
+      "channel": "Engineering Digest",
+      "length": "3:57",
+      "lang": "hi"
+    },
+    {
+      "id": "vmP_g_eWG7E",
+      "title": "Ep. 21: Cache Eviction हिंदी में | LRU vs LFU vs FIFO कैसे चुनें?",
+      "channel": "Systemic Stack Hindi",
+      "length": "21:22",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/content-delivery-networks-cdns": [
+    {
+      "id": "wR-qDDgCLfw",
+      "title": "CDN Kya Hai? 🌍 Content Delivery Network Explained in Hindi | How CDN Works",
+      "channel": "A4 Coders",
+      "length": "3:16",
+      "lang": "hi"
+    },
+    {
+      "id": "b2scqJYSFf0",
+      "title": "[HINDI] What is Content Delivery Network (CDN)? | Architecture, Working and Advantages",
+      "channel": "Bitten Tech",
+      "length": "21:09",
+      "lang": "hi"
+    },
+    {
+      "id": "9vzUYnVMGiw",
+      "title": "What is content delivery network-Hindi/Urdu | Lec-20 | Microsoft Azure Tutorial for beginners",
+      "channel": "Technical Guftgu",
+      "length": "11:58",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/tcp-vs-udp": [
+    {
+      "id": "yeizw4VuIKs",
+      "title": "TCP vs UDP difference in hindi",
+      "channel": "Dhananjay Vaidya",
+      "length": "3:59",
+      "lang": "hi"
+    },
+    {
+      "id": "y56uyo1jEwg",
+      "title": "CN 24 : TCP vs UDP Explained in Hindi – Transport Layer Protocols | Reliable vs Fast Data Transfer",
+      "channel": "Anoop Rathore ",
+      "length": "15:59",
+      "lang": "hi"
+    },
+    {
+      "id": "ypgLlWpZigM",
+      "title": "TCP vs UDP Protocol | Difference Between TCP and UDP in Hindi | Networking Basics",
+      "channel": "Infomax Computer Academy",
+      "length": "7:05",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/what-is-http-1-2-3-https": [
+    {
+      "id": "yqVkmfAO1Dw",
+      "title": "34 HTTP 2 Overview: How It Works",
+      "channel": "Chai aur Code and Shubham Waje",
+      "length": "13:11",
+      "lang": "hi"
+    },
+    {
+      "id": "Z6cpTK4k8Tc",
+      "title": "HTTP 1.1 Vs HTTP 2 Tutorial in Hindi 2026 | What is HTTP 2.0 ? | How its better than HTTP 1.1 ?",
+      "channel": "SEO PATHSHALA",
+      "length": "25:28",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/websockets": [
+    {
+      "id": "_CCyMWSZNU4",
+      "title": "Long Polling, Server-Sent Events, and WebSockets | Real-Time Communication Concepts Explained",
+      "channel": "Chai aur Code",
+      "length": "35:00",
+      "lang": "hi"
+    },
+    {
+      "id": "GmK_yV9_ccY",
+      "title": "From One Connection to One Million: WebSockets Explained with code",
+      "channel": "Chai aur Code",
+      "length": "54:17",
+      "lang": "hi"
+    },
+    {
+      "id": "dhR2N2MO39U",
+      "title": "WebSockets in System Design Explained in Hindi with Real Life Example | System Design Series ",
+      "channel": "5 Minutes Engineering",
+      "length": "5:31",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/webrtc-video-streaming": [
+    {
+      "id": "RXk9tndVOAg",
+      "title": "IPL Live Streaming | How does Online Video Streaming work?",
+      "channel": "Apna College",
+      "length": "12:30",
+      "lang": "hi"
+    },
+    {
+      "id": "8Q8klwnfiKQ",
+      "title": "Learn WebRTC from Scratch|WebRTC Basics Explained | STUN, TURN, ICE, SDP Full Flow in Simple Hindi",
+      "channel": "CodeWaleBhaiya",
+      "length": "33:38",
+      "lang": "hi"
+    },
+    {
+      "id": "ZOSB7cD_0qw",
+      "title": "🚀 Real-Time Webcam & CCTV Streaming via WebRTC | Raspberry Pi Hindi Tutorial | MediaMTX",
+      "channel": "Ersmarty",
+      "length": "31:31",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/load-balancing-algorithms-stateless-stateful": [
+    {
+      "id": "-jFGYDfWkXI",
+      "title": "Round Robin(RR) CPU Scheduling Algorithm in OS with example",
+      "channel": "Jenny's Lectures CS IT",
+      "length": "19:47",
+      "lang": "hi"
+    },
+    {
+      "id": "USnb3E6mTeA",
+      "title": "Round Robin and Weighted Round Robin Algorithms Explained in Hindi (Load Balancing) Cloud Computing",
+      "channel": "5 Minutes Engineering",
+      "length": "6:43",
+      "lang": "hi"
+    },
+    {
+      "id": "6PEyXwdxeIc",
+      "title": "Round Robin Scheduling Algorithm With Example | Operation System In Hindi",
+      "channel": "Start Practicing",
+      "length": "17:00",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/proxy-reverse-proxy": [
+    {
+      "id": "zmrhxrYxonE",
+      "title": "What is a reverse proxy?",
+      "channel": "Chai aur Code",
+      "length": "9:12",
+      "lang": "hi"
+    },
+    {
+      "id": "N91joOIBVfs",
+      "title": "Proxy vs Reverse Proxy | The Simplest Explanation In Hindi | Sofia Goyal",
+      "channel": "Sofia Goyal",
+      "length": "12:03",
+      "lang": "hi"
+    },
+    {
+      "id": "dBtpV7aN_20",
+      "title": "Forward proxy and reverse proxy Explained in Hindi",
+      "channel": "Engineering Digest",
+      "length": "3:21",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/asynchronous-processing-kafka-rabbitmq": [
+    {
+      "id": "gJi1a0kCz2Q",
+      "title": "Use Postgres as a Message Queue | No RabbitMQ or Kafka | Explained in Hindi | Day 93/100",
+      "channel": "Coder's Gyan",
+      "length": "29:10",
+      "lang": "hi"
+    },
+    {
+      "id": "QSwsDf3FVO4",
+      "title": "Message Queue Explained in Hindi | Kafka vs RabbitMQ",
+      "channel": "The Codrammers",
+      "length": "5:01",
+      "lang": "hi"
+    },
+    {
+      "id": "cjswiyCHEo8",
+      "title": "Introduction: Kafka v/s Queues IN HINDI",
+      "channel": "Go Guru",
+      "length": "16:06",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/publisher-subscriber-model": [
+    {
+      "id": "212upKI0Vmw",
+      "title": "Publisher and Subscriber protocol in Combine Swift Hindi Tutorial",
+      "channel": "Code Cat",
+      "length": "10:10",
+      "lang": "hi"
+    },
+    {
+      "id": "juJAAj7e8DU",
+      "title": "MQTT Protocol in IoT in Hindi | MQTT Communication Model | Publish Subscribe Model",
+      "channel": "CS & IT Engineering Gyan ",
+      "length": "7:36",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/why-microservices": [
     {
       "id": "7IFJb-uLEaI",
       "title": "What are MicroServices? When & Why is it used? | Monolithic vs Microservices Architecture",
@@ -7846,7 +7963,7 @@
       "lang": "hi"
     }
   ],
-  "system-design-hld/capacity-estimation": [
+  "system-design-hld/concept-of-single-point-of-failure": [
     {
       "id": "CuQmQpvw04I",
       "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
@@ -7855,44 +7972,193 @@
       "lang": "hi"
     },
     {
-      "id": "Dc8uJTrGK9w",
-      "title": "What is Back of the Envelope calculation with examples",
-      "channel": "Chai aur Code",
-      "length": "35:49",
+      "id": "EUBClRhHKCA",
+      "title": "Complete System Design Roadmap for Beginners | HLD + LLD",
+      "channel": "CodeHelp - by Babbar",
+      "length": "12:29",
       "lang": "hi"
     },
     {
-      "id": "O1Dn6dC1c6Q",
-      "title": "Back of the Envelope Estimation || System Design  || Hindi",
-      "channel": "Ashish Kumar",
-      "length": "21:28",
+      "id": "7pvbIcUCR7o",
+      "title": "SPOF & Redundancy | System Design in Hindi | EP25",
+      "channel": "SimplifiedByRajat",
+      "length": "25:23",
       "lang": "hi"
     }
   ],
-  "system-design-hld/performance-optimization": [
+  "system-design-hld/avoiding-cascading-failures": [
     {
-      "id": "CuQmQpvw04I",
-      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
-      "channel": "Apna College",
-      "length": "20:33",
-      "lang": "hi"
-    },
-    {
-      "id": "TXJP0gzCXFQ",
-      "title": "System Design: Scalability - The Ultimate Guide",
-      "channel": "Hitesh Choudhary",
-      "length": "36:08",
-      "lang": "hi"
-    },
-    {
-      "id": "UfCoqDtZYKc",
-      "title": "Episode 37: Throughput Optimization | System Engineering Series | Hindi",
+      "id": "a0VMxc5zM5Y",
+      "title": "Episode 17: Circuit Breaker Pattern | System Design Fundamentals | Hindi",
       "channel": "Systemic Stack Hindi",
-      "length": "24:27",
+      "length": "11:45",
+      "lang": "hi"
+    },
+    {
+      "id": "HRXJwRm1LVQ",
+      "title": "Circuit Breaker in Spring Boot | Avoid Service Failure | Microservices Tutorial Part 3 in Hindi",
+      "channel": "Bits And Bytes",
+      "length": "15:48",
+      "lang": "hi"
+    },
+    {
+      "id": "G--nBmJPhrg",
+      "title": "Why SF6 Circuit Breaker used in High Voltage Substation | SF6 Circuit Breaker | Hindi",
+      "channel": "Electrical With Abhishek Joshi",
+      "length": "6:55",
       "lang": "hi"
     }
   ],
-  "system-design-hld/how-to-answer-in-an-interview": [
+  "system-design-hld/containerization-docker": [
+    {
+      "id": "H8Lyj2D_cWo",
+      "title": "What is Docker? Simply Explained by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "19:32",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/migrating-to-microservices": [
+    {
+      "id": "7IFJb-uLEaI",
+      "title": "What are MicroServices? When & Why is it used? | Monolithic vs Microservices Architecture",
+      "channel": "Apna College",
+      "length": "9:15",
+      "lang": "hi"
+    },
+    {
+      "id": "yiU6n0Qgvwc",
+      "title": "Strangler Pattern: The Migration Strategy Every Senior Developer Should Know",
+      "channel": "Visualcoders",
+      "length": "13:42",
+      "lang": "hi"
+    },
+    {
+      "id": "6jB04o0miEA",
+      "title": "Microservices  | Strangler design pattern Hindi",
+      "channel": "Java Upgrad",
+      "length": "11:38",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/logging-events-monitoring-metrics": [
+    {
+      "id": "gQZ8nOMGNDQ",
+      "title": "\"Kubernetes Monitoring Explained in Hindi 🔥 | Logs, Metrics & Observability Like a Pro 🚀 | Ep 15",
+      "channel": "JurasNetwork",
+      "length": "16:33",
+      "lang": "hi"
+    },
+    {
+      "id": "nLVarO3brwM",
+      "title": "60 | Cloud Monitoring in Google Cloud Explained in Hindi | Metrics, Dashboards & Alerts Basics",
+      "channel": "Implovate",
+      "length": "5:39",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/anomaly-detection": [
+    {
+      "id": "z8FWHRbDYAU",
+      "title": "Anomaly Detection using Autoencoders | Credit Card Transactions | TensorFlow & Keras Tutorial Hindi",
+      "channel": "Neural Arc",
+      "length": "27:24",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/tokens-for-auth": [
+    {
+      "id": "pkKn8q5AvsY",
+      "title": "Complete Authentication System | JWT, Refresh Token, OTP, Logout All Devices",
+      "channel": "Sheryians Coding School",
+      "length": "2:43:17",
+      "lang": "hi"
+    },
+    {
+      "id": "pUWp1EuVnGs",
+      "title": "Spring JWT Authentication | JWT Internals & Stateless Security | Spring Boot Full Course #38",
+      "channel": "Coder Army",
+      "length": "1:22:21",
+      "lang": "hi"
+    },
+    {
+      "id": "PhMOLG_axXk",
+      "title": "What is JWT? | JSON Web Token Explained in Hindi 🔒 | Authentication in Web Development",
+      "channel": "badadeveloper",
+      "length": "1:57",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/sso-oauth": [
+    {
+      "id": "6kwhR9lj9Hc",
+      "title": "What is SSO? Single Sign-On Explained Simply | SSO Architecture & Workflow | Hindi",
+      "channel": "SecKnowlogy",
+      "length": "9:56",
+      "lang": "hi"
+    },
+    {
+      "id": "BOont7by3g0",
+      "title": "API Authentication को समझें: JWT, OAuth 2.0, API Keys, और SSO  API Authentication Methods in Hindi",
+      "channel": "ITS - IQRA WITH TAJ SIR 🖊️",
+      "length": "7:04",
+      "lang": "hi"
+    },
+    {
+      "id": "RNGjuVbKjKo",
+      "title": "SSO Deep Dive in Hindi | SAML vs OAuth 2.0 vs OIDC Explained | Cybersecurity Podcast",
+      "channel": "Askmeidentity - Identity Experts",
+      "length": "22:17",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/access-control-lists-rule-engines": [
+    {
+      "id": "hlbRzgg3lac",
+      "title": "एक्सेस कंट्रोल मॉडल की व्याख्या | DAC MAC RBAC ABAC | साइबर सुरक्षा की बुनियादी बातें - Infosec G...",
+      "channel": "InfoSec Guardians",
+      "length": "16:54",
+      "lang": "hi"
+    },
+    {
+      "id": "DT6Zy1X3ytM",
+      "title": "प्राधिकरण की व्याख्या: RBAC, ABAC, ACL और अन्य का उपयोग कब करें",
+      "channel": "Hayk Simonyan",
+      "length": "11:03",
+      "lang": "hi"
+    },
+    {
+      "id": "MWCDCdyqWWA",
+      "title": "[Hindi] Access Control List    |   Access Control List ( ACL ) | Standard and Extended Access-list",
+      "channel": "jittu jaiswal",
+      "length": "52:51",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/encryption": [
+    {
+      "id": "p1oetaeXxi8",
+      "title": "What are Encryption Types? Symmetric and Asymmetric Encryption? With examples in Urdu and Hindi.",
+      "channel": "PGC Project",
+      "length": "5:11",
+      "lang": "hi"
+    },
+    {
+      "id": "H7w4ZmaFzfg",
+      "title": "Symmetric Key Cryptography Vs Asymmetric Key Cryptography Explained in Hindi",
+      "channel": "5 Minutes Engineering",
+      "length": "5:31",
+      "lang": "hi"
+    },
+    {
+      "id": "fKFKThuUdnI",
+      "title": "Symmetric Key Cryptography ll Information and Cyber Security Course Explained in Hindi",
+      "channel": "5 Minutes Engineering",
+      "length": "7:42",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/push-vs-pull-architecture": [
     {
       "id": "CuQmQpvw04I",
       "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
@@ -7901,21 +8167,115 @@
       "lang": "hi"
     },
     {
-      "id": "OLVUrgQ_BbA",
-      "title": "Tell Me About Yourself | How to Introduce Yourself in Interviews? Best Answer",
-      "channel": "Apna College",
-      "length": "7:55",
+      "id": "IuFdBVktlQE",
+      "title": "Two-app architecture and the three-protocol API (Hindi) | Mobile System Design Hinglish 16.4.2",
+      "channel": "ProgrammingVerse | iOS & Mobile Dev",
+      "length": "8:08",
       "lang": "hi"
     },
     {
-      "id": "rExh5cPMZcI",
-      "title": "5. Scale from ZERO to MILLION Users (Hindi) | System design interview: Scale to 1million users",
-      "channel": "Concept && Coding - by Shrayansh",
-      "length": "35:14",
+      "id": "XyoRHpAATxg",
+      "title": "Push limits, the chat-app architecture, and server-side… (Hindi) | Mobile System Design Hinglish 8.7",
+      "channel": "ProgrammingVerse | iOS & Mobile Dev",
+      "length": "4:39",
       "lang": "hi"
     }
   ],
-  "system-design-hld/common-design-questions": [
+  "system-design-hld/consistency-vs-availability": [
+    {
+      "id": "ErPOTRKh1p4",
+      "title": "CAP Theorem in 10 Minutes | Q18/50 System Design Interview | Consistency vs Availability | In Hindi",
+      "channel": "No Stack To Full Stack",
+      "length": "10:45",
+      "lang": "hi"
+    },
+    {
+      "id": "q7yWYqNTf80",
+      "title": "CAP Theorem Explained in Hindi | Consistency vs Availability with Real Examples | System Design",
+      "channel": "Dev Inside",
+      "length": "9:38",
+      "lang": "hi"
+    },
+    {
+      "id": "7JRQ_pz6ep0",
+      "title": "Availability vs Consistency | CAP Theorem Explained Simply | Deep Analysis in Hindi",
+      "channel": "Avinash Explains Tech",
+      "length": "18:49",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/sql-vs-nosql-which-to-pick": [
+    {
+      "id": "jxLZAwT9HZo",
+      "title": "SQL Tutorial Hindi #2: Introduction to SQL in Hindi | #SQL vs NoSQL | SQL vs #MySQL | RDBMS",
+      "channel": "Thapa Technical",
+      "length": "12:44",
+      "lang": "hi"
+    },
+    {
+      "id": "srCmC9DL3NM",
+      "title": "SQL Vs NoSQL Databases in System Design Explained in Hindi | System Design Series ",
+      "channel": "5 Minutes Engineering",
+      "length": "10:17",
+      "lang": "hi"
+    },
+    {
+      "id": "LkGD3c2rLkY",
+      "title": "What is NoSQL? How it is Different from SQL? [HINDI]",
+      "channel": "MPrashant TECH",
+      "length": "13:59",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/memory-vs-latency": [
+    {
+      "id": "cG3LMd2hIXY",
+      "title": "What is latency in networking in Hindi | How to reduce latency in network | CDN vs Caching",
+      "channel": "Engineering Digest",
+      "length": "5:20",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/throughput-vs-latency": [
+    {
+      "id": "RbaG7kduwh4",
+      "title": "Latency vs Throughput Explained in Hindi | System Design Basics",
+      "channel": "TechWithAshim",
+      "length": "8:21",
+      "lang": "hi"
+    },
+    {
+      "id": "Ukpynd_4nwQ",
+      "title": "Latency, throughput and bandwidth — the water-pipe model (Hindi) | Mobile System Design Hinglish 2.5",
+      "channel": "ProgrammingVerse | iOS & Mobile Dev",
+      "length": "5:39",
+      "lang": "hi"
+    },
+    {
+      "id": "l5CWj1h6220",
+      "title": "InternetPerformance issueBandwidth, Throughput, Latency, Packet Loss, Jitter आसान भाषा में समझे",
+      "channel": "Updesh study center and Agriculture study center",
+      "length": "5:54",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/accuracy-vs-latency": [
+    {
+      "id": "5cbAQ-fnmtw",
+      "title": "Latency vs Accuracy Tradeoff analysis using PrOACT framework | System Design",
+      "channel": "udaykiran․tech",
+      "length": "13:00",
+      "lang": "en"
+    },
+    {
+      "id": "srBgsDe6XhU",
+      "title": "Latency vs Throughput: The Core Tradeoff Every Engineer Misses",
+      "channel": "AK Coding",
+      "length": "3:40",
+      "lang": "en"
+    }
+  ],
+  "system-design-hld/design-youtube": [
     {
       "id": "CuQmQpvw04I",
       "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
@@ -7924,26 +8284,10 @@
       "lang": "hi"
     },
     {
-      "id": "Un1CPZ3gIZI",
-      "title": "System Design Crash course in Hindi | 25 must know system design concepts for interview prep (हिंदी)",
-      "channel": "Code with RSV",
-      "length": "34:49",
-      "lang": "hi"
-    }
-  ],
-  "system-design-hld/golden-rule-for-answers": [
-    {
-      "id": "CuQmQpvw04I",
-      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
-      "channel": "Apna College",
-      "length": "20:33",
-      "lang": "hi"
-    },
-    {
-      "id": "Un1CPZ3gIZI",
-      "title": "System Design Crash course in Hindi | 25 must know system design concepts for interview prep (हिंदी)",
-      "channel": "Code with RSV",
-      "length": "34:49",
+      "id": "EUBClRhHKCA",
+      "title": "Complete System Design Roadmap for Beginners | HLD + LLD",
+      "channel": "CodeHelp - by Babbar",
+      "length": "12:29",
       "lang": "hi"
     },
     {
@@ -7954,7 +8298,7 @@
       "lang": "hi"
     }
   ],
-  "system-design-hld/one-line-summary": [
+  "system-design-hld/design-twitter": [
     {
       "id": "CuQmQpvw04I",
       "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
@@ -7963,10 +8307,113 @@
       "lang": "hi"
     },
     {
-      "id": "rN6cq8yyCas",
-      "title": "Lets talk about System Design",
-      "channel": "Chai aur Code",
-      "length": "12:40",
+      "id": "q_ZDIOBoohw",
+      "title": "System Engineering Full Course in Hindi | System Design Fundamentals | 40 Modules",
+      "channel": "Systemic Stack Hindi",
+      "length": "11:33:47",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/design-whatsapp": [
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
+      "lang": "hi"
+    },
+    {
+      "id": "UWCHXF0mbyI",
+      "title": "Instant Messaging System Design | WhatsApp Behind the Scenes | WhatsApp System Design Hindi",
+      "channel": "Simple Tech Stories हिंदी",
+      "length": "5:05",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/design-uber": [
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
+      "lang": "hi"
+    },
+    {
+      "id": "RqOZaRnvHY8",
+      "title": "Uber System Design in Hindi | Interview Ready in Minutes",
+      "channel": "Develop With Nitin",
+      "length": "7:53",
+      "lang": "hi"
+    },
+    {
+      "id": "eNCxOlRL3EQ",
+      "title": "System Design : Ride Booking Service || Uber OLA Rapido || Hindi w/a Google Engineer",
+      "channel": "Ashish Kumar",
+      "length": "42:52",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/design-netflix": [
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/design-amazon": [
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
+      "lang": "hi"
+    },
+    {
+      "id": "HXfv5JIUVXo",
+      "title": "Design Amazon Like E-Commerce System | System Design Interview Explained",
+      "channel": "Coder WithDecoder",
+      "length": "3:36",
+      "lang": "hi"
+    },
+    {
+      "id": "tz8F90ocJiQ",
+      "title": "E-Commerce System Design in 11 Minutes 😳| Beginner Friendly (Hindi)| interview question",
+      "channel": "ChalegaYaNahi",
+      "length": "11:48",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/design-instagram": [
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
+      "lang": "hi"
+    },
+    {
+      "id": "EUBClRhHKCA",
+      "title": "Complete System Design Roadmap for Beginners | HLD + LLD",
+      "channel": "CodeHelp - by Babbar",
+      "length": "12:29",
+      "lang": "hi"
+    },
+    {
+      "id": "Xz-xrU8R-Nw",
+      "title": "How Instagram Handles Billions of Feed Requests | System Design in Hindi",
+      "channel": "The Desi Architect",
+      "length": "10:05",
+      "lang": "hi"
+    }
+  ],
+  "system-design-hld/design-zoom": [
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
       "lang": "hi"
     }
   ]

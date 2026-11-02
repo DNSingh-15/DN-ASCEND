@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { CSSProperties } from "react";
 import { getAllTech, getTech, getTrack, getVideos, youtubeSearchUrl } from "@/lib/content";
 import Markdown from "@/components/Markdown";
 import VideoCard from "@/components/VideoCard";
@@ -30,7 +31,7 @@ export default async function TopicPage({ params }: Props) {
   const track = getTrack(t.track);
 
   return (
-    <div className="mx-auto max-w-4xl space-y-8">
+    <div className="mx-auto max-w-4xl space-y-8" style={{ "--accent": t.color } as CSSProperties}>
       <nav className="flex flex-wrap items-center gap-1 text-sm text-muted">
         <Link href="/" className="hover:text-[var(--fg)]">
           Dashboard
@@ -52,14 +53,14 @@ export default async function TopicPage({ params }: Props) {
       </nav>
 
       <header className="space-y-3">
-        <p className="text-sm font-medium" style={{ color: t.color }}>
+        <p className="glass-tile inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium" style={{ color: t.color }}>
           {t.icon} {t.name} · Topic {index + 1} of {t.topics.length}
         </p>
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{tp.title}</h1>
         {tp.summary && <p className="text-lg text-muted">{tp.summary}</p>}
       </header>
 
-      <article className="card prose prose-slate dark:prose-invert max-w-none rounded-2xl p-6 sm:p-8 prose-headings:scroll-mt-20 prose-pre:text-sm">
+      <article className="glass glass-strong prose prose-slate dark:prose-invert max-w-none rounded-3xl p-6 sm:p-10 prose-headings:scroll-mt-24 prose-pre:text-sm prose-pre:rounded-xl">
         <Markdown>{tp.body}</Markdown>
       </article>
 
@@ -86,7 +87,7 @@ export default async function TopicPage({ params }: Props) {
             ))}
           </div>
         ) : (
-          <div className="card rounded-xl p-6 text-sm text-muted">
+          <div className="glass rounded-2xl p-6 text-sm text-muted">
             No video listed for this topic yet.{" "}
             <a
               href={youtubeSearchUrl(tp.videoQuery)}
@@ -102,7 +103,7 @@ export default async function TopicPage({ params }: Props) {
 
       <nav className="grid gap-3 border-t border-[var(--border)] pt-6 sm:grid-cols-2">
         {prev ? (
-          <Link href={`/${t.slug}/${prev.slug}`} className="card rounded-xl p-4 hover:shadow-md">
+          <Link href={`/${t.slug}/${prev.slug}`} className="glass glass-hover rounded-2xl p-4">
             <p className="text-xs text-muted">← Previous</p>
             <p className="font-medium">{prev.title}</p>
           </Link>
@@ -112,7 +113,7 @@ export default async function TopicPage({ params }: Props) {
         {next ? (
           <Link
             href={`/${t.slug}/${next.slug}`}
-            className="card rounded-xl p-4 text-right hover:shadow-md sm:col-start-2"
+            className="glass glass-hover rounded-2xl p-4 text-right sm:col-start-2"
           >
             <p className="text-xs text-muted">Next →</p>
             <p className="font-medium">{next.title}</p>

@@ -34,6 +34,8 @@ export function techsInTrack(id: TrackId): Tech[] {
 export type Topic = {
   slug: string;
   title: string;
+  /** Step heading such as "Step 1: Fundamentals"; empty when the notes have no groups. */
+  group: string;
   videoQuery: string;
   summary: string;
   body: string;

@@ -4,43 +4,185 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --border: #e2e8f0;
+  --bg: #eef1fb;
   --fg: #0f172a;
-  --muted: #64748b;
+  --muted: #586179;
+  --border: rgb(15 23 42 / 0.08);
+
+  /* Glass surfaces */
+  --glass: rgb(255 255 255 / 0.5);
+  --glass-hover: rgb(255 255 255 / 0.66);
+  --glass-strong: rgb(255 255 255 / 0.74);
+  --glass-border: rgb(255 255 255 / 0.7);
+  --glass-edge: rgb(255 255 255 / 0.9);
+  --glass-shadow: 0 10px 30px -12px rgb(30 41 120 / 0.22);
+
+  /* Background color blobs the glass blurs over */
+  --blob-1: rgb(129 140 248 / 0.55);
+  --blob-2: rgb(232 121 249 / 0.42);
+  --blob-3: rgb(56 189 248 / 0.42);
+  --blob-4: rgb(52 211 153 / 0.28);
+  --grid: rgb(15 23 42 / 0.07);
 }
 
 .dark {
-  --bg: #0b1020;
-  --card: #121933;
-  --border: #243055;
-  --fg: #e5e9f5;
-  --muted: #94a3b8;
-}
+  --bg: #060914;
+  --fg: #e8ecf8;
+  --muted: #9aa5c0;
+  --border: rgb(255 255 255 / 0.08);
 
-body {
-  background: var(--bg);
-  color: var(--fg);
+  --glass: rgb(255 255 255 / 0.05);
+  --glass-hover: rgb(255 255 255 / 0.08);
+  --glass-strong: rgb(14 19 40 / 0.62);
+  --glass-border: rgb(255 255 255 / 0.1);
+  --glass-edge: rgb(255 255 255 / 0.08);
+  --glass-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.6);
+
+  --blob-1: rgb(79 70 229 / 0.45);
+  --blob-2: rgb(162 28 175 / 0.35);
+  --blob-3: rgb(3 105 161 / 0.4);
+  --blob-4: rgb(4 120 87 / 0.22);
+  --grid: rgb(255 255 255 / 0.05);
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--bg);
 }
 
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
+body {
+  color: var(--fg);
+}
+
+/* Soft gradient blobs + a faint dot grid, fixed behind all content. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  inset: -10%;
+  background:
+    radial-gradient(38% 45% at 12% 8%, var(--blob-1), transparent 70%),
+    radial-gradient(35% 40% at 88% 12%, var(--blob-2), transparent 70%),
+    radial-gradient(40% 45% at 78% 88%, var(--blob-3), transparent 70%),
+    radial-gradient(30% 35% at 15% 82%, var(--blob-4), transparent 70%);
+  animation: drift 30s ease-in-out infinite alternate;
+}
+
+body::after {
+  inset: 0;
+  background-image: radial-gradient(var(--grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, black, transparent 75%);
+}
+
+@keyframes drift {
+  to {
+    transform: translate3d(3%, -2%, 0) scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+}
+
+::selection {
+  background: rgb(99 102 241 / 0.28);
 }
 
 .text-muted {
   color: var(--muted);
 }
 
+@layer components {
+  .glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    box-shadow:
+      inset 0 1px 0 0 var(--glass-edge),
+      var(--glass-shadow);
+    -webkit-backdrop-filter: blur(18px) saturate(170%);
+    backdrop-filter: blur(18px) saturate(170%);
+  }
+
+  /* More opaque panel for long-form reading. */
+  .glass-strong {
+    background: var(--glass-strong);
+  }
+
+  /* Interactive glass: lifts and glows in its --accent color. */
+  .glass-hover {
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .glass-hover:hover {
+    transform: translateY(-3px);
+    background: var(--glass-hover);
+    border-color: color-mix(in srgb, var(--accent, #6366f1) 40%, var(--glass-border));
+    box-shadow:
+      inset 0 1px 0 0 var(--glass-edge),
+      0 18px 40px -16px color-mix(in srgb, var(--accent, #6366f1) 55%, transparent);
+  }
+
+  /* Small tinted tile for icons and labels (no blur, sits on glass). */
+  .glass-tile {
+    background: color-mix(in srgb, var(--accent, #6366f1) 12%, var(--glass));
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 1px 0 0 var(--glass-edge);
+  }
+
+  .accent-chip {
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent, #6366f1), color-mix(in srgb, var(--accent, #6366f1) 70%, #000));
+    box-shadow: 0 6px 16px -6px var(--accent, #6366f1);
+  }
+
+  /* Blurred color orb in a card corner; brightens on hover. */
+  .accent-orb {
+    position: absolute;
+    top: -3rem;
+    right: -3rem;
+    width: 9rem;
+    height: 9rem;
+    border-radius: 9999px;
+    background: var(--accent, #6366f1);
+    opacity: 0.22;
+    filter: blur(48px);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .group:hover .accent-orb {
+    opacity: 0.45;
+  }
+
+  .text-gradient {
+    background: linear-gradient(90deg, #6366f1, #a855f7 50%, #ec4899);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .dark .text-gradient {
+    background-image: linear-gradient(90deg, #818cf8, #c084fc 50%, #f472b6);
+  }
+}
+
 /* Code blocks inside the typography plugin */
 .prose pre {
-  background: #0d1424;
-  border: 1px solid #243055;
+  background: rgb(8 12 28 / 0.9);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.05);
   color: #e2e8f0;
 }
 
@@ -64,4 +206,19 @@ html {
 .prose img {
   border-radius: 0.75rem;
   border: 1px solid var(--border);
+}
+
+/* Without backdrop-filter, translucent glass gets hard to read. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root {
+    --glass: rgb(255 255 255 / 0.85);
+    --glass-hover: rgb(255 255 255 / 0.92);
+    --glass-strong: rgb(255 255 255 / 0.95);
+  }
+
+  .dark {
+    --glass: rgb(20 26 50 / 0.9);
+    --glass-hover: rgb(26 33 62 / 0.92);
+    --glass-strong: rgb(16 21 42 / 0.95);
+  }
 }

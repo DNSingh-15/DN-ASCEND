@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { CSSProperties } from "react";
 import { getAllTech, getTech, getTrack } from "@/lib/content";
 
 type Props = { params: Promise<{ tech: string }> };
@@ -38,29 +39,32 @@ export default async function TechPage({ params }: Props) {
         <span className="text-[var(--fg)]">{t.name}</span>
       </nav>
 
-      <header className="flex items-center gap-4">
-        <span className="text-5xl">{t.icon}</span>
+      <header
+        style={{ "--accent": t.color } as CSSProperties}
+        className="glass relative flex items-center gap-5 overflow-hidden rounded-3xl p-6 sm:p-8"
+      >
+        <span className="accent-orb" aria-hidden />
+        <span className="glass-tile flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-4xl">
+          {t.icon}
+        </span>
         <div>
           <h1 className="text-3xl font-bold tracking-tight">{t.name}</h1>
           <p className="mt-1 max-w-3xl text-muted">{t.description}</p>
         </div>
       </header>
 
-      <ol className="grid gap-3 md:grid-cols-2">
+      <ol className="grid gap-4 md:grid-cols-2" style={{ "--accent": t.color } as CSSProperties}>
         {t.topics.map((topic, i) => (
           <li key={topic.slug}>
             <Link
               href={`/${t.slug}/${topic.slug}`}
-              className="card group flex h-full gap-4 rounded-xl p-4 transition hover:-translate-y-0.5 hover:shadow-md"
+              className="glass glass-hover group flex h-full gap-4 rounded-2xl p-4"
             >
-              <span
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-bold text-white"
-                style={{ background: t.color }}
-              >
+              <span className="accent-chip flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm font-bold">
                 {i + 1}
               </span>
               <div className="min-w-0 flex-1">
-                <h2 className="font-semibold group-hover:underline">{topic.title}</h2>
+                <h2 className="font-semibold">{topic.title}</h2>
                 <p className="mt-1 line-clamp-2 text-sm text-muted">{topic.summary}</p>
               </div>
             </Link>
