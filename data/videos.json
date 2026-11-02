@@ -7150,45 +7150,6 @@
       "lang": "hi"
     }
   ],
-  "system-design-lld/what-is-low-level-design": [
-    {
-      "id": "CuQmQpvw04I",
-      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
-      "channel": "Apna College",
-      "length": "20:33",
-      "lang": "hi"
-    },
-    {
-      "id": "0CAW1nLIBwo",
-      "title": "What is LLD? | Low Level Design",
-      "channel": "Chai aur Code",
-      "length": "3:15",
-      "lang": "hi"
-    },
-    {
-      "id": "AK0hu0Zxua4",
-      "title": "Introduction To System Design",
-      "channel": "Coder Army",
-      "length": "24:46",
-      "lang": "hi"
-    }
-  ],
-  "system-design-lld/oop-basics": [
-    {
-      "id": "-HafzawNlUo",
-      "title": "OOPS Concepts in Java Explained with Examples || Java Programming for Beginners",
-      "channel": "Sundeep Saradhi Kanthety",
-      "length": "20:24",
-      "lang": "en"
-    },
-    {
-      "id": "zCja0Jd52KU",
-      "title": "Lec-41: OOPS Concepts in C++ Explained Simply | Beginners Guide",
-      "channel": "Gate Smashers",
-      "length": "9:35",
-      "lang": "en"
-    }
-  ],
   "system-design-lld/solid-principles": [
     {
       "id": "UsNl8kcU4UA",
@@ -7198,194 +7159,17 @@
       "lang": "hi"
     },
     {
-      "id": "g2-hC8P_BKI",
-      "title": "SOLID Principles Full Course in Java | SRP, OCP, LSP, ISP, DIP Explained",
-      "channel": "The Curious Coder",
-      "length": "41:24",
-      "lang": "hi"
-    },
-    {
       "id": "x1fqWjG8RVE",
       "title": "SOLID Principles explained in Hindi (हिंदी) | SOLID Principles in c# with code examples",
       "channel": "Code with RSV",
       "length": "15:42",
       "lang": "hi"
-    }
-  ],
-  "system-design-lld/class-relationships": [
-    {
-      "id": "myMQHr_nwWY",
-      "title": "Composition, Aggregation and Association. UML Class diagram relationships",
-      "channel": "Coders Bring Change",
-      "length": "5:14",
-      "lang": "hi"
     },
     {
-      "id": "zHrad-Neoq4",
-      "title": "Dependency → Association → Aggregation → Composition. UML Relationships Explained",
-      "channel": "Coders Bring Change",
-      "length": "10:02",
-      "lang": "hi"
-    },
-    {
-      "id": "MyIJUv735EQ",
-      "title": "Association, Aggregation, and Composition in C++ | C++ OOP Course for Beginners in Hindi",
-      "channel": "Code with MU",
-      "length": "20:14",
-      "lang": "hi"
-    }
-  ],
-  "system-design-lld/creational-patterns": [
-    {
-      "id": "qlzRWQkWZkk",
-      "title": "Singleton Design Pattern in 30 Minutes | Overview of Design Patterns in Hindi",
-      "channel": "SolidCoder",
-      "length": "28:16",
-      "lang": "hi"
-    },
-    {
-      "id": "CD3meit-WDc",
-      "title": "Singleton Design Pattern | Thread-Safe, Lazy & Eager Initialization + Real Use Cases",
-      "channel": "Coder Army",
-      "length": "32:35",
-      "lang": "hi"
-    },
-    {
-      "id": "Cq67M-rUIDY",
-      "title": "(Hindi)Builder Pattern in Java (Hindi) | Low Level Design Tutorial #lld #coding #programming",
-      "channel": "Khauf se coder - System Design Interviews",
-      "length": "18:32",
-      "lang": "hi"
-    }
-  ],
-  "system-design-lld/behavioural-patterns": [
-    {
-      "id": "Jpmp4GY8r3Q",
-      "title": "Observer Design Pattern Explained | Real-Life Use Case + Code Example",
-      "channel": "Coder Army",
-      "length": "28:31",
-      "lang": "hi"
-    },
-    {
-      "id": "PpKvPrl_gRg",
-      "title": "Strategy Design Pattern Explained with Real-World Example | Design Patterns in LLD",
-      "channel": "Coder Army",
-      "length": "32:40",
-      "lang": "hi"
-    },
-    {
-      "id": "u8DttUrXtEw",
-      "title": "2. Strategy Design Pattern explanation (Hindi) | LLD System Design  | Design pattern in Java",
-      "channel": "Concept && Coding - by Shrayansh",
-      "length": "17:26",
-      "lang": "hi"
-    }
-  ],
-  "system-design-lld/structural-patterns": [
-    {
-      "id": "FV3x69rpwm0",
-      "title": "Adapter Design Pattern | Real-world use case + Code | Design patterns in LLD",
-      "channel": "Coder Army",
-      "length": "21:53",
-      "lang": "hi"
-    },
-    {
-      "id": "HRgmppQCnwo",
-      "title": "(Hindi)Adapter Design Pattern in Java | Explained with example | low level design full playlist",
-      "channel": "Khauf se coder - System Design Interviews",
-      "length": "14:27",
-      "lang": "hi"
-    },
-    {
-      "id": "o-c_GezA8ZA",
-      "title": "Facade Design Pattern (Hindi) | #softwareengineering #lld| lld Pattern Tutorial | low level design",
-      "channel": "Khauf se coder - System Design Interviews",
-      "length": "13:57",
-      "lang": "hi"
-    }
-  ],
-  "system-design-lld/designing-a-database-schema": [
-    {
-      "id": "1NI0qLGio1w",
-      "title": "Database Design Challenge - Let’s Solve It Together! | Full Explanation in Hindi | Day 88/100",
-      "channel": "Coder's Gyan",
-      "length": "46:54",
-      "lang": "hi"
-    },
-    {
-      "id": "pDX4NR4eY3A",
-      "title": "Lec-5: What is Schema | How to define Schema | Database management system in Hindi",
-      "channel": "Gate Smashers",
-      "length": "4:34",
-      "lang": "hi"
-    },
-    {
-      "id": "RMbXIy1uTXQ",
-      "title": "Database Schema Design | System Design in Hindi | EP30",
-      "channel": "SimplifiedByRajat",
-      "length": "12:22",
-      "lang": "hi"
-    }
-  ],
-  "system-design-lld/designing-apis": [
-    {
-      "id": "gyw8o5-1Tg0",
-      "title": "What is REST API? | API vs REST API | REST APIs Standards & Best Practices  | HINDI",
-      "channel": "Proof Of Concept Code",
-      "length": "51:39",
-      "lang": "hi"
-    },
-    {
-      "id": "fmeKcTZB0wA",
-      "title": "REST API बेस्ट प्रैक्टिस | RESTful APIs बेस्ट प्रैक्टिस | REST APIs | REST सर्विसेज बेस्ट प्रैक्टिस",
-      "channel": "Tutorials Pedia",
-      "length": "30:26",
-      "lang": "hi"
-    },
-    {
-      "id": "-58TX3yCHI4",
-      "title": "बिगनर्स के लिए API फुल कोर्स (2026) | REST APIs | विश्व सर | upGrad",
-      "channel": "upGrad",
-      "length": "1:11:16",
-      "lang": "hi"
-    }
-  ],
-  "system-design-lld/worked-example-parking-lot": [
-    {
-      "id": "SFr0y-vMx00",
-      "title": "Parking Lot Low Level Design in Java | lld | Uber | Design Pattern | Amazon | Google | #lld",
-      "channel": "Khauf se coder - System Design Interviews",
-      "length": "29:44",
-      "lang": "hi"
-    },
-    {
-      "id": "BO9Bw8nRq6s",
-      "title": "Design a Parking Lot in LLD | Hindi",
-      "channel": "Loop Kaka",
-      "length": "24:04",
-      "lang": "hi"
-    },
-    {
-      "id": "_YjWipghOs8",
-      "title": "Parking Lot Design 🚗 | LLD Interview Question (Hindi) #systemdesign #lld #interview #college",
-      "channel": "aksdev",
-      "length": "6:08",
-      "lang": "hi"
-    }
-  ],
-  "system-design-lld/how-to-answer-an-lld-interview": [
-    {
-      "id": "treOXPGXrXQ",
-      "title": "इन कॉन्सेप्ट्स को सीखने तक Low Level Design बहुत कठिन था",
-      "channel": "Anubhav Sethi",
-      "length": "35:25",
-      "lang": "hi"
-    },
-    {
-      "id": "-ArLLP40qX0",
-      "title": "High Level Design Vs Low Level Design Explained in Hindi with Real Life Example | System Design",
-      "channel": "5 Minutes Engineering",
-      "length": "7:08",
+      "id": "Vl75NtaZEAk",
+      "title": "5 SOLID Principles in 1 Video (Hindi + Code  Examples)",
+      "channel": "Last Minute Legends",
+      "length": "6:54",
       "lang": "hi"
     }
   ],
@@ -8414,6 +8198,613 @@
       "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
       "channel": "Apna College",
       "length": "20:33",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/encapsulation": [
+    {
+      "id": "46T2wD3IuhM",
+      "title": "OOP 3 | Principles - Inheritance, Polymorphism, Encapsulation, Abstraction",
+      "channel": "Kunal Kushwaha",
+      "length": "2:12:51",
+      "lang": "hi"
+    },
+    {
+      "id": "YrfHdH22hdI",
+      "title": "Encapsulation In C# | C# Encapsulation | C# OOP | Object Oriented Programming | Csharp  (Hindi/Urdu)",
+      "channel": "Programentor",
+      "length": "34:46",
+      "lang": "hi"
+    },
+    {
+      "id": "ioNLvnpQP2E",
+      "title": "PHP OOP-4 Encapsulation  in Hindi #OOP #PHP #COMPUTERTIPSANDPROGRAMMING",
+      "channel": "Computer Tips & Programming",
+      "length": "16:29",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/abstraction": [
+    {
+      "id": "QbGoqAgP_zg",
+      "title": "OOPs Real-World Examples | OOPs Pillars | Abstraction | Encapsulation",
+      "channel": "Coder Army",
+      "length": "54:01",
+      "lang": "hi"
+    },
+    {
+      "id": "WCeAL8hWoxo",
+      "title": "Abstraction in C++ | OOP Concepts Explained with Examples | Hindi Urdu",
+      "channel": "ByteBlitz",
+      "length": "6:05",
+      "lang": "hi"
+    },
+    {
+      "id": "HbUOJ4z6ZbI",
+      "title": "Python OOP - Abstraction Tutorial in Hindi / Urdu",
+      "channel": "YOOBABA",
+      "length": "14:33",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/inheritance": [
+    {
+      "id": "7ZfEp71tIec",
+      "title": "Inheritance in OOP's | C++ Placement Course | Lecture 21.3",
+      "channel": "Apna College",
+      "length": "8:45",
+      "lang": "hi"
+    },
+    {
+      "id": "46T2wD3IuhM",
+      "title": "OOP 3 | Principles - Inheritance, Polymorphism, Encapsulation, Abstraction",
+      "channel": "Kunal Kushwaha",
+      "length": "2:12:51",
+      "lang": "hi"
+    },
+    {
+      "id": "wFokNtupiO8",
+      "title": "inheritance in c++ in hindi | C++ inheritance | Inheritance in OOP's",
+      "channel": "Programming GuruJi",
+      "length": "21:08",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/polymorphism": [
+    {
+      "id": "xlWihekw2S8",
+      "title": "What is Polymorphism in OOP Hindi",
+      "channel": "C++ by Saurabh Shukla Sir",
+      "length": "18:53",
+      "lang": "hi"
+    },
+    {
+      "id": "MZxPA4rDsLs",
+      "title": "Python OOP - Polymorphism Tutorial in Hindi / Urdu",
+      "channel": "YOOBABA",
+      "length": "14:24",
+      "lang": "hi"
+    },
+    {
+      "id": "oEb3oZaMY90",
+      "title": "#31 Python Sikho Series | Python Polymorphism in Hindi | OOP Concept Explained",
+      "channel": "GUIDE OF MAD",
+      "length": "13:04",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/creational-patterns-singleton-factory-etc": [
+    {
+      "id": "CD3meit-WDc",
+      "title": "Singleton Design Pattern | Thread-Safe, Lazy & Eager Initialization + Real Use Cases",
+      "channel": "Coder Army",
+      "length": "32:35",
+      "lang": "hi"
+    },
+    {
+      "id": "jdJW99i4qrE",
+      "title": "Creational Design Patterns in Java | Factory | Abstract Factory | Builder | Singleton | Prototype",
+      "channel": "The Curious Coder",
+      "length": "1:31:50",
+      "lang": "hi"
+    },
+    {
+      "id": "dMK4TbG29fk",
+      "title": "Factory Design Pattern | Simple, Factory Method & Abstract Factory with Real-Life Examples",
+      "channel": "Coder Army",
+      "length": "32:10",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/structural-patterns-proxy-bridge-etc": [
+    {
+      "id": "sr8nMEII2r0",
+      "title": "Structural Design Patterns in Java | Adapter | Decorator | Proxy (Full One Shot)",
+      "channel": "The Curious Coder",
+      "length": "1:06:14",
+      "lang": "hi"
+    },
+    {
+      "id": "FV3x69rpwm0",
+      "title": "Adapter Design Pattern | Real-world use case + Code | Design patterns in LLD",
+      "channel": "Coder Army",
+      "length": "21:53",
+      "lang": "hi"
+    },
+    {
+      "id": "0KlnSdvsojc",
+      "title": "Facade Design Pattern | Real-world use case + Code | Design patterns in LLD",
+      "channel": "Coder Army",
+      "length": "18:53",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/behavioral-patterns-strategy-command-observer-etc": [
+    {
+      "id": "PpKvPrl_gRg",
+      "title": "Strategy Design Pattern Explained with Real-World Example | Design Patterns in LLD",
+      "channel": "Coder Army",
+      "length": "32:40",
+      "lang": "hi"
+    },
+    {
+      "id": "Jpmp4GY8r3Q",
+      "title": "Observer Design Pattern Explained | Real-Life Use Case + Code Example",
+      "channel": "Coder Army",
+      "length": "28:31",
+      "lang": "hi"
+    },
+    {
+      "id": "aMxbLBiqOo0",
+      "title": "[HINDI] Observer Design Pattern | Behavioral Design Patterns | Low Level Design (LLD)",
+      "channel": "Your Tech Buddy",
+      "length": "12:50",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/thread-safe-injection": [
+    {
+      "id": "CD3meit-WDc",
+      "title": "Singleton Design Pattern | Thread-Safe, Lazy & Eager Initialization + Real Use Cases",
+      "channel": "Coder Army",
+      "length": "32:35",
+      "lang": "hi"
+    },
+    {
+      "id": "En-_3uya5L4",
+      "title": "Singleton vs Scoped vs Transient in C# Hindi (हिंदी) | Types of Dependency Injection Services",
+      "channel": "Code with RSV",
+      "length": "8:08",
+      "lang": "hi"
+    },
+    {
+      "id": "OkOy8Q-OPGI",
+      "title": "29. Dependency Injection | Service Scope| addscoped vs addtransient vs addsingleton hindi | Core MVC",
+      "channel": "Code Elevate",
+      "length": "13:59",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/locking-mechanisms": [
+    {
+      "id": "lrQ3WhhQJOI",
+      "title": "Mutex vs Semaphore in Operating System [Hindi]",
+      "channel": "The Crazy Programmer",
+      "length": "9:37",
+      "lang": "hi"
+    },
+    {
+      "id": "8MMumQzpBSI",
+      "title": "Semaphore Part-1 Explained in Hindi l Operating System Course l ERTOS Course",
+      "channel": "5 Minutes Engineering",
+      "length": "9:19",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/producer-consumer": [
+    {
+      "id": "lY64CSlnjpg",
+      "title": "Lecture 18: Producer Consumer Problem and its Solution || OS Placement Series",
+      "channel": "CodeHelp - by Babbar",
+      "length": "14:47",
+      "lang": "hi"
+    },
+    {
+      "id": "MzhCUvEz8w8",
+      "title": "Producer Consumer Problem in Operating System | In Hindi",
+      "channel": "Knowledge Campus",
+      "length": "15:17",
+      "lang": "hi"
+    },
+    {
+      "id": "b-9Pd_V_eb4",
+      "title": "Producer Consumer Problem in Operating System [Hindi] | Sleep and Wakeup",
+      "channel": "The Crazy Programmer",
+      "length": "8:07",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/race-conditions-synchronization": [
+    {
+      "id": "NjEYntQK0Jo",
+      "title": "What is a Race Condition",
+      "channel": "Chai aur Code",
+      "length": "8:59",
+      "lang": "hi"
+    },
+    {
+      "id": "lrrdN_c0HQ4",
+      "title": "Problems in Multithreading | Race Condition, Visibility, Ordering Explained | Java Full Course #50",
+      "channel": "Coder Army",
+      "length": "55:54",
+      "lang": "hi"
+    },
+    {
+      "id": "G8Us4KZGMTU",
+      "title": "4.1- What Is Race Condition In Process Synchronization In OS In Hindi | OS Lectures By Deepak Garg",
+      "channel": "TutorialsSpace- Er. Deepak Garg",
+      "length": "18:15",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/uml-class-diagram": [
+    {
+      "id": "nPJyyO9pb5s",
+      "title": "What is UML Diagrams | Class & Sequence Diagrams with Real Examples",
+      "channel": "Coder Army",
+      "length": "1:12:10",
+      "lang": "hi"
+    },
+    {
+      "id": "qxWhw6zAgdI",
+      "title": "UML Class Diagram with solved example  in Hindi | Sooad series",
+      "channel": "Last moment tuitions",
+      "length": "20:21",
+      "lang": "hi"
+    },
+    {
+      "id": "syeSVtGz-6k",
+      "title": "Class Diagram Explained | UML Diagram for Student Management System | Urdu/Hindi",
+      "channel": "Concept Classroom",
+      "length": "9:19",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/uml-relationships": [
+    {
+      "id": "zHrad-Neoq4",
+      "title": "Dependency → Association → Aggregation → Composition. UML Relationships Explained",
+      "channel": "Coders Bring Change",
+      "length": "10:02",
+      "lang": "hi"
+    },
+    {
+      "id": "MyIJUv735EQ",
+      "title": "Association, Aggregation, and Composition in C++ | C++ OOP Course for Beginners in Hindi",
+      "channel": "Code with MU",
+      "length": "20:14",
+      "lang": "hi"
+    },
+    {
+      "id": "IcBHPZAMX7w",
+      "title": "Association, Aggregation and Composition in C++ | C++ for Beginners | Urdu/Hindi",
+      "channel": "CodeIt",
+      "length": "12:56",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/sequence-diagram": [
+    {
+      "id": "nPJyyO9pb5s",
+      "title": "What is UML Diagrams | Class & Sequence Diagrams with Real Examples",
+      "channel": "Coder Army",
+      "length": "1:12:10",
+      "lang": "hi"
+    },
+    {
+      "id": "q0DKozzXveU",
+      "title": "UML  Sequence Diagram for beginner  with  Solved Example in Hindi | SOOAD Series",
+      "channel": "Last moment tuitions",
+      "length": "17:25",
+      "lang": "hi"
+    },
+    {
+      "id": "nNHipOj2Hvc",
+      "title": "Sequence Diagram Part-1 Explained in Hindi l UML Diagram l Software Modeling and Designing Course",
+      "channel": "5 Minutes Engineering",
+      "length": "5:46",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/api-design": [
+    {
+      "id": "-mN3VyJuCjM",
+      "title": "REST API क्या है? उदाहरण और इसका उपयोग कैसे करें: क्रैश कोर्स सिस्टम डिज़ाइन #3",
+      "channel": "ByteByteGo",
+      "length": "5:21",
+      "lang": "hi"
+    },
+    {
+      "id": "-58TX3yCHI4",
+      "title": "बिगनर्स के लिए API फुल कोर्स (2026) | REST APIs | विश्व सर | upGrad",
+      "channel": "upGrad",
+      "length": "1:11:16",
+      "lang": "hi"
+    },
+    {
+      "id": "kCGYJdV-Pk0",
+      "title": "REST API Explained in Hindi 🚀 | RESTful API System Design Basics | Backend Engineering",
+      "channel": "nikhil gupta",
+      "length": "5:36",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/request-response-object-modeling": [
+    {
+      "id": "O50COgljxtE",
+      "title": "NestJS Course in Hindi #24 | DTO (Data Transfer Object)",
+      "channel": "Mohit Decodes",
+      "length": "9:18",
+      "lang": "hi"
+    },
+    {
+      "id": "E3TbXT2TR5Q",
+      "title": "NestJS Tutorial #11: Data Transfer Object (DTO) & Interfaces Explained | 2025 | (Hindi/Urdu)",
+      "channel": "The Techzeen",
+      "length": "20:56",
+      "lang": "hi"
+    },
+    {
+      "id": "OW9jIuDwh7s",
+      "title": "Web API 18 (In Hindi) - DTOs Data transfer Object Classes | Sukhraj",
+      "channel": "Sukhraj Mohammad",
+      "length": "20:37",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/versioning-extensibility": [
+    {
+      "id": "w1rcMWV9Ik4",
+      "title": "API Versioning in Spring Boot 4.0 (Hindi) | Best Practices & Step-by-Step Implementation",
+      "channel": "GodOfGizmos",
+      "length": "10:10",
+      "lang": "hi"
+    },
+    {
+      "id": "GgJMYveWSdg",
+      "title": "You’re Not Ready for a Java Interview Until You Know API Versioning | API Versioning in Hindi",
+      "channel": "CodeHunt",
+      "length": "9:20",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/clean-code-principles-dry-srp-etc": [
+    {
+      "id": "gmsOHLYOiB0",
+      "title": "Clean Code Tricks Every Developer Must Know | Explained in Hindi | Day 66/100",
+      "channel": "Coder's Gyan",
+      "length": "20:16",
+      "lang": "hi"
+    },
+    {
+      "id": "jlnhHxzC9-w",
+      "title": "SOLID Principles in One Video 🔥 | Clean Code & OOP Design Simplified for Developers",
+      "channel": "Coder's Gyan",
+      "length": "1:23:59",
+      "lang": "hi"
+    },
+    {
+      "id": "o8Doxpyt-io",
+      "title": "[HINDI] DRY, KISS, YAGNI, Law of Demeter | Design Principles | Low Level Design",
+      "channel": "Your Tech Buddy",
+      "length": "8:50",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/avoiding-god-classes": [
+    {
+      "id": "TgqwVI0AE_o",
+      "title": "A Letter To God Class 10 | Line By Line Explanation | Animated | a letter to god ",
+      "channel": "Educational Bhaiya",
+      "length": "9:10",
+      "lang": "hi"
+    },
+    {
+      "id": "SKTTKZ_e468",
+      "title": "A Letter To God Class 10 | Animated | Full (हिन्दी में) Explained | a letter to god in Hindi",
+      "channel": "Educational Bhaiya",
+      "length": "8:01",
+      "lang": "hi"
+    },
+    {
+      "id": "NpSfGkiM3kc",
+      "title": "A Letter to God Class 10 | Chapter 1 Explanation in Hindi & English | ONE shot.",
+      "channel": "Learnjoy YT",
+      "length": "7:22",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/design-tic-tac-toe-chess": [
+    {
+      "id": "SqrppLEljkY",
+      "title": "Lecture 9 : Tic Tac Toe Game in JavaScript | JS Project | JavaScript Full Course",
+      "channel": "Shradha Khapra",
+      "length": "53:35",
+      "lang": "hi"
+    },
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
+      "lang": "hi"
+    },
+    {
+      "id": "BGFzYjGtRP4",
+      "title": "Build Tic Tac Toe Game | UML + Code | System Design",
+      "channel": "Coder Army",
+      "length": "52:12",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/design-splitwise": [
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
+      "lang": "hi"
+    },
+    {
+      "id": "cWtBZUAQpcc",
+      "title": "Build Splitwise Clone | Expense Splitting App | System Design",
+      "channel": "Coder Army",
+      "length": "1:36:20",
+      "lang": "hi"
+    },
+    {
+      "id": "EUBClRhHKCA",
+      "title": "Complete System Design Roadmap for Beginners | HLD + LLD",
+      "channel": "CodeHelp - by Babbar",
+      "length": "12:29",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/design-a-parking-lot": [
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
+      "lang": "hi"
+    },
+    {
+      "id": "SFr0y-vMx00",
+      "title": "Parking Lot Low Level Design in Java | lld | Uber | Design Pattern | Amazon | Google | #lld",
+      "channel": "Khauf se coder - System Design Interviews",
+      "length": "29:44",
+      "lang": "hi"
+    },
+    {
+      "id": "BO9Bw8nRq6s",
+      "title": "Design a Parking Lot in LLD | Hindi",
+      "channel": "Loop Kaka",
+      "length": "24:04",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/design-a-notification-system": [
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
+      "lang": "hi"
+    },
+    {
+      "id": "t-4r2AsJz_Q",
+      "title": "Build Your Own Notification Engine | System Design",
+      "channel": "Coder Army",
+      "length": "42:27",
+      "lang": "hi"
+    },
+    {
+      "id": "qKP7WkhJ_lw",
+      "title": "Strategy Design Pattern in Java | Hindi | Low-Level Design | Design a Notification System |",
+      "channel": "Khauf se coder - System Design Interviews",
+      "length": "16:36",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/design-a-food-delivery-app": [
+    {
+      "id": "2SAUqTn3TrU",
+      "title": "Build Zomato Food Delivery App | System Design",
+      "channel": "Coder Army",
+      "length": "1:07:20",
+      "lang": "hi"
+    },
+    {
+      "id": "471C4SaasWw",
+      "title": "Build Food Delivery App Without Coding 😱 Step By Step | food app ui design| 5 star coder",
+      "channel": "5 star coder ",
+      "length": "3:32:42",
+      "lang": "hi"
+    },
+    {
+      "id": "5fQOQcReSA8",
+      "title": "Database Designing for a Food Delivery App - Step-by-Step Logic | Hindi | Day 91/100",
+      "channel": "Coder's Gyan",
+      "length": "1:03:24",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/design-a-url-shortener": [
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
+      "lang": "hi"
+    },
+    {
+      "id": "9csfoQK2T8g",
+      "title": "URL shortener system design in Hindi | Tinyurl system design in Hindi | Bitly system design in Hindi",
+      "channel": "Engineering Digest",
+      "length": "17:06",
+      "lang": "hi"
+    },
+    {
+      "id": "-H5UiJyN344",
+      "title": "URL Shortener System Design (bit.ly / TinyURL) Explained in Hindi | Base62, Snowflake, 301 vs 302",
+      "channel": "Gautam Kumar",
+      "length": "14:19",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/design-a-logging-framework": [
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
+      "lang": "hi"
+    },
+    {
+      "id": "EUBClRhHKCA",
+      "title": "Complete System Design Roadmap for Beginners | HLD + LLD",
+      "channel": "CodeHelp - by Babbar",
+      "length": "12:29",
+      "lang": "hi"
+    },
+    {
+      "id": "XPzZ4f674kw",
+      "title": "Design Logger Low Level Design in Java | lld | MAANG Interview",
+      "channel": "Khauf se coder - System Design Interviews",
+      "length": "26:01",
+      "lang": "hi"
+    }
+  ],
+  "system-design-lld/design-a-rate-limiter": [
+    {
+      "id": "CuQmQpvw04I",
+      "title": "Complete System Design Roadmap 2025 | HLD & LLD by Shradha Ma'am",
+      "channel": "Apna College",
+      "length": "20:33",
+      "lang": "hi"
+    },
+    {
+      "id": "6NJz9ZgAM8U",
+      "title": "Design rate limiter| Rate Limiter  low level design In Java | lld of rate limiter",
+      "channel": "Khauf se coder - System Design Interviews",
+      "length": "42:38",
+      "lang": "hi"
+    },
+    {
+      "id": "drMc62aJfiE",
+      "title": "Rate Limiter System Design | #coding #programming #systemdesign #lld",
+      "channel": "Khauf se coder - System Design Interviews",
+      "length": "56:10",
       "lang": "hi"
     }
   ]
