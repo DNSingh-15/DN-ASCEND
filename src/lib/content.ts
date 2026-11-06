@@ -1,5 +1,6 @@
 import path from "node:path";
 import videosJson from "../../data/videos.json";
+import practiceJson from "../../data/leetcode-practice.json";
 import { loadAll } from "../../scripts/content.mjs";
 
 export type Video = {
@@ -72,6 +73,31 @@ export function getTech(slug: string): Tech | undefined {
 
 export function getVideos(techSlug: string, topicSlug: string): Video[] {
   return videos[`${techSlug}/${topicSlug}`] ?? [];
+}
+
+export type Difficulty = "Easy" | "Medium" | "Hard";
+
+export type LeetCodeProblem = {
+  /** LeetCode title slug, which is also the URL path. */
+  slug: string;
+  id: number;
+  title: string;
+  difficulty: Difficulty;
+  /** Suggested solving time in minutes. */
+  minutes: number;
+  /** One line on what the problem tests. */
+  tests: string;
+};
+
+const practice = practiceJson as Record<string, LeetCodeProblem[]>;
+
+/** LeetCode practice for a topic. Maintained in data/leetcode-practice.json, checked by scripts/verify-leetcode.mjs. */
+export function getPractice(techSlug: string, topicSlug: string): LeetCodeProblem[] {
+  return practice[`${techSlug}/${topicSlug}`] ?? [];
+}
+
+export function leetCodeUrl(slug: string): string {
+  return `https://leetcode.com/problems/${slug}/`;
 }
 
 export function youtubeSearchUrl(query: string): string {

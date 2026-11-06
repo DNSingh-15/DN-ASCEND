@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
-import { getAllTech, getTech, getTrack, getVideos, youtubeSearchUrl } from "@/lib/content";
+import { getAllTech, getPractice, getTech, getTrack, getVideos, youtubeSearchUrl } from "@/lib/content";
+import LeetCodePractice from "@/components/LeetCodePractice";
 import Markdown from "@/components/Markdown";
 import VideoCard from "@/components/VideoCard";
 
@@ -28,6 +29,7 @@ export default async function TopicPage({ params }: Props) {
   const prev = t.topics[index - 1];
   const next = t.topics[index + 1];
   const videos = getVideos(t.slug, tp.slug);
+  const practice = getPractice(t.slug, tp.slug);
   const track = getTrack(t.track);
 
   return (
@@ -63,6 +65,8 @@ export default async function TopicPage({ params }: Props) {
       <article className="glass glass-strong prose prose-slate dark:prose-invert max-w-none rounded-3xl p-6 sm:p-10 prose-headings:scroll-mt-24 prose-pre:text-sm prose-pre:rounded-xl">
         <Markdown>{tp.body}</Markdown>
       </article>
+
+      <LeetCodePractice problems={practice} />
 
       <section className="space-y-4">
         <div className="flex flex-wrap items-end justify-between gap-3">

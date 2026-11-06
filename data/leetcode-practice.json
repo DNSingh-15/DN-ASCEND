@@ -1,0 +1,760 @@
+{
+  "dsa-basics/time-and-space-complexity": [
+    {
+      "slug": "contains-duplicate",
+      "id": 217,
+      "title": "Contains Duplicate",
+      "difficulty": "Easy",
+      "minutes": 10,
+      "tests": "Compare O(n log n) sorting with O(n) hashing and see the time versus space trade-off first-hand."
+    },
+    {
+      "slug": "majority-element",
+      "id": 169,
+      "title": "Majority Element",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Hash map, sorting and Boyer-Moore voting solve it with different time and space costs."
+    }
+  ],
+  "dsa-basics/arrays": [
+    {
+      "slug": "best-time-to-buy-and-sell-stock",
+      "id": 121,
+      "title": "Best Time to Buy and Sell Stock",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "One pass over an array while tracking a running minimum."
+    },
+    {
+      "slug": "product-of-array-except-self",
+      "id": 238,
+      "title": "Product of Array Except Self",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Build the answer in place from left and right passes without using division."
+    }
+  ],
+  "dsa-basics/strings": [
+    {
+      "slug": "valid-palindrome",
+      "id": 125,
+      "title": "Valid Palindrome",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Clean and compare a string while skipping non-alphanumeric characters."
+    },
+    {
+      "slug": "add-binary",
+      "id": 67,
+      "title": "Add Binary",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Digit-by-digit string arithmetic with a carry."
+    }
+  ],
+  "dsa-basics/two-pointers": [
+    {
+      "slug": "3sum",
+      "id": 15,
+      "title": "3Sum",
+      "difficulty": "Medium",
+      "minutes": 30,
+      "tests": "Sort, fix one value and sweep two pointers inward, skipping duplicates."
+    },
+    {
+      "slug": "container-with-most-water",
+      "id": 11,
+      "title": "Container With Most Water",
+      "difficulty": "Medium",
+      "minutes": 20,
+      "tests": "Move the pointer at the shorter wall to find the largest area."
+    }
+  ],
+  "dsa-basics/sliding-window": [
+    {
+      "slug": "longest-substring-without-repeating-characters",
+      "id": 3,
+      "title": "Longest Substring Without Repeating Characters",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Grow and shrink a window while tracking the last seen index of each character."
+    },
+    {
+      "slug": "find-all-anagrams-in-a-string",
+      "id": 438,
+      "title": "Find All Anagrams in a String",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Fixed-size window with a frequency count that is updated as the window slides."
+    }
+  ],
+  "dsa-basics/prefix-sum": [
+    {
+      "slug": "range-sum-query-immutable",
+      "id": 303,
+      "title": "Range Sum Query - Immutable",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Precompute prefix sums so every range query takes O(1)."
+    },
+    {
+      "slug": "subarray-sum-equals-k",
+      "id": 560,
+      "title": "Subarray Sum Equals K",
+      "difficulty": "Medium",
+      "minutes": 30,
+      "tests": "Combine prefix sums with a hash map of counts to count subarrays."
+    }
+  ],
+  "dsa-basics/hashing-and-hash-maps": [
+    {
+      "slug": "two-sum",
+      "id": 1,
+      "title": "Two Sum",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Look up each value's complement in a hash map in one pass."
+    },
+    {
+      "slug": "group-anagrams",
+      "id": 49,
+      "title": "Group Anagrams",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Pick a canonical key (sorted letters or counts) to group words."
+    }
+  ],
+  "dsa-basics/recursion": [
+    {
+      "slug": "fibonacci-number",
+      "id": 509,
+      "title": "Fibonacci Number",
+      "difficulty": "Easy",
+      "minutes": 10,
+      "tests": "Base cases and recursive calls, then spotting repeated work."
+    },
+    {
+      "slug": "powx-n",
+      "id": 50,
+      "title": "Pow(x, n)",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Halve the problem each call (fast exponentiation) and handle negative exponents."
+    }
+  ],
+  "dsa-basics/backtracking": [
+    {
+      "slug": "subsets",
+      "id": 78,
+      "title": "Subsets",
+      "difficulty": "Medium",
+      "minutes": 20,
+      "tests": "The choose, explore, un-choose template that builds every subset."
+    },
+    {
+      "slug": "permutations",
+      "id": 46,
+      "title": "Permutations",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Backtracking over orderings with a used-element tracker."
+    }
+  ],
+  "dsa-basics/bit-manipulation": [
+    {
+      "slug": "single-number",
+      "id": 136,
+      "title": "Single Number",
+      "difficulty": "Easy",
+      "minutes": 10,
+      "tests": "XOR cancels pairs, leaving the lone element in O(1) space."
+    },
+    {
+      "slug": "number-of-1-bits",
+      "id": 191,
+      "title": "Number of 1 Bits",
+      "difficulty": "Easy",
+      "minutes": 10,
+      "tests": "Count set bits using shifts or n & (n - 1)."
+    }
+  ],
+  "dsa-basics/basic-sorting": [
+    {
+      "slug": "sort-colors",
+      "id": 75,
+      "title": "Sort Colors",
+      "difficulty": "Medium",
+      "minutes": 20,
+      "tests": "In-place sort of three values with counting or the Dutch national flag partition."
+    },
+    {
+      "slug": "insertion-sort-list",
+      "id": 147,
+      "title": "Insertion Sort List",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Apply insertion sort to a linked list."
+    }
+  ],
+  "dsa-basics/merge-sort": [
+    {
+      "slug": "merge-sorted-array",
+      "id": 88,
+      "title": "Merge Sorted Array",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "The merge step of merge sort, done in place from the back."
+    },
+    {
+      "slug": "sort-list",
+      "id": 148,
+      "title": "Sort List",
+      "difficulty": "Medium",
+      "minutes": 30,
+      "tests": "Merge sort on a linked list: split at the middle, sort halves, merge."
+    }
+  ],
+  "dsa-basics/quick-sort": [
+    {
+      "slug": "sort-an-array",
+      "id": 912,
+      "title": "Sort an Array",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Implement a full O(n log n) sort such as quick sort or merge sort."
+    },
+    {
+      "slug": "kth-largest-element-in-an-array",
+      "id": 215,
+      "title": "Kth Largest Element in an Array",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Quickselect: partition and recurse into only one side."
+    }
+  ],
+  "dsa-basics/linear-search": [
+    {
+      "slug": "missing-number",
+      "id": 268,
+      "title": "Missing Number",
+      "difficulty": "Easy",
+      "minutes": 10,
+      "tests": "A linear scan that uses a sum or XOR instead of extra space."
+    },
+    {
+      "slug": "find-the-index-of-the-first-occurrence-in-a-string",
+      "id": 28,
+      "title": "Find the Index of the First Occurrence in a String",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Scan a haystack for the first position where the needle matches."
+    }
+  ],
+  "dsa-basics/binary-search": [
+    {
+      "slug": "binary-search",
+      "id": 704,
+      "title": "Binary Search",
+      "difficulty": "Easy",
+      "minutes": 10,
+      "tests": "The standard search loop with correct boundaries."
+    },
+    {
+      "slug": "search-in-rotated-sorted-array",
+      "id": 33,
+      "title": "Search in Rotated Sorted Array",
+      "difficulty": "Medium",
+      "minutes": 30,
+      "tests": "Decide which half is sorted at every step."
+    }
+  ],
+  "dsa-basics/binary-search-on-answer": [
+    {
+      "slug": "koko-eating-bananas",
+      "id": 875,
+      "title": "Koko Eating Bananas",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Binary search the eating speed with a feasibility check."
+    },
+    {
+      "slug": "first-bad-version",
+      "id": 278,
+      "title": "First Bad Version",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Search a monotonic true/false predicate for the first true."
+    }
+  ],
+  "dsa-basics/gcd-and-number-theory": [
+    {
+      "slug": "greatest-common-divisor-of-strings",
+      "id": 1071,
+      "title": "Greatest Common Divisor of Strings",
+      "difficulty": "Easy",
+      "minutes": 20,
+      "tests": "Apply the Euclidean GCD idea to string lengths."
+    },
+    {
+      "slug": "water-and-jug-problem",
+      "id": 365,
+      "title": "Water and Jug Problem",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Bezout's identity: reachable amounts are multiples of gcd(x, y)."
+    }
+  ],
+  "dsa-basics/sieve-of-eratosthenes": [
+    {
+      "slug": "count-primes",
+      "id": 204,
+      "title": "Count Primes",
+      "difficulty": "Medium",
+      "minutes": 20,
+      "tests": "Use the sieve to count primes below n in O(n log log n)."
+    }
+  ],
+  "dsa-data-structures/singly-linked-list": [
+    {
+      "slug": "merge-two-sorted-lists",
+      "id": 21,
+      "title": "Merge Two Sorted Lists",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Splice nodes with a dummy head and two pointers."
+    },
+    {
+      "slug": "remove-nth-node-from-end-of-list",
+      "id": 19,
+      "title": "Remove Nth Node From End of List",
+      "difficulty": "Medium",
+      "minutes": 20,
+      "tests": "Delete a node using pointer manipulation and a dummy node."
+    }
+  ],
+  "dsa-data-structures/doubly-linked-list": [
+    {
+      "slug": "lru-cache",
+      "id": 146,
+      "title": "LRU Cache",
+      "difficulty": "Medium",
+      "minutes": 40,
+      "tests": "A hash map plus a doubly linked list gives O(1) get and put."
+    },
+    {
+      "slug": "design-browser-history",
+      "id": 1472,
+      "title": "Design Browser History",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Move back and forth along a doubly linked list of pages."
+    }
+  ],
+  "dsa-data-structures/fast-and-slow-pointers": [
+    {
+      "slug": "linked-list-cycle",
+      "id": 141,
+      "title": "Linked List Cycle",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Floyd's tortoise and hare detects a cycle in O(1) space."
+    },
+    {
+      "slug": "middle-of-the-linked-list",
+      "id": 876,
+      "title": "Middle of the Linked List",
+      "difficulty": "Easy",
+      "minutes": 10,
+      "tests": "The slow pointer ends at the middle when the fast one reaches the end."
+    }
+  ],
+  "dsa-data-structures/reverse-a-linked-list": [
+    {
+      "slug": "reverse-linked-list",
+      "id": 206,
+      "title": "Reverse Linked List",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Reverse the pointers iteratively and recursively."
+    },
+    {
+      "slug": "reverse-linked-list-ii",
+      "id": 92,
+      "title": "Reverse Linked List II",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Reverse only a sub-range of the list in one pass."
+    }
+  ],
+  "dsa-data-structures/stack": [
+    {
+      "slug": "valid-parentheses",
+      "id": 20,
+      "title": "Valid Parentheses",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Match closing brackets against the top of a stack."
+    },
+    {
+      "slug": "min-stack",
+      "id": 155,
+      "title": "Min Stack",
+      "difficulty": "Medium",
+      "minutes": 20,
+      "tests": "Design a stack that returns its minimum in O(1)."
+    }
+  ],
+  "dsa-data-structures/monotonic-stack": [
+    {
+      "slug": "daily-temperatures",
+      "id": 739,
+      "title": "Daily Temperatures",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "A decreasing stack finds the next warmer day."
+    },
+    {
+      "slug": "next-greater-element-i",
+      "id": 496,
+      "title": "Next Greater Element I",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "The next-greater pattern with a stack and a map."
+    }
+  ],
+  "dsa-data-structures/queue-and-deque": [
+    {
+      "slug": "implement-queue-using-stacks",
+      "id": 232,
+      "title": "Implement Queue using Stacks",
+      "difficulty": "Easy",
+      "minutes": 20,
+      "tests": "Build FIFO behaviour from two LIFO stacks."
+    },
+    {
+      "slug": "sliding-window-maximum",
+      "id": 239,
+      "title": "Sliding Window Maximum",
+      "difficulty": "Hard",
+      "minutes": 40,
+      "tests": "A monotonic deque yields each window's maximum in O(n)."
+    }
+  ],
+  "dsa-data-structures/binary-tree-and-traversals": [
+    {
+      "slug": "binary-tree-inorder-traversal",
+      "id": 94,
+      "title": "Binary Tree Inorder Traversal",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Inorder traversal both recursively and with an explicit stack."
+    },
+    {
+      "slug": "binary-tree-level-order-traversal",
+      "id": 102,
+      "title": "Binary Tree Level Order Traversal",
+      "difficulty": "Medium",
+      "minutes": 20,
+      "tests": "Level-by-level BFS using a queue."
+    }
+  ],
+  "dsa-data-structures/binary-search-tree": [
+    {
+      "slug": "validate-binary-search-tree",
+      "id": 98,
+      "title": "Validate Binary Search Tree",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Pass valid min and max bounds down the tree, or check inorder order."
+    },
+    {
+      "slug": "lowest-common-ancestor-of-a-binary-search-tree",
+      "id": 235,
+      "title": "Lowest Common Ancestor of a Binary Search Tree",
+      "difficulty": "Medium",
+      "minutes": 15,
+      "tests": "Use the BST ordering to walk straight to the split point."
+    }
+  ],
+  "dsa-data-structures/heap-and-priority-queue": [
+    {
+      "slug": "k-closest-points-to-origin",
+      "id": 973,
+      "title": "K Closest Points to Origin",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Keep a bounded heap of the k best candidates."
+    },
+    {
+      "slug": "top-k-frequent-elements",
+      "id": 347,
+      "title": "Top K Frequent Elements",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Count frequencies, then select the top k with a heap or buckets."
+    }
+  ],
+  "dsa-data-structures/trie": [
+    {
+      "slug": "implement-trie-prefix-tree",
+      "id": 208,
+      "title": "Implement Trie (Prefix Tree)",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Build insert, search and startsWith on a prefix tree."
+    },
+    {
+      "slug": "design-add-and-search-words-data-structure",
+      "id": 211,
+      "title": "Design Add and Search Words Data Structure",
+      "difficulty": "Medium",
+      "minutes": 30,
+      "tests": "Search a trie with '.' wildcards using DFS."
+    }
+  ],
+  "dsa-data-structures/graph-representation": [
+    {
+      "slug": "find-the-town-judge",
+      "id": 997,
+      "title": "Find the Town Judge",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "Reason about in-degree and out-degree of nodes in a directed graph."
+    },
+    {
+      "slug": "clone-graph",
+      "id": 133,
+      "title": "Clone Graph",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Traverse an adjacency list and copy it with a visited map."
+    }
+  ],
+  "dsa-data-structures/breadth-first-search": [
+    {
+      "slug": "rotting-oranges",
+      "id": 994,
+      "title": "Rotting Oranges",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Multi-source BFS that counts time in levels."
+    },
+    {
+      "slug": "01-matrix",
+      "id": 542,
+      "title": "01 Matrix",
+      "difficulty": "Medium",
+      "minutes": 30,
+      "tests": "Multi-source BFS for the nearest zero from every cell."
+    }
+  ],
+  "dsa-data-structures/depth-first-search": [
+    {
+      "slug": "number-of-islands",
+      "id": 200,
+      "title": "Number of Islands",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "DFS flood-fill over a grid to count connected components."
+    },
+    {
+      "slug": "flood-fill",
+      "id": 733,
+      "title": "Flood Fill",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "A basic grid DFS that recolors a connected region."
+    }
+  ],
+  "dsa-data-structures/topological-sort": [
+    {
+      "slug": "course-schedule",
+      "id": 207,
+      "title": "Course Schedule",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Detect a cycle in a directed graph with Kahn's algorithm or DFS."
+    },
+    {
+      "slug": "course-schedule-ii",
+      "id": 210,
+      "title": "Course Schedule II",
+      "difficulty": "Medium",
+      "minutes": 30,
+      "tests": "Produce an actual topological ordering."
+    }
+  ],
+  "dsa-data-structures/dijkstra-s-algorithm": [
+    {
+      "slug": "network-delay-time",
+      "id": 743,
+      "title": "Network Delay Time",
+      "difficulty": "Medium",
+      "minutes": 30,
+      "tests": "Textbook Dijkstra with a priority queue on a weighted graph."
+    },
+    {
+      "slug": "path-with-minimum-effort",
+      "id": 1631,
+      "title": "Path With Minimum Effort",
+      "difficulty": "Medium",
+      "minutes": 35,
+      "tests": "Dijkstra on a grid where the cost is the largest step along the path."
+    }
+  ],
+  "dsa-data-structures/union-find-dsu": [
+    {
+      "slug": "number-of-provinces",
+      "id": 547,
+      "title": "Number of Provinces",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Count connected components with union and find."
+    },
+    {
+      "slug": "redundant-connection",
+      "id": 684,
+      "title": "Redundant Connection",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "The edge whose endpoints are already connected closes a cycle."
+    }
+  ],
+  "dsa-data-structures/minimum-spanning-tree": [
+    {
+      "slug": "min-cost-to-connect-all-points",
+      "id": 1584,
+      "title": "Min Cost to Connect All Points",
+      "difficulty": "Medium",
+      "minutes": 35,
+      "tests": "Build an MST with Kruskal's or Prim's over Manhattan distances."
+    }
+  ],
+  "dsa-data-structures/dynamic-programming-basics": [
+    {
+      "slug": "climbing-stairs",
+      "id": 70,
+      "title": "Climbing Stairs",
+      "difficulty": "Easy",
+      "minutes": 15,
+      "tests": "The first 1D DP recurrence, which is also Fibonacci."
+    },
+    {
+      "slug": "house-robber",
+      "id": 198,
+      "title": "House Robber",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "Choose to take or skip each item with a rolling DP state."
+    }
+  ],
+  "dsa-data-structures/2d-dynamic-programming": [
+    {
+      "slug": "unique-paths",
+      "id": 62,
+      "title": "Unique Paths",
+      "difficulty": "Medium",
+      "minutes": 20,
+      "tests": "Fill a grid DP from the top and left neighbours."
+    },
+    {
+      "slug": "minimum-path-sum",
+      "id": 64,
+      "title": "Minimum Path Sum",
+      "difficulty": "Medium",
+      "minutes": 20,
+      "tests": "Grid DP that minimizes the cost along a path."
+    }
+  ],
+  "dsa-data-structures/knapsack": [
+    {
+      "slug": "partition-equal-subset-sum",
+      "id": 416,
+      "title": "Partition Equal Subset Sum",
+      "difficulty": "Medium",
+      "minutes": 30,
+      "tests": "0/1 knapsack as a subset-sum feasibility question."
+    },
+    {
+      "slug": "coin-change",
+      "id": 322,
+      "title": "Coin Change",
+      "difficulty": "Medium",
+      "minutes": 30,
+      "tests": "Unbounded knapsack: the minimum number of coins for an amount."
+    }
+  ],
+  "dsa-data-structures/longest-increasing-subsequence": [
+    {
+      "slug": "longest-increasing-subsequence",
+      "id": 300,
+      "title": "Longest Increasing Subsequence",
+      "difficulty": "Medium",
+      "minutes": 30,
+      "tests": "O(n^2) DP, then the O(n log n) patience-sorting version."
+    },
+    {
+      "slug": "number-of-longest-increasing-subsequence",
+      "id": 673,
+      "title": "Number of Longest Increasing Subsequence",
+      "difficulty": "Medium",
+      "minutes": 35,
+      "tests": "Track both the length and the count of the best subsequences."
+    }
+  ],
+  "dsa-data-structures/longest-common-subsequence": [
+    {
+      "slug": "longest-common-subsequence",
+      "id": 1143,
+      "title": "Longest Common Subsequence",
+      "difficulty": "Medium",
+      "minutes": 30,
+      "tests": "The canonical two-string 2D DP table."
+    },
+    {
+      "slug": "edit-distance",
+      "id": 72,
+      "title": "Edit Distance",
+      "difficulty": "Medium",
+      "minutes": 40,
+      "tests": "A similar 2D DP with insert, delete and replace transitions."
+    }
+  ],
+  "dsa-data-structures/greedy-algorithms": [
+    {
+      "slug": "jump-game",
+      "id": 55,
+      "title": "Jump Game",
+      "difficulty": "Medium",
+      "minutes": 20,
+      "tests": "Greedily track the farthest reachable index."
+    },
+    {
+      "slug": "gas-station",
+      "id": 134,
+      "title": "Gas Station",
+      "difficulty": "Medium",
+      "minutes": 25,
+      "tests": "A greedy single pass that picks the valid start station."
+    }
+  ],
+  "dsa-data-structures/segment-tree-overview": [
+    {
+      "slug": "range-sum-query-mutable",
+      "id": 307,
+      "title": "Range Sum Query - Mutable",
+      "difficulty": "Medium",
+      "minutes": 35,
+      "tests": "Point updates and range sums with a segment tree or Fenwick tree."
+    },
+    {
+      "slug": "count-of-smaller-numbers-after-self",
+      "id": 315,
+      "title": "Count of Smaller Numbers After Self",
+      "difficulty": "Hard",
+      "minutes": 45,
+      "tests": "Count smaller elements to the right with a segment tree or BIT over values."
+    }
+  ]
+}
