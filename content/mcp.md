@@ -8,6 +8,8 @@ order: 15
 description: How AI apps connect to tools and data through one standard protocol, explained for engineers.
 ---
 
+# Step 1: The Basics
+
 ## The Problem MCP Solves
 video: mcp model context protocol explained
 summary: Why connecting N models to M tools needs N × M custom integrations, and how MCP reduces it.
@@ -96,6 +98,8 @@ Tools are an abstraction layer. The LLM sees `create_repository`; it never needs
 
 ---
 
+# Step 2: Architecture & Flow
+
 ## Architecture: Host, Client and Server
 video: mcp client server host architecture
 summary: The host runs the app and the LLM, the client holds the connection, and each server wraps one tool.
@@ -160,6 +164,8 @@ User        Host + Client        LLM          MCP Server       MySQL
 
 ---
 
+# Step 3: Benefits & Scaling
+
 ## Benefits
 video: mcp benefits integration
 summary: MCP turns N × M integrations into N + M, discovers tools at runtime, and keeps credentials away from the LLM.
@@ -216,6 +222,8 @@ Prefer the vendor's official server, fall back to open source, and build your ow
 - An aggregator is one MCP server that exposes many tools.
 
 ---
+
+# Step 4: Deep Dive & Reference
 
 ## Beyond the Basics: JSON-RPC and Transports
 video: mcp json rpc transport stdio http

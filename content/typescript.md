@@ -8,6 +8,8 @@ order: 2
 description: TypeScript adds static types to JavaScript so many bugs are caught while coding instead of at runtime.
 ---
 
+# Step 1: Getting Started
+
 ## Introduction to TypeScript
 video: typescript tutorial for beginners
 summary: TypeScript is JavaScript with static types, compiled down to plain JavaScript.
@@ -81,6 +83,8 @@ function log(msg: string, level?: "info" | "error") {
 ### Key Points
 - A function with no `return` has the return type `void`.
 - Calling a function with wrong argument types is a compile-time error.
+
+# Step 2: Object Types & Type Composition
 
 ## Interfaces
 video: typescript interface tutorial
@@ -211,6 +215,8 @@ let len = (val as string).length;
 - A wrong assertion compiles but can fail at runtime, so prefer narrowing when possible.
 - `as const` makes a value deeply readonly with literal types.
 
+# Step 3: Generics & Utility Types
+
 ## Generics
 video: typescript generics tutorial
 summary: Generics let you write reusable, type-safe functions and types that work with any type.
@@ -275,6 +281,8 @@ type Roles = Record<string, boolean>;
 ### Key Points
 - `Partial` is common for update (PATCH) payloads.
 - Utility types keep one source of truth: change `User` and the derived types update automatically.
+
+# Step 4: Classes & OOP
 
 ## Classes and Access Modifiers
 video: typescript class access modifiers public private protected
@@ -356,6 +364,8 @@ class UserRepo implements Repository<{ id: number; name: string }> {
 ### Key Points
 - `implements` checks that a class follows an interface.
 - Generic defaults are possible: `interface Box<T = string>`.
+
+# Step 5: TypeScript in Practice
 
 ## TypeScript with React Props
 video: typescript react props interface tsx

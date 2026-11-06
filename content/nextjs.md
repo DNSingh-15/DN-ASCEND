@@ -8,6 +8,8 @@ order: 4
 description: Next.js is a React framework for building fast, SEO-friendly, full-stack web applications with routing, rendering and backend features built in.
 ---
 
+# Step 1: Getting Started
+
 ## What is Next.js?
 video: nextjs introduction for beginners
 summary: Next.js is a React framework that adds routing, server rendering, API endpoints and optimizations on top of React.
@@ -124,6 +126,8 @@ export default async function Post({ params }: { params: Promise<{ id: string }>
 - In the App Router import `useRouter`, `usePathname`, `useSearchParams` from `next/navigation`, not `next/router`.
 - Use the `redirect()` function from `next/navigation` in Server Components.
 
+# Step 2: Rendering
+
 ## Rendering Types: CSR, SSR, SSG, ISR
 video: nextjs csr ssr ssg isr difference
 summary: The four rendering strategies differ in when the HTML is produced: browser, request time, build time, or refreshed later.
@@ -182,6 +186,8 @@ export default function Counter() {
 - Keep `"use client"` boundaries as low as possible in the tree to reduce JavaScript sent to the browser.
 - A Server Component can render a Client Component, and can pass it props that are serializable.
 - Interview tip: server components reduce bundle size and remove client-side data waterfalls.
+
+# Step 3: Data Fetching & APIs
 
 ## Data Fetching (Pages Router)
 video: nextjs getStaticProps getServerSideProps getStaticPaths
@@ -376,6 +382,8 @@ export async function POST(request: Request) {
 - A folder cannot contain both `page.tsx` and `route.ts` for the same segment.
 - Use Route Handlers for webhooks, public APIs or mobile clients; use Server Actions for form mutations.
 
+# Step 4: UI & App Structure
+
 ## Layouts, Loading and Error UI
 video: nextjs layout loading error not-found app router
 summary: Special files in the App Router give you shared layouts, loading states and error handling with no extra code.
@@ -461,6 +469,8 @@ export const config = {
 - Use `matcher` to avoid running middleware on every static asset.
 - In recent versions the file may be named `proxy.ts`, with the same idea.
 - Do not rely on middleware alone for security; also check authorization where data is accessed.
+
+# Step 5: Auth, SEO & Production
 
 ## NextAuth.js (Auth.js)
 video: nextjs next-auth authentication
@@ -578,6 +588,8 @@ process.env.NEXT_PUBLIC_API_URL;        // available everywhere
 ### Key Points
 - Never put secrets in `NEXT_PUBLIC_` variables.
 - Never commit `.env.local` to git.
+
+# Step 6: Interview Prep
 
 ## Interview Quick Review
 video: nextjs interview questions

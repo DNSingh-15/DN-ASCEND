@@ -8,6 +8,8 @@ order: 8
 description: PostgreSQL is a powerful open-source relational database known for reliability, SQL compliance, JSONB support and strong concurrency.
 ---
 
+# Step 1: Foundations
+
 ## Mindset
 video: postgresql tutorial for beginners
 summary: Think about performance, consistency, scalability and trade-offs whenever you design or query a database.
@@ -123,6 +125,8 @@ Joins are fast when the join columns are indexed. In very high-traffic systems, 
 * `INNER` = intersection, `LEFT` = keep everything on the left.
 * Joining 5+ big tables in a hot path is a red flag.
 
+# Step 2: Data Modeling
+
 ## Data Modeling
 video: database schema design
 summary: Start with a normalized schema, then denormalize selectively for performance, always guided by query patterns.
@@ -182,6 +186,8 @@ Normalization gives correctness and less storage. The price is more joins. That 
 * One fact, one place.
 * 3NF is enough for most applications.
 * Denormalization is a deliberate, measured exception, not a starting point.
+
+# Step 3: Performance
 
 ## Indexing
 video: postgresql indexing
@@ -286,6 +292,8 @@ This uses an index to jump directly to the next page, so every page costs about 
 ### Key Points
 * Always `ORDER BY` with `LIMIT`, otherwise page contents are not stable.
 * Use keyset pagination for feeds and infinite scroll.
+
+# Step 4: Transactions & Concurrency
 
 ## Transactions
 video: database transactions acid
@@ -435,6 +443,8 @@ SELECT * FROM accounts WHERE id IN (1, 2) ORDER BY id FOR UPDATE;
 * Cause: circular wait.
 * Fix: same lock order + short transactions + retry on failure.
 
+# Step 5: Advanced Features
+
 ## JSONB
 video: postgresql jsonb tutorial
 summary: JSONB stores flexible JSON documents in Postgres with indexing, giving NoSQL-like flexibility inside a relational database.
@@ -505,6 +515,8 @@ const { rows } = await pool.query('SELECT * FROM users WHERE id = $1', [1]);
 * Do not create a new connection per request.
 * Size pools carefully: more connections is not faster.
 * Interview tip: "Pooling prevents connection overhead in Node.js apps."
+
+# Step 6: Scaling
 
 ## Scaling Overview
 video: sharding vs replication vs partitioning
@@ -657,6 +669,8 @@ Good candidates: read-heavy, rarely changing data (profiles, product pages, conf
 * Reduces DB load and latency under high read traffic.
 * Always set a TTL; plan invalidation.
 * Cache is an optimization, never the source of truth.
+
+# Step 7: Production Checklist
 
 ## Performance Checklist
 video: postgresql performance tuning

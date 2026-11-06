@@ -8,6 +8,8 @@ order: 14
 description: Build goal-driven AI agents that plan, use tools and loop until done, using LangChain and LangGraph.
 ---
 
+# Step 1: Agentic AI Fundamentals
+
 ## What is Agentic AI?
 video: what is agentic ai
 summary: Agentic AI = generate plus act: agents understand goals, plan steps, use tools, and iterate until done.
@@ -119,6 +121,8 @@ The **Model Context Protocol** is a standard way to expose tools and data so any
 - Tools = external actions. Write clear names, descriptions and typed arguments.
 - Validate tool arguments in code. Never trust the model blindly with dangerous actions (delete, pay).
 
+# Step 2: Multi-Agent Patterns
+
 ## Multi-Agent Architecture Patterns
 video: multi agent systems patterns ai
 summary: Common multi-agent designs include orchestrator-worker, pipeline, supervisor and peer collaboration.
@@ -185,6 +189,8 @@ Response to Client | generated test scripts
 - Orchestration happens at two levels: AWS Step Functions (infrastructure) and LangGraph (agent logic).
 - A Validator agent plus stored logs gives quality control and traceability.
 - Be ready to explain why each layer exists.
+
+# Step 3: LangChain
 
 ## What is LangChain?
 video: langchain tutorial
@@ -396,6 +402,8 @@ The agent reads the question, decides to call `multiply`, gets the result, and w
 - Use `create_agent` (LangChain 1.x) for new projects; it replaces older `AgentExecutor` patterns.
 - Limit steps and validate tool inputs.
 
+# Step 4: LangGraph
+
 ## What is LangGraph?
 video: langgraph tutorial
 summary: LangGraph builds stateful, multi-agent workflows as graphs with loops and branching.
@@ -580,6 +588,8 @@ The graph stops, you show the draft to the user, and resume with the same `threa
 - Checkpointer = saved state; `thread_id` = conversation key.
 - Use interrupts for approvals on dangerous actions.
 
+# Step 5: Choosing & Reliability
+
 ## LangChain vs LangGraph
 video: langchain vs langgraph difference
 summary: LangChain is a linear pipeline toolkit; LangGraph is a graph-based engine for complex stateful agent workflows.
@@ -676,6 +686,8 @@ Tool results (web pages, documents, emails) can contain hidden instructions like
 ### Key Points
 - Least privilege for tools, limits for loops, validation for outputs.
 - Trace everything so failures can be diagnosed.
+
+# Step 6: Real-World Use & Interview Prep
 
 ## Real Use Case: Resume Analyzer
 video: resume analyzer ai agent project langgraph

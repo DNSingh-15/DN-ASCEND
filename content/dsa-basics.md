@@ -8,6 +8,8 @@ order: 20
 description: Core problem-solving foundations: complexity analysis, arrays, strings, common patterns, recursion, sorting, searching and basic number theory.
 ---
 
+# Step 1: Complexity & Basics
+
 ## Time and Space Complexity
 video: time complexity big o notation dsa
 summary: Big-O describes how running time and memory grow as input size n grows.
@@ -118,6 +120,8 @@ function isAnagram(a, b) {
 - Use `charCodeAt(i) - 97` to map `a-z` to 0-25.
 - Frequency arrays or maps solve most anagram problems.
 - Common problems: Reverse String, Valid Palindrome, Valid Anagram, Longest Common Prefix, First Unique Character, String Compression.
+
+# Step 2: Core Patterns
 
 ## Two Pointers
 video: two pointers technique dsa
@@ -263,6 +267,8 @@ for (const ch of "banana") freq[ch] = (freq[ch] || 0) + 1;
 - Problems: Two Sum, Group Anagrams, Contains Duplicate, Longest Consecutive Sequence, Top K Frequent Elements.
 - Prefer `Map` over plain objects when keys are not strings or order matters.
 
+# Step 3: Recursion & Backtracking
+
 ## Recursion
 video: recursion for beginners dsa
 summary: A function that calls itself on a smaller problem, with a base case that stops the calls.
@@ -345,6 +351,8 @@ function subsets(nums) {
 - Problems: Subsets, Permutations, Combination Sum, Generate Parentheses, N-Queens, Sudoku Solver, Word Search.
 - Complexity is usually exponential or factorial; pruning is what makes it practical.
 
+# Step 4: Bit Manipulation
+
 ## Bit Manipulation
 video: bit manipulation dsa tricks
 summary: Use bitwise operators to solve problems with O(1) space and very fast operations.
@@ -386,6 +394,8 @@ function countBits(n) {
 - JavaScript bitwise operators work on 32-bit signed integers.
 - Problems: Single Number, Number of 1 Bits, Power of Two, Missing Number, Subsets using bitmask.
 - `n & (n - 1)` removes the lowest set bit.
+
+# Step 5: Sorting
 
 ## Basic Sorting
 video: bubble sort selection sort insertion sort
@@ -496,6 +506,8 @@ function partition(a, lo, hi) {        // Lomuto scheme
 - Problems: Sort Colors (3-way partition), Kth Largest Element in an Array.
 - JavaScript `arr.sort()` sorts as strings by default; pass `(a, b) => a - b` for numbers.
 
+# Step 6: Searching
+
 ## Linear Search
 video: linear search algorithm dsa
 summary: Scan elements one by one until the target is found; works on any array in O(n).
@@ -587,6 +599,8 @@ function minEatingSpeed(piles, h) {
 - Recognize phrases like "minimize the maximum" or "maximize the minimum".
 - Steps: define the range, write the feasibility check, search for the boundary.
 - Problems: Koko Eating Bananas, Capacity to Ship Packages, Split Array Largest Sum, Square Root (integer sqrt), Aggressive Cows.
+
+# Step 7: Number Theory
 
 ## GCD and Number Theory
 video: gcd euclidean algorithm prime number dsa

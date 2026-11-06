@@ -8,6 +8,8 @@ order: 13
 description: How Retrieval-Augmented Generation works, from document ingestion and embeddings to vector search and grounded answers.
 ---
 
+# Step 1: RAG Fundamentals
+
 ## RAG Overview
 video: rag retrieval augmented generation
 summary: RAG combines a retrieval step with an LLM so answers are grounded in your own documents.
@@ -51,6 +53,8 @@ RAG has two separate flows:
 - RAG = retrieve first, then generate.
 - It is the most common way to build "chat with your documents" apps.
 - Interview tip: "RAG reduces hallucination by grounding the LLM in retrieved facts."
+
+# Step 2: Ingestion Pipeline
 
 ## Ingestion Pipeline Overview
 video: rag ingestion pipeline document indexing
@@ -284,6 +288,8 @@ print(f"Stored {len(chunks)} chunks")
 - Four stages: load, split, embed, store.
 - Keep the ingestion code separate from the query code, so each can scale on its own.
 
+# Step 3: Query Pipeline
+
 ## User Query
 video: user query intent rag chatbot
 summary: The user query is the raw question entered by the user, which starts the query pipeline.
@@ -432,6 +438,8 @@ query_vector = embeddings.embed_query(search_query)
 - Query embedding and document embedding must share the same vector space.
 - The query is embedded at request time, so it should be fast.
 
+# Step 4: Retrieval
+
 ## Vector Search
 video: vector similarity search cosine hnsw
 summary: Vector search finds stored chunks whose vectors are most similar to the query vector.
@@ -524,6 +532,8 @@ Keep top 5
 ### Key Points
 - Retrieve more than you need, then keep only the best few.
 - Re-ranking often gives a big quality gain for a small extra cost.
+
+# Step 5: Generation
 
 ## Context Building
 video: rag context building prompt assembly
@@ -638,6 +648,8 @@ Follow-up: Would you like an example of supervised learning?
 ### Key Points
 - Always show sources in business RAG apps; users need to trust the answer.
 - Decide clearly what the UI does when no good context is found.
+
+# Step 6: Production RAG
 
 ## Memory Systems and Chat History
 video: langchain chat memory conversation history rag

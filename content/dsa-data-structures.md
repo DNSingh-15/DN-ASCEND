@@ -8,6 +8,8 @@ order: 21
 description: Linked lists, stacks, queues, trees, heaps, tries, graphs and the classic algorithms built on them, including dynamic programming and greedy.
 ---
 
+# Step 1: Linked Lists
+
 ## Singly Linked List
 video: linked list dsa javascript
 summary: Nodes connected by next pointers: O(1) insert at head, O(n) access by index.
@@ -159,6 +161,8 @@ function reverseRec(head) {
 - Building block for Palindrome Linked List (reverse the second half) and Reverse in K-Group.
 - Problems: Reverse Linked List, Reverse Linked List II, Reorder List, Add Two Numbers.
 
+# Step 2: Stacks & Queues
+
 ## Stack
 video: stack data structure dsa
 summary: Last-In-First-Out structure with O(1) push and pop, used for matching, undo and DFS.
@@ -260,6 +264,8 @@ class CircularQueue {
 - Queues power BFS, scheduling and buffering.
 - A monotonic deque solves sliding window maximum in O(n).
 - Problems: Implement Queue using Stacks, Design Circular Queue, Sliding Window Maximum, Number of Recent Calls.
+
+# Step 3: Trees
 
 ## Binary Tree and Traversals
 video: binary tree traversal inorder preorder postorder dsa
@@ -449,6 +455,8 @@ class Trie {
 - Ideal for autocomplete, spell check and prefix matching.
 - Uses more memory than a hash set but gives prefix queries.
 - Problems: Implement Trie, Word Search II, Design Add and Search Words, Longest Common Prefix.
+
+# Step 4: Graphs
 
 ## Graph Representation
 video: graph representation adjacency list matrix dsa
@@ -698,6 +706,8 @@ function kruskal(n, edges) {               // edges: [u, v, w]
 - Both are greedy algorithms.
 - Problems: Min Cost to Connect All Points, Connecting Cities With Minimum Cost, Optimize Water Distribution.
 
+# Step 5: Dynamic Programming & Greedy
+
 ## Dynamic Programming Basics
 video: dynamic programming 1d fibonacci climbing stairs
 summary: Solve problems with overlapping subproblems by storing results, using memoization or tabulation.
@@ -913,6 +923,8 @@ function eraseOverlapIntervals(intervals) {
 - Typical moves: sort first (by end time, ratio or deadline), then sweep once.
 - Greedy fails for Coin Change with arbitrary coins (use DP).
 - Problems: Jump Game, Jump Game II, Gas Station, Merge Intervals, Non-overlapping Intervals, Assign Cookies, Best Time to Buy and Sell Stock II.
+
+# Step 6: Advanced Structures
 
 ## Segment Tree Overview
 video: segment tree range query dsa

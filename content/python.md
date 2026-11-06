@@ -8,6 +8,8 @@ order: 7
 description: Python is a readable, general-purpose language used for backends, automation, data analysis and AI, covered here from basics to OOP and data libraries.
 ---
 
+# Step 1: Python Basics
+
 ## Variables and Data Types
 video: python variables data types
 summary: A variable is a name that refers to a value; Python's common types are int, float, str, bool, list, tuple, dict and set.
@@ -178,6 +180,8 @@ for index, name in enumerate(names):
 - `for ... else` runs `else` only if the loop was not broken
 - Avoid changing a list while looping over it
 
+# Step 2: Data Structures
+
 ## Lists
 video: python list methods append
 summary: A list is an ordered, mutable collection that can hold items of any type.
@@ -327,6 +331,8 @@ unique = list(set(emails))   # order is not guaranteed
 - Use `set()` for an empty set; `{}` creates an empty dict
 - Sets only hold hashable (immutable) items
 - Use `frozenset` for an immutable set
+
+# Step 3: Functions
 
 ## Functions
 video: python functions def return parameters
@@ -499,6 +505,8 @@ pairs = [(x, y) for x in [1, 2] for y in ["a", "b"]]
 - Keep it short; if it needs three lines, use a loop
 - Set and dict comprehensions use `{}` instead of `[]`
 
+# Step 4: Modules & Environment
+
 ## Modules and Imports
 video: python modules import packages
 summary: A module is a Python file with reusable code; import it with import, from ... import or an alias.
@@ -609,6 +617,8 @@ pip install -r requirements.txt
 - Always check which Python and pip you are using inside the venv
 - Modern alternatives: `uv`, `poetry`, `conda`
 
+# Step 5: Errors & Files
+
 ## Exception Handling
 video: python exception handling try except finally
 summary: try/except catches runtime errors so the program can respond instead of crashing, and finally always runs.
@@ -691,6 +701,8 @@ with open("sample.txt") as f:
 - Always use `with open(...)`
 - Specify `encoding="utf-8"` for text
 - Use `pathlib.Path` for paths that work on every OS
+
+# Step 6: Advanced Python
 
 ## Decorators
 video: python decorators tutorial
@@ -778,6 +790,8 @@ def read_lines(path):
 - A generator can be iterated only once
 - Compare: `[x for x in ...]` builds a list, `(x for x in ...)` is lazy
 - Interview tip: `yield` makes a function return an iterator
+
+# Step 7: Object-Oriented Programming
 
 ## Classes (OOP)
 video: python classes objects oop init self
@@ -997,6 +1011,8 @@ Any subclass must implement every abstract method, or Python refuses to create i
 - Abstract class = a contract for subclasses
 - You cannot create an instance of an abstract class
 - Interview tip: abstraction is about hiding details, encapsulation is about protecting data
+
+# Step 8: Data Libraries
 
 ## NumPy
 video: numpy python tutorial arrays

@@ -8,6 +8,8 @@ order: 1
 description: JavaScript is the programming language of the web, used to make pages interactive in the browser and to build servers with Node.js.
 ---
 
+# Step 1: Language Fundamentals
+
 ## Introduction to JavaScript
 video: javascript introduction for beginners
 summary: What JavaScript is, where it runs, and why it is used for both frontend and backend.
@@ -151,6 +153,8 @@ Object.is(NaN, NaN) // true
 - Always use `===` unless you deliberately want coercion (such as `x == null` to check null or undefined).
 - Objects are compared by reference: `{} === {}` is `false`.
 
+# Step 2: Strings, Arrays & Functions
+
 ## String Methods
 video: javascript string methods
 summary: The most common built-in methods for changing, searching and slicing strings.
@@ -277,6 +281,8 @@ function add(a, b = 0, ...rest) { // default and rest parameters
 ### Key Points
 - Functions are first-class citizens: they can be stored in variables, passed as arguments and returned.
 - Interview tip: know when NOT to use arrows (object methods, constructors).
+
+# Step 3: Asynchronous JavaScript
 
 ## Callback Functions
 video: javascript callback function
@@ -429,6 +435,8 @@ After the stack empties, all microtasks run, then one macrotask, and the cycle r
 - A long synchronous loop blocks the whole page.
 - Interview tip: predict output like the example above.
 
+# Step 4: Scope, Closures & this
+
 ## Execution Context and Scope
 video: javascript execution context scope chain
 summary: Every piece of running code lives in an execution context that holds variables, the scope chain and this.
@@ -531,6 +539,8 @@ bound();   // Asha
 ### Key Points
 - `call(thisArg, a, b)` and `apply(thisArg, [a, b])` invoke immediately; `bind` returns a new function.
 - Arrow functions are ideal for callbacks inside methods because they keep the outer `this`.
+
+# Step 5: Advanced Functions & Prototypes
 
 ## Prototype and Inheritance
 video: javascript prototype prototypal inheritance
@@ -635,6 +645,8 @@ function* ids() {
 ### Key Points
 - State is kept between calls.
 - Values can also be sent into a generator via `next(value)`.
+
+# Step 6: Browser & Language Features
 
 ## Event Delegation
 video: javascript event delegation bubbling
@@ -788,6 +800,8 @@ const s = new Set([1, 1, 2]); // {1, 2}
 ### Key Points
 - Spread expands (`...arr`); rest collects (`...args`). Same syntax, different position.
 - Later versions added optional chaining `a?.b`, nullish coalescing `a ?? b`, `async/await`, and `Array.at()`.
+
+# Step 7: Patterns & Advanced Concepts
 
 ## Debouncing and Throttling
 video: javascript debounce throttle

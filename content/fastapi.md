@@ -8,6 +8,8 @@ order: 6
 description: FastAPI is a modern, high-performance Python web framework for building APIs with automatic validation and interactive documentation.
 ---
 
+# Step 1: Getting Started
+
 ## What is FastAPI
 video: fastapi introduction tutorial
 summary: FastAPI is a modern, fast Python framework for building APIs, built on Starlette and Pydantic.
@@ -90,6 +92,8 @@ Open `http://127.0.0.1:8000/` to see the JSON response, and `http://127.0.0.1:80
 - One decorator = one route (method + path)
 - No manual `json.dumps` needed
 - Use `--reload` only in development
+
+# Step 2: Requests & Validation
 
 ## Path and Query Parameters
 video: fastapi path parameters query parameters
@@ -233,6 +237,8 @@ class Signup(BaseModel):
 - Failed validation = HTTP 422 with details
 - Use Field for simple rules, validators for complex ones
 - Validation also appears in the generated docs
+
+# Step 3: Core Concepts
 
 ## Dependency Injection
 video: fastapi dependency injection depends
@@ -417,6 +423,8 @@ app.add_middleware(
 - List allowed origins explicitly
 - CORS error in the browser console = server config problem, not a frontend bug
 
+# Step 4: Responses & Structure
+
 ## Exception Handling
 video: fastapi exception handling httpexception
 summary: Raise HTTPException to return error responses, and register custom handlers for consistent error output.
@@ -553,6 +561,8 @@ app.include_router(items.router, prefix="/v1")
 - `prefix` avoids repeating the path start
 - `tags` group endpoints in the docs
 - Use `/v1` prefixes for API versioning
+
+# Step 5: Security & Data
 
 ## Authentication with JWT
 video: fastapi jwt authentication oauth2
@@ -698,6 +708,8 @@ def add(name: str, db: Session = Depends(get_db)):
 - Use Alembic for database migrations
 - Use `commit()` to save and `rollback()` on errors (transactions)
 
+# Step 6: Background Tasks, Caching & Docs
+
 ## Background Tasks
 video: fastapi background tasks
 summary: BackgroundTasks run small jobs, like sending emails, after the response has been returned.
@@ -811,6 +823,8 @@ Docstrings of route functions also appear as the description.
 - No extra work needed; open `/docs`
 - Disable in production with `FastAPI(docs_url=None, redoc_url=None)` if the API is private
 - Docs update as soon as you change code
+
+# Step 7: Testing & Configuration
 
 ## Testing
 video: fastapi testing testclient pytest
@@ -926,6 +940,8 @@ app.include_router(v1)
 - Separate schemas (API) from models (DB)
 - Version early
 
+# Step 8: Production
+
 ## Deployment
 video: fastapi deployment docker uvicorn gunicorn
 summary: Deploy FastAPI with Uvicorn or Gunicorn, containerize with Docker and put Nginx in front.
@@ -1028,6 +1044,8 @@ Services can also communicate through message brokers (RabbitMQ, Kafka) for asyn
 - One service = one responsibility = own data
 - Each service gets its own Docker container
 - Don't start with microservices unless needed
+
+# Step 9: Quick Revision
 
 ## Summary Cheat Sheet
 video: fastapi complete overview

@@ -8,6 +8,8 @@ order: 3
 description: React is a JavaScript library for building component-based user interfaces that update efficiently when data changes.
 ---
 
+# Step 1: Fundamentals
+
 ## What is React?
 video: react js introduction for beginners
 summary: React is a JavaScript library for building UIs from components with one-way data flow.
@@ -117,6 +119,8 @@ function Card({ children }: { children: React.ReactNode }) {
 ### Key Points
 - Data flows down through props; events flow up through callback props.
 - Default values: `function Button({ size = "md" })`.
+
+# Step 2: State & Hooks
 
 ## State and useState
 video: react usestate hook
@@ -290,6 +294,8 @@ Solutions:
 ### Key Points
 - Prop drilling is not always bad; passing props only a couple of levels is fine.
 
+# Step 3: Memoization & Performance Hooks
+
 ## useMemo
 video: react useMemo hook performance
 summary: useMemo caches the result of an expensive calculation between renders until its dependencies change.
@@ -337,6 +343,8 @@ const ExpensiveList = React.memo(function ExpensiveList({ items }: { items: stri
 ### Key Points
 - Props that are new objects, arrays or functions on each render break memoization; combine with `useMemo` and `useCallback`.
 - It is an optimization, not a guarantee.
+
+# Step 4: Rendering & UI Patterns
 
 ## Lists and Keys
 video: react lists keys map rendering
@@ -426,6 +434,8 @@ summary: Show or hide UI based on state using ternary operators, && and early re
 - Careful: `count && <X />` renders the number `0` when `count` is `0`. Use `count > 0 && ...` or a ternary instead.
 - Early return is useful: `if (!data) return <Spinner />;`.
 
+# Step 5: How React Works
+
 ## Virtual DOM and Reconciliation
 video: react virtual dom reconciliation diffing
 summary: React keeps a lightweight in-memory copy of the UI and updates only the changed parts of the real DOM.
@@ -477,6 +487,8 @@ Stateless components are easier to test and reuse. A good pattern is to keep mos
 
 ### Key Points
 - In modern React, both are function components; the difference is whether they use state.
+
+# Step 6: Advanced Patterns & Optimization
 
 ## Custom Hooks
 video: react custom hooks tutorial
@@ -616,6 +628,8 @@ function Search() {
 - If you create a debounced function with a helper (such as lodash `debounce`), wrap it in `useMemo` or `useRef` so it is not recreated on every render.
 - The cleanup function is what makes the effect-based debounce work.
 
+# Step 7: Advanced Hooks & State Management
+
 ## Refs and Forward Refs
 video: react forwardRef ref to child component
 summary: Refs give direct access to DOM nodes; forwardRef passes a ref through a component to an inner element.
@@ -675,6 +689,8 @@ summary: Context is built in and simple; Redux and similar libraries add structu
 
 ### Key Points
 - Interview tip: separate client state from server state; server state is best handled by a data-fetching library.
+
+# Step 8: Interview Prep
 
 ## Interview Quick Review
 video: react interview questions

@@ -8,6 +8,8 @@ order: 11
 description: Microsoft Azure is a cloud platform for building, deploying and managing applications, with strong integration for .NET, Windows and enterprise identity.
 ---
 
+# Step 1: Azure Foundations
+
 ## What is Azure?
 video: azure tutorial for beginners
 summary: Azure is Microsoft's cloud platform for storage, databases, servers, networking and security.
@@ -80,6 +82,8 @@ A **managed identity** lets your app authenticate to other Azure services withou
 ### Key Points
 * Authentication = proving identity; authorization = RBAC roles.
 * Prefer managed identities over connection strings with passwords.
+
+# Step 2: App Service
 
 ## Azure App Service
 video: azure app service tutorial
@@ -300,6 +304,8 @@ Azure Monitor (Logs, Metrics, Alerts)
 * Turn on Application Insights early; it is the fastest way to find slow requests.
 * Create alerts on error rate and response time, not just CPU.
 
+# Step 3: Storage, Functions & APIs
+
 ## Azure Blob Storage
 video: azure blob storage tutorial
 summary: Blob Storage stores unstructured files such as images, videos, documents and backups, similar to AWS S3.
@@ -387,6 +393,8 @@ Azure Function | backend
 * One front door for many backend APIs.
 * Policies in APIM let you change behaviour without changing backend code.
 
+# Step 4: Databases & Secrets
+
 ## Azure SQL Database
 video: azure sql database tutorial
 summary: Azure SQL Database is a fully managed relational SQL Server database with automatic backups, patching and high availability.
@@ -457,6 +465,8 @@ az keyvault secret set --vault-name shop-kv --name DbPassword --value "•••
 ### Key Points
 * Equivalent to AWS Secrets Manager / Parameter Store.
 * Combine with managed identity and Key Vault references in App Service.
+
+# Step 5: Containers
 
 ## Containers
 video: azure containers docker tutorial
@@ -594,6 +604,8 @@ AKS is more powerful but more complex than Container Apps. Choose it when you ne
 * Container Apps for simplicity; AKS for full Kubernetes control.
 * Kubernetes concepts to know: pod, deployment, service, ingress.
 
+# Step 6: CI/CD & Deployment
+
 ## GitHub Actions
 video: github actions tutorial deploy azure
 summary: GitHub Actions builds, tests and deploys your code to Azure whenever changes are pushed.
@@ -678,6 +690,8 @@ Steps in short: push code → Actions builds the image → pushes it to ACR tagg
 ### Key Points
 * Prefer ACR over Docker Hub for private images on Azure.
 * Tag images with the commit SHA so every deployment is traceable.
+
+# Step 7: Quick Revision
 
 ## Quick Revision
 video: azure services overview for beginners

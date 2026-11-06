@@ -8,6 +8,8 @@ order: 5
 description: Node.js is a JavaScript runtime built on the V8 engine that lets you run JavaScript on servers to build fast, scalable network applications and APIs.
 ---
 
+# Step 1: Node.js Fundamentals
+
 ## What is Node.js
 video: nodejs introduction what is nodejs
 summary: Node.js is a JavaScript runtime built on Chrome's V8 engine that runs JavaScript outside the browser.
@@ -171,6 +173,8 @@ REPL = quick testing and debugging tool.
 - Start with `node`, exit with `.exit` or Ctrl+C twice
 - Perfect for trying out small snippets or checking an API
 
+# Step 2: Modules & Packages
+
 ## Modules
 video: nodejs modules require import export
 summary: Modules are reusable code units; Node supports CommonJS (require) and ES Modules (import).
@@ -259,6 +263,8 @@ summary: npm installs and manages third-party packages; package.json records you
 - dependencies vs devDependencies
 - `^` allows minor updates, `~` allows patch updates
 - Interview tip: npm = package manager, nvm = version manager
+
+# Step 3: Core APIs
 
 ## Built-in HTTP Server
 video: nodejs http module create server
@@ -443,6 +449,8 @@ fs.createReadStream("input.txt")
 - Use for large files, video streaming, uploads
 - Interview tip: name the 4 types and give one example each
 
+# Step 4: Processes & Concurrency
+
 ## Process, Cluster and Worker Threads
 video: nodejs cluster vs worker threads
 summary: Cluster handles more users by running copies of your app; worker threads handle heavy CPU tasks inside one process.
@@ -557,6 +565,8 @@ child.on("message", (msg) => console.log(msg));
 - Never pass unchecked user input to `exec` (command injection risk)
 - `fork` is what `cluster` uses internally
 - Choose spawn for big output, exec for small, fork for Node-to-Node work
+
+# Step 5: Express.js
 
 ## Express.js Basics
 video: expressjs tutorial for beginners
@@ -778,6 +788,8 @@ process.on("uncaughtException", (err) => { console.error(err); process.exit(1); 
 - Do not leak stack traces to clients in production
 - Log errors on the server
 
+# Step 6: Configuration, Auth & Security
+
 ## Environment Variables
 video: nodejs environment variables dotenv
 summary: Environment variables keep secrets and config (ports, DB URLs, keys) out of your code.
@@ -925,6 +937,8 @@ The default store is in memory, so each server instance counts separately. With 
 - Identify clients by IP or by API key / user id
 - Return 429 and optionally a `Retry-After` header
 
+# Step 7: Data, Testing & Quality
+
 ## Caching
 video: nodejs redis caching
 summary: Caching stores frequently used data in fast memory (Redis or in-process) to avoid repeated slow work.
@@ -1071,6 +1085,8 @@ app.post("/api/v1/users", async (req, res, next) => {
 ### Key Points
 - Versioning lets you change the API without breaking old clients
 - Consistent errors make front-end work easier
+
+# Step 8: Scaling & Architecture
 
 ## Scaling Node.js Apps
 video: nodejs scaling load balancing cluster

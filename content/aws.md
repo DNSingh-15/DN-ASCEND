@@ -8,6 +8,8 @@ order: 10
 description: Amazon Web Services is the largest cloud platform, offering on-demand compute, storage, databases, networking and security without managing physical servers.
 ---
 
+# Step 1: AWS Foundations
+
 ## What is AWS?
 video: aws tutorial for beginners
 summary: AWS is a cloud platform offering storage, databases, servers, networking and security on demand.
@@ -85,6 +87,8 @@ Security controls: **Security Groups** (stateful firewall per resource) and **Ne
 ### Key Points
 * Put databases in private subnets, never in public ones.
 * Spread subnets across at least two Availability Zones.
+
+# Step 2: Compute & Storage
 
 ## EC2 (Elastic Compute Cloud)
 video: aws ec2 instance tutorial
@@ -171,6 +175,8 @@ Limits to know: maximum run time of 15 minutes per invocation, and **cold starts
 * Serverless: no servers to manage, scales to zero.
 * Best for short, event-driven tasks.
 * Keep functions small and stateless.
+
+# Step 3: APIs, Data & Integration
 
 ## API Gateway
 video: aws api gateway lambda tutorial
@@ -307,6 +313,8 @@ Use RDS when you need a relational database but do not want to manage the server
 * Multi-AZ is for availability; read replicas are for read scaling.
 * Keep RDS in private subnets and restrict access with security groups.
 
+# Step 4: Monitoring & Containers
+
 ## CloudWatch
 video: aws cloudwatch logs alarms tutorial
 summary: CloudWatch collects logs and metrics from AWS resources and triggers alarms when thresholds are crossed.
@@ -433,6 +441,8 @@ Use Docker Hub for public base images. For private company images on AWS, many t
 * Push and pull images by name and tag.
 * Avoid `latest` in production; pin versions.
 
+# Step 5: CI/CD & Deployment
+
 ## GitHub Actions
 video: github actions tutorial deploy
 summary: GitHub Actions runs automated workflows that build, test and deploy your code whenever events like a push occur.
@@ -530,6 +540,8 @@ Steps in short: push code → Actions builds the image → pushes it to ECR tagg
 ### Key Points
 * Tag images with the commit SHA for traceability.
 * ECS rolling deployments give zero-downtime releases when health checks pass.
+
+# Step 6: Quick Revision
 
 ## Quick Revision
 video: aws services overview for beginners

@@ -8,6 +8,8 @@ order: 12
 description: The big picture of Generative AI, LLMs, and the building blocks of a production-ready AI application.
 ---
 
+# Step 1: Generative AI & LLM Basics
+
 ## What is Generative AI?
 video: what is generative ai
 summary: Generative AI creates new content such as text, code, images and audio, powered mostly by LLMs.
@@ -143,6 +145,8 @@ Even with `temperature=0` outputs are *mostly* but not *guaranteed* identical, s
 - Use temperature 0 for structured outputs such as JSON.
 - Non-determinism is a feature of LLMs; design your system to tolerate it.
 
+# Step 2: LLM Limitations
+
 ## LLM Limitations and Hallucination
 video: llm hallucination limitations
 summary: LLMs hallucinate, give varying answers, depend on prompt wording, and have no real-time knowledge.
@@ -220,6 +224,8 @@ The LLM reads the resume; your code decides the score. The same resume always ge
 - LLM = brain for language and reasoning, not the truth.
 - Facts come from data (RAG/DB), rules come from code.
 - Reliable AI = reasoning + deterministic logic.
+
+# Step 3: Working with LLMs
 
 ## Prompt Engineering
 video: prompt engineering tutorial
@@ -329,6 +335,8 @@ Start with **prompting**, add **RAG** for knowledge, and use **fine-tuning** onl
 - RAG teaches the model *what to look at*; fine-tuning teaches it *how to behave*.
 - Most enterprise Q&A apps use RAG.
 - Interview tip: "Use RAG for knowledge, fine-tuning for behaviour."
+
+# Step 4: Agentic AI Architecture
 
 ## Agentic AI Overview
 video: what is agentic ai
@@ -507,6 +515,8 @@ MCP is an open standard so any AI app (client) can connect to any tool or data s
 - Write clear tool descriptions; the model chooses tools from them.
 - MCP standardises how tools and context are shared.
 
+# Step 5: Production Readiness
+
 ## Observability
 video: llm observability monitoring langsmith
 summary: Track token usage, latency, errors and traces so you can debug and improve AI systems.
@@ -614,6 +624,8 @@ def answer(question):
 ### Key Points
 - Treat the LLM as an unreliable but powerful component and design around it.
 - Retries, timeouts and fallbacks are as important in AI apps as in any distributed system.
+
+# Step 6: Interview Prep
 
 ## Interview Quick Q&A
 video: generative ai interview questions
