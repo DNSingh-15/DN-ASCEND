@@ -38,9 +38,9 @@ function parse(source: string) {
 
 function Box({ cell, n }: { cell: Cell; n?: number }) {
   return (
-    <div className="flex min-w-[9rem] max-w-xs flex-1 items-start gap-3 rounded-xl border border-indigo-300/50 bg-indigo-500/[0.07] px-4 py-3 text-left shadow-sm shadow-indigo-500/10 backdrop-blur-sm dark:border-indigo-400/25 dark:bg-indigo-500/10">
+    <div className="flex min-w-[9rem] max-w-xs flex-1 items-start gap-3 rounded-xl border border-indigo-300/50 bg-indigo-500/[0.07] px-4 py-3 text-left shadow-sm shadow-indigo-500/10 backdrop-blur-sm dark:border-teal-400/25 dark:bg-teal-500/10 dark:shadow-teal-500/10">
       {n !== undefined && (
-        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 text-xs font-bold text-white shadow-md shadow-indigo-500/40">
+        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 text-xs font-bold text-white shadow-md shadow-indigo-500/40 dark:from-cyan-500 dark:to-teal-600 dark:shadow-teal-500/40">
           {n}
         </span>
       )}
@@ -55,7 +55,7 @@ function Box({ cell, n }: { cell: Cell; n?: number }) {
 function Arrow({ label, horizontal }: { label?: string; horizontal: boolean }) {
   return (
     <div
-      className={`flex items-center justify-center gap-2 text-indigo-500 ${horizontal ? "md:flex-col" : "py-1"}`}
+      className={`flex items-center justify-center gap-2 text-indigo-500 dark:text-teal-400 ${horizontal ? "md:flex-col" : "py-1"}`}
       aria-hidden
     >
       <span className={`text-xl leading-none ${horizontal ? "rotate-90 md:rotate-0" : ""}`}>

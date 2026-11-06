@@ -121,7 +121,7 @@ export default function Uml({ source }: { source: string }) {
   });
 
   const id = (k: string) => `${uid}-${k}`;
-  const stroke = "#6366f1";
+  const stroke = "var(--diagram)";
 
   return (
     <figure className="not-prose glass my-6 rounded-2xl p-4 sm:p-6">
@@ -202,7 +202,7 @@ export default function Uml({ source }: { source: string }) {
                   rx="8"
                   stroke={stroke}
                   strokeWidth="1.5"
-                  style={{ fill: "color-mix(in srgb, #6366f1 9%, var(--bg))" }}
+                  style={{ fill: "color-mix(in srgb, var(--diagram) 9%, var(--bg))" }}
                 />
                 {b.stereo && (
                   <text x={b.x + b.w / 2} y={ty} textAnchor="middle" fontSize="11" fill="currentColor" opacity="0.6">

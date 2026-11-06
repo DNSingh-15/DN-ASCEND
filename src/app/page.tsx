@@ -11,7 +11,7 @@ export default function Dashboard() {
   return (
     <div className="space-y-10">
       <section className="glass relative overflow-hidden rounded-3xl px-6 py-10 sm:px-10 sm:py-14">
-        <span className="accent-orb" style={{ "--accent": "#a855f7" } as CSSProperties} aria-hidden />
+        <span className="accent-orb" style={{ "--accent": "var(--hero-accent)" } as CSSProperties} aria-hidden />
         <p className="glass-tile inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium text-muted">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
           {TRACKS.length} tracks · {totalTopics} topics

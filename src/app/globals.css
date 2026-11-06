@@ -23,6 +23,12 @@
   --blob-3: rgb(56 189 248 / 0.42);
   --blob-4: rgb(52 211 153 / 0.28);
   --grid: rgb(15 23 42 / 0.07);
+
+  /* Brand accents: fallback for --accent, hero glow, diagram strokes, selection */
+  --accent-default: #6366f1;
+  --hero-accent: #a855f7;
+  --diagram: #6366f1;
+  --selection: rgb(99 102 241 / 0.28);
 }
 
 .dark {
@@ -38,11 +44,16 @@
   --glass-edge: rgb(255 255 255 / 0.08);
   --glass-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.6);
 
-  --blob-1: rgb(79 70 229 / 0.45);
-  --blob-2: rgb(162 28 175 / 0.35);
+  --blob-1: rgb(13 148 136 / 0.4);
+  --blob-2: rgb(8 145 178 / 0.34);
   --blob-3: rgb(3 105 161 / 0.4);
   --blob-4: rgb(4 120 87 / 0.22);
   --grid: rgb(255 255 255 / 0.05);
+
+  --accent-default: #2dd4bf;
+  --hero-accent: #22d3ee;
+  --diagram: #2dd4bf;
+  --selection: rgb(45 212 191 / 0.28);
 }
 
 html {
@@ -93,7 +104,7 @@ body::after {
 }
 
 ::selection {
-  background: rgb(99 102 241 / 0.28);
+  background: var(--selection);
 }
 
 .text-muted {
@@ -128,23 +139,23 @@ body::after {
   .glass-hover:hover {
     transform: translateY(-3px);
     background: var(--glass-hover);
-    border-color: color-mix(in srgb, var(--accent, #6366f1) 40%, var(--glass-border));
+    border-color: color-mix(in srgb, var(--accent, var(--accent-default)) 40%, var(--glass-border));
     box-shadow:
       inset 0 1px 0 0 var(--glass-edge),
-      0 18px 40px -16px color-mix(in srgb, var(--accent, #6366f1) 55%, transparent);
+      0 18px 40px -16px color-mix(in srgb, var(--accent, var(--accent-default)) 55%, transparent);
   }
 
   /* Small tinted tile for icons and labels (no blur, sits on glass). */
   .glass-tile {
-    background: color-mix(in srgb, var(--accent, #6366f1) 12%, var(--glass));
+    background: color-mix(in srgb, var(--accent, var(--accent-default)) 12%, var(--glass));
     border: 1px solid var(--glass-border);
     box-shadow: inset 0 1px 0 0 var(--glass-edge);
   }
 
   .accent-chip {
     color: #fff;
-    background: linear-gradient(135deg, var(--accent, #6366f1), color-mix(in srgb, var(--accent, #6366f1) 70%, #000));
-    box-shadow: 0 6px 16px -6px var(--accent, #6366f1);
+    background: linear-gradient(135deg, var(--accent, var(--accent-default)), color-mix(in srgb, var(--accent, var(--accent-default)) 70%, #000));
+    box-shadow: 0 6px 16px -6px var(--accent, var(--accent-default));
   }
 
   /* Blurred color orb in a card corner; brightens on hover. */
@@ -155,7 +166,7 @@ body::after {
     width: 9rem;
     height: 9rem;
     border-radius: 9999px;
-    background: var(--accent, #6366f1);
+    background: var(--accent, var(--accent-default));
     opacity: 0.22;
     filter: blur(48px);
     pointer-events: none;
@@ -174,7 +185,7 @@ body::after {
   }
 
   .dark .text-gradient {
-    background-image: linear-gradient(90deg, #818cf8, #c084fc 50%, #f472b6);
+    background-image: linear-gradient(90deg, #67e8f9, #2dd4bf 50%, #38bdf8);
   }
 }
 

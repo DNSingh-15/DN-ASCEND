@@ -3,7 +3,7 @@ name: Agentic AI
 icon: 🔗
 category: AI
 track: ai
-color: #6366f1
+color: #06b6d4
 order: 14
 description: Build goal-driven AI agents that plan, use tools and loop until done, using LangChain and LangGraph.
 ---

@@ -16,9 +16,9 @@ export type TrackId = "fullstack" | "cloud" | "ai" | "dsa" | "system-design";
 export type TrackInfo = { id: TrackId; label: string; icon: string; blurb: string; color: string };
 
 export const TRACKS: TrackInfo[] = [
-  { id: "fullstack", label: "Full Stack", icon: "🧑‍💻", blurb: "Frontend, backend and databases", color: "#6366f1" },
+  { id: "fullstack", label: "Full Stack", icon: "🧑‍💻", blurb: "Frontend, backend and databases", color: "#14b8a6" },
   { id: "cloud", label: "Cloud", icon: "☁️", blurb: "AWS and Azure", color: "#0ea5e9" },
-  { id: "ai", label: "AI", icon: "🤖", blurb: "GenAI, agents and MCP", color: "#a855f7" },
+  { id: "ai", label: "AI", icon: "🤖", blurb: "GenAI, agents and MCP", color: "#06b6d4" },
   { id: "dsa", label: "DSA", icon: "🧮", blurb: "Data structures and algorithms", color: "#10b981" },
   { id: "system-design", label: "System Design", icon: "🏗️", blurb: "Low level and high level design", color: "#f97316" },
 ];

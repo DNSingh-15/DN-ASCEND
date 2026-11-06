@@ -4,7 +4,7 @@ icon: 🧩
 category: System Design
 track: system-design
 level: lld
-color: #8b5cf6
+color: #0d9488
 order: 29
 description: How to structure the code inside one service - classes, principles, patterns and clean design.
 ---

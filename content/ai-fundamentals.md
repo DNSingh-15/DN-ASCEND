@@ -3,7 +3,7 @@ name: AI Fundamentals
 icon: 🤖
 category: AI
 track: ai
-color: #8b5cf6
+color: #0891b2
 order: 12
 description: The big picture of Generative AI, LLMs, and the building blocks of a production-ready AI application.
 ---

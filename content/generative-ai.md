@@ -3,7 +3,7 @@ name: Generative AI & RAG
 icon: ✨
 category: AI
 track: ai
-color: #ec4899
+color: #38bdf8
 order: 13
 description: How Retrieval-Augmented Generation works, from document ingestion and embeddings to vector search and grounded answers.
 ---

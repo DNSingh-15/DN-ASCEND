@@ -3,7 +3,7 @@ name: Data Structures
 icon: 🌳
 category: DSA
 track: dsa
-color: #a855f7
+color: #2dd4bf
 order: 21
 description: Linked lists, stacks, queues, trees, heaps, tries, graphs and the classic algorithms built on them, including dynamic programming and greedy.
 ---

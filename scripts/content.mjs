@@ -65,7 +65,7 @@ export function parseTech(slug, raw) {
     category: meta.category ?? "Other",
     track: meta.track ?? "fullstack",
     level: meta.level ?? "",
-    color: meta.color ?? "#6366f1",
+    color: meta.color ?? "#14b8a6",
     order: Number(meta.order ?? 99),
     description: meta.description ?? "",
     topics: topics.map((t) => {
