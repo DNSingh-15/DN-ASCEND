@@ -22,8 +22,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-screen antialiased">
-        <header className="sticky top-3 z-40 px-4">
-          <div className="glass mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 rounded-2xl px-3 sm:px-4">
+        <header className="sticky top-3 z-40 mx-auto max-w-6xl px-4">
+          <div className="glass flex h-14 items-center justify-between gap-4 rounded-2xl px-3 sm:px-4">
             <Link href="/" className="flex items-center gap-2.5 font-semibold tracking-tight">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500 text-white shadow-lg shadow-indigo-500/30 dark:from-cyan-500 dark:via-teal-500 dark:to-sky-600 dark:shadow-teal-500/30">
                 ⚡

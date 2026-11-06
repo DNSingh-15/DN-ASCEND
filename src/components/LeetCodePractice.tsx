@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { leetCodeUrl, type Difficulty, type LeetCodeProblem } from "@/lib/content";
 
 // Text and tint per difficulty. Dark-mode text is lightened to keep contrast on the glass background.
@@ -12,7 +13,8 @@ export default function LeetCodePractice({ problems }: { problems: LeetCodeProbl
   if (problems.length === 0) return null;
 
   return (
-    <section className="space-y-4" aria-labelledby="leetcode-practice">
+    // Pinned to the theme accent so the buttons stay teal/cyan even on topics with another track color.
+    <section className="space-y-4" aria-labelledby="leetcode-practice" style={{ "--accent": "var(--accent-default)" } as CSSProperties}>
       <div>
         <h2 id="leetcode-practice" className="text-xl font-semibold">
           🧩 LeetCode Practice

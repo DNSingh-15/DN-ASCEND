@@ -12,11 +12,7 @@ export default async function SignupPage({ searchParams }: Props) {
   const next = safeNextPath(typeof params.next === "string" ? params.next : undefined);
 
   return (
-    <AuthShell
-      title="Create your account"
-      subtitle="Join ASCEND and start learning step by step."
-      footer={<>Your password is hashed before it is stored. We never keep it in plain text.</>}
-    >
+    <AuthShell title="Create your account" subtitle="Join ASCEND and start learning step by step.">
       <SignupForm next={next} />
     </AuthShell>
   );

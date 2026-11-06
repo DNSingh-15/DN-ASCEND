@@ -14,11 +14,7 @@ export default async function LoginPage({ searchParams }: Props) {
   const notice = raw && next !== "/" ? "Please log in to continue." : undefined;
 
   return (
-    <AuthShell
-      title="Welcome back"
-      subtitle="Log in to continue your learning journey."
-      footer={<>Your progress, notes and tracks are waiting.</>}
-    >
+    <AuthShell title="Welcome back" subtitle="Log in to continue your learning journey.">
       <LoginForm next={next} notice={notice} />
     </AuthShell>
   );
