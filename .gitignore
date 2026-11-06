@@ -6,7 +6,6 @@ next-env.d.ts
 .env*
 
 # Local auth store (registered users, session secret, lock files)
-/data/users.json
 /data/users.json.*
 /data/*.lock
 /data/.session-secret
