@@ -26,13 +26,36 @@ export function sessionUserId(req: NextRequest): string | null {
   return verifySessionToken(req.cookies.get(SESSION_COOKIE)?.value)?.uid ?? null;
 }
 
-/** Reject cross-site POSTs (CSRF): when the browser sends Origin, it must be this site. */
+/**
+ * Every host this request may legitimately have come from. Proxies (Netlify deploy previews, `netlify dev`)
+ * can report the public host in x-forwarded-host and the internal one in host, or a comma-separated list,
+ * so accept any of them, plus the URLs Netlify assigns to this deploy.
+ */
+function ownHosts(req: NextRequest): Set<string> {
+  const hosts = new Set<string>();
+  const add = (value: string | null | undefined) => {
+    for (const h of value?.split(",") ?? []) if (h.trim()) hosts.add(h.trim().toLowerCase());
+  };
+  add(req.headers.get("x-forwarded-host"));
+  add(req.headers.get("host"));
+  add(req.nextUrl.host);
+  for (const key of ["URL", "DEPLOY_PRIME_URL", "DEPLOY_URL"]) {
+    try {
+      add(new URL(process.env[key] ?? "").host);
+    } catch {}
+  }
+  return hosts;
+}
+
+/**
+ * Reject cross-site POSTs (CSRF): when the browser sends Origin, it must be this site. A cross-site attacker
+ * cannot choose the Host / X-Forwarded-Host the browser sends to us, so matching any of them is still safe.
+ */
 export function isSameOrigin(req: NextRequest): boolean {
   const origin = req.headers.get("origin");
   if (!origin) return true;
   try {
-    const host = req.headers.get("x-forwarded-host") ?? req.headers.get("host");
-    return new URL(origin).host === host;
+    return ownHosts(req).has(new URL(origin).host.toLowerCase());
   } catch {
     return false;
   }
