@@ -20,8 +20,16 @@ Build strong technical foundations, prepare for FAANG-level interviews, and grow
 
 All pages require an account. Sign up at `/signup`, log in at `/login`.
 
-- Users are stored in `data/users.json` (git-ignored, created on first signup). Passwords are hashed with scrypt, never stored in plain text. Emails are unique, case-insensitively.
-- Sessions are signed, HttpOnly cookies valid for 7 days. The signing key comes from `SESSION_SECRET` (32+ chars) or is generated into `data/.session-secret`. Set `SESSION_SECRET` in production.
-- `ASCEND_DATA_DIR` overrides the data folder.
-- Code lives in `src/lib/auth` (hashing, validation, sessions, `UserRepository`), `src/app/api/auth` (routes) and `src/proxy.ts` (route protection). To move to MySQL, implement `UserRepository` against a table and swap it in `getUserRepository()`.
-- The JSON store suits a single server process. It is not suitable for serverless or multi-instance deployments.
+- Users are stored in the `users` table of Netlify Database (Postgres), accessed through `@netlify/database`. The schema lives in `netlify/database/migrations/`, which Netlify applies automatically on every deploy. Passwords are hashed with scrypt, never stored in plain text. Emails are unique, case-insensitively.
+- Sessions are signed, HttpOnly cookies valid for 7 days. The signing key is read only from the `SESSION_SECRET` environment variable (32+ chars), which is required.
+- Code lives in `src/lib/auth` (hashing, validation, sessions, `UserRepository`), `src/app/api/auth` (routes) and `src/proxy.ts` (route protection).
+
+### Local development
+
+Requires Node 22.12+ and Netlify CLI 26+ (`npm install -g netlify-cli`), with the folder linked to the site (`netlify link`).
+
+1. Create `.env.local` with `SESSION_SECRET=<32+ random characters>` (git-ignored).
+2. `netlify dev` starts Next.js together with a local Postgres database and sets `NETLIFY_DB_URL`.
+3. In a second terminal, the first time and after adding a migration: `netlify database migrations apply`.
+
+Plain `npm run dev` also works if you set `NETLIFY_DB_URL` yourself to a Postgres connection string.

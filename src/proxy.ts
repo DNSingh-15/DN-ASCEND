@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { SESSION_COOKIE, isAuthPage } from "@/lib/auth/config";
 import { verifySessionToken } from "@/lib/auth/session-token";
 
-// Route protection (optimistic check): only reads and verifies the signed cookie, never touches users.json.
+// Route protection (optimistic check): only reads and verifies the signed cookie, never touches the database.
 // Pages re-check against the real user via getCurrentUser() (see lib/auth/session.ts), and API handlers check themselves.
 export function proxy(req: NextRequest) {
   const { pathname, search } = req.nextUrl;

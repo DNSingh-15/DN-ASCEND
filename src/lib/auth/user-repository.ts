@@ -1,24 +1,11 @@
-import fs from "node:fs/promises";
-import path from "node:path";
 import { randomUUID } from "node:crypto";
-import { withFileLock } from "./file-lock";
-import { dataDir } from "./paths";
+import { getDatabase } from "@netlify/database";
 import { emailKey } from "./validation";
 
 // ---------------------------------------------------------------------------------------------
-// Storage boundary. The rest of the app only talks to `UserRepository`, so moving to MySQL later
-// means writing a `MySqlUserRepository` with the same three methods and returning it from
-// `getUserRepository()`. A matching table:
-//
-//   CREATE TABLE users (
-//     id            CHAR(36)     PRIMARY KEY,
-//     full_name     VARCHAR(60)  NOT NULL,
-//     email         VARCHAR(254) NOT NULL,
-//     email_key     VARCHAR(254) NOT NULL UNIQUE,   -- lower-cased email, enforces no duplicates
-//     password_hash VARCHAR(255) NOT NULL,
-//     created_at    DATETIME     NOT NULL,
-//     updated_at    DATETIME     NOT NULL
-//   );
+// Storage boundary. The rest of the app only talks to `UserRepository`; `getUserRepository()`
+// decides which implementation backs it. The table is created by the migration in
+// netlify/database/migrations/ (applied by Netlify on deploy).
 // ---------------------------------------------------------------------------------------------
 
 export type UserRecord = {
@@ -57,100 +44,75 @@ export interface UserRepository {
 }
 
 // ---------------------------------------------------------------------------------------------
-// JSON file implementation: data/users.json
+// Netlify Database (Postgres) implementation: table `users`
 // ---------------------------------------------------------------------------------------------
 
-type UsersFile = { version: 1; users: UserRecord[] };
+type UserRow = {
+  id: string;
+  full_name: string;
+  email: string;
+  email_key: string;
+  password_hash: string;
+  created_at: Date | string;
+  updated_at: Date | string;
+};
 
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-export class JsonUserRepository implements UserRepository {
-  constructor(private readonly file: string) {}
+/** Timestamps come back as Date (pg) or string (HTTP driver); the app has always used ISO strings. */
+const iso = (v: Date | string) => new Date(v).toISOString();
 
-  private get lockPath() {
-    return `${this.file}.lock`;
-  }
+function toRecord(r: UserRow): UserRecord {
+  return {
+    id: r.id,
+    fullName: r.full_name,
+    email: r.email,
+    emailKey: r.email_key,
+    passwordHash: r.password_hash,
+    createdAt: iso(r.created_at),
+    updatedAt: iso(r.updated_at),
+  };
+}
 
-  /** A missing file means "no users yet". A file that exists but cannot be parsed is an error: we never overwrite it. */
-  private async read(): Promise<UsersFile> {
-    let raw: string;
-    try {
-      raw = await fs.readFile(this.file, "utf8");
-    } catch (err) {
-      if ((err as NodeJS.ErrnoException).code === "ENOENT") return { version: 1, users: [] };
-      throw err;
-    }
-    if (!raw.trim()) return { version: 1, users: [] };
-    let parsed: unknown;
-    try {
-      parsed = JSON.parse(raw);
-    } catch {
-      throw new Error(`${this.file} is not valid JSON. Refusing to modify it; fix or restore the file.`);
-    }
-    const users = Array.isArray(parsed) ? parsed : (parsed as Partial<UsersFile>)?.users;
-    if (!Array.isArray(users)) throw new Error(`${this.file} has an unexpected shape. Refusing to modify it.`);
-    return { version: 1, users: users as UserRecord[] };
-  }
+type Db = ReturnType<typeof getDatabase>;
 
-  /** Write to a temp file, then rename over the original, so a crash never leaves a half-written users.json. */
-  private async write(data: UsersFile): Promise<void> {
-    await fs.mkdir(path.dirname(this.file), { recursive: true });
-    const tmp = `${this.file}.${process.pid}.${randomUUID()}.tmp`;
-    await fs.writeFile(tmp, JSON.stringify(data, null, 2) + "\n", { encoding: "utf8", mode: 0o600 });
-    for (let attempt = 0; ; attempt++) {
-      try {
-        await fs.rename(tmp, this.file);
-        return;
-      } catch (err) {
-        const code = (err as NodeJS.ErrnoException).code;
-        // Windows can briefly refuse the rename while a reader has the file open.
-        if ((code === "EPERM" || code === "EACCES" || code === "EBUSY") && attempt < 20) {
-          await sleep(20 + attempt * 10);
-          continue;
-        }
-        await fs.unlink(tmp).catch(() => {});
-        throw err;
-      }
-    }
+export class PostgresUserRepository implements UserRepository {
+  private db: Db | null = null;
+
+  /** Connect lazily, so a missing NETLIFY_DB_URL fails the request (logged by the route) rather than the import. */
+  private get sql() {
+    this.db ??= getDatabase();
+    return this.db.sql;
   }
 
   async findByEmail(email: string): Promise<UserRecord | null> {
-    const key = emailKey(email);
-    const { users } = await this.read();
-    return users.find((u) => u.emailKey === key) ?? null;
+    const rows = await this.sql<UserRow>`SELECT * FROM users WHERE email_key = ${emailKey(email)} LIMIT 1`;
+    return rows[0] ? toRecord(rows[0]) : null;
   }
 
   async findById(id: string): Promise<UserRecord | null> {
-    const { users } = await this.read();
-    return users.find((u) => u.id === id) ?? null;
+    if (!UUID_RE.test(id)) return null; // Postgres would reject a non-UUID value with an error
+    const rows = await this.sql<UserRow>`SELECT * FROM users WHERE id = ${id} LIMIT 1`;
+    return rows[0] ? toRecord(rows[0]) : null;
   }
 
-  create(user: NewUser): Promise<UserRecord> {
-    // Re-read inside the lock so we always append to the latest list and the duplicate check cannot race.
-    return withFileLock(this.lockPath, async () => {
-      const data = await this.read();
-      const key = emailKey(user.email);
-      if (data.users.some((u) => u.emailKey === key)) throw new DuplicateEmailError();
-
-      const now = new Date().toISOString();
-      const record: UserRecord = {
-        id: randomUUID(),
-        fullName: user.fullName,
-        email: user.email,
-        emailKey: key,
-        passwordHash: user.passwordHash,
-        createdAt: now,
-        updatedAt: now,
-      };
-      await this.write({ version: 1, users: [...data.users, record] });
-      return record;
-    });
+  async create(user: NewUser): Promise<UserRecord> {
+    // The UNIQUE constraint on email_key is the real duplicate guarantee: a concurrent insert of
+    // the same email inserts nothing, and we report it as a duplicate.
+    const now = new Date().toISOString();
+    const rows = await this.sql<UserRow>`
+      INSERT INTO users (id, full_name, email, email_key, password_hash, created_at, updated_at)
+      VALUES (${randomUUID()}, ${user.fullName}, ${user.email}, ${emailKey(user.email)}, ${user.passwordHash}, ${now}, ${now})
+      ON CONFLICT (email_key) DO NOTHING
+      RETURNING *`;
+    if (!rows[0]) throw new DuplicateEmailError();
+    return toRecord(rows[0]);
   }
 }
 
 let repo: UserRepository | null = null;
 
 export function getUserRepository(): UserRepository {
-  repo ??= new JsonUserRepository(path.join(dataDir(), "users.json"));
+  repo ??= new PostgresUserRepository();
   return repo;
 }
