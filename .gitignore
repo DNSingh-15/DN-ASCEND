@@ -5,6 +5,9 @@ next-env.d.ts
 *.tsbuildinfo
 .env*
 
+# Netlify build/dev output (generated functions, Deno cache). Never commit it.
+.netlify
+
 # Local auth store (registered users, session secret, lock files)
 /data/users.json.*
 /data/users.json
