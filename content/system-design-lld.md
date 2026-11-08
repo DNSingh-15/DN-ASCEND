@@ -13,7 +13,7 @@ description: How to structure the code inside one service - classes, principles,
 
 ## Encapsulation
 video: encapsulation in oop
-summary: Encapsulation means keeping data private inside a class and letting others use it only through safe methods.
+summary: Encapsulation means data hiding => keep data safe inside a class.
 
 **Real-life example:** An ATM. You cannot reach into the cash box, you can only press buttons like "withdraw".
 
@@ -35,7 +35,7 @@ class BankAccount {
 
 ## Abstraction
 video: abstraction in oop
-summary: Abstraction means showing only what an object does and hiding how it does it.
+summary: Abstraction means hiding complexity ( hiding internal implementation ).
 
 **Real-life example:** A car pedal. You press it to go faster and never think about the engine.
 
@@ -57,7 +57,7 @@ class CardPayment implements PaymentMethod {
 
 ## Inheritance
 video: inheritance in oop
-summary: Inheritance lets a child class reuse and extend the code of a parent class.
+summary: Inheritance means code reusability.
 
 **Real-life example:** A child gets traits from their parent but can also learn new skills.
 
@@ -78,7 +78,7 @@ Current --|> Account : is a
 
 ## Polymorphism
 video: polymorphism in oop
-summary: Polymorphism means the same method call behaves differently depending on the object that receives it.
+summary: Polymorphism means many forms => It allows the same method call to behave differently depending on the object that invokes it.
 
 **Real-life example:** Pressing "play" works on a TV, a phone and a speaker, each in its own way.
 
