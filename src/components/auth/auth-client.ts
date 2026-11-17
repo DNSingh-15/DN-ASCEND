@@ -31,7 +31,18 @@ export async function logout(): Promise<void> {
   await fetch("/api/auth/logout", { method: "POST", credentials: "same-origin" }).catch(() => {});
 }
 
-export async function fetchSession(): Promise<{ user: ClientUser | null; status: number }> {
+type SessionResult = { user: ClientUser | null; status: number };
+let inFlight: Promise<SessionResult> | null = null;
+
+/** Components that mount together share one request instead of each calling /api/auth/session. */
+export function fetchSession(): Promise<SessionResult> {
+  inFlight ??= loadSession().finally(() => {
+    inFlight = null;
+  });
+  return inFlight;
+}
+
+async function loadSession(): Promise<SessionResult> {
   try {
     const res = await fetch("/api/auth/session", { credentials: "same-origin", cache: "no-store" });
     const data = await res.json().catch(() => ({}));

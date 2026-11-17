@@ -15,6 +15,11 @@ export default function Markdown({ children }: { children: string }) {
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       components={{
+        // Same image, but fetched only when it is about to scroll into view.
+        img({ node: _node, alt, ...props }) {
+          // eslint-disable-next-line @next/next/no-img-element
+          return <img alt={alt ?? ""} loading="lazy" decoding="async" {...props} />;
+        },
         // ```flow blocks become step-by-step charts and ```uml blocks class diagrams; everything else stays a normal code block.
         pre({ children: kids, ...props }) {
           const child = Array.isArray(kids) ? kids[0] : kids;

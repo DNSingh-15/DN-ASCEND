@@ -14,11 +14,8 @@ export function proxy(req: NextRequest) {
     return NextResponse.next();
   }
 
-  if (isPublicPage(pathname)) {
-    // Signed-in users keep their old landing page: the learning dashboard that used to live at "/".
-    if (pathname === "/" && signedIn) return NextResponse.redirect(new URL("/learning", req.url));
-    return NextResponse.next();
-  }
+  // Public pages (Home, Contact, Privacy, Terms) open for everyone, signed in or not.
+  if (isPublicPage(pathname)) return NextResponse.next();
 
   if (!signedIn) {
     const url = new URL("/login", req.url);
@@ -30,6 +27,7 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  // Everything except API routes (they enforce auth themselves), Next internals and static files.
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|images/|.*\\.(?:png|jpg|jpeg|gif|svg|webp|ico|txt|xml|json)$).*)"],
+  // Everything except API routes (they enforce auth themselves), Next internals, static files and the public pages
+  // (Home, Contact, Privacy, Terms: nothing to protect, so they skip the proxy and can be served from the CDN).
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|images/|$|contact/?$|privacy/?$|terms/?$|.*\\.(?:png|jpg|jpeg|gif|svg|webp|ico|txt|xml|json)$).*)"],
 };

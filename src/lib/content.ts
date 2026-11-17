@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import path from "node:path";
 import videosJson from "../../data/videos.json";
 import practiceJson from "../../data/leetcode-practice.json";
@@ -59,10 +60,27 @@ export type Tech = {
 const videos = videosJson as Record<string, Video[]>;
 
 let cache: Tech[] | null = null;
+let cacheStamp = "";
+
+/** Changes whenever a notes file is added, removed or edited. Cheap: stats 18 files instead of parsing them. */
+function contentStamp(dir: string): string {
+  let latest = 0;
+  let count = 0;
+  for (const f of fs.readdirSync(dir)) {
+    if (!f.endsWith(".md")) continue;
+    count++;
+    latest = Math.max(latest, fs.statSync(path.join(dir, f)).mtimeMs);
+  }
+  return `${count}:${latest}`;
+}
 
 export function getAllTech(): Tech[] {
-  if (!cache || process.env.NODE_ENV === "development") {
-    cache = loadAll(path.join(process.cwd(), "content")) as Tech[];
+  const dir = path.join(process.cwd(), "content");
+  // In development, re-read the notes only when one changed, instead of re-parsing every file on every call.
+  const stamp = process.env.NODE_ENV === "development" ? contentStamp(dir) : "";
+  if (!cache || stamp !== cacheStamp) {
+    cache = loadAll(dir) as Tech[];
+    cacheStamp = stamp;
   }
   return cache;
 }

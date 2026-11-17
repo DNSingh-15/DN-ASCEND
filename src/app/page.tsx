@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import GuestActions from "@/components/auth/GuestActions";
 import { TRACKS, techsInTrack } from "@/lib/content";
 
-// Public Home page: the entry point for visitors. Signed-in users are sent straight to /learning by the proxy.
+// Public Home page: the entry point for everyone. Static, so it is served from the CDN; the Login / Create Account
+// buttons appear client-side only for visitors without a session (see GuestActions).
 export const metadata: Metadata = {
   title: { absolute: "TechOrbitInd – Learn, Build & Grow" },
   description: "Learn Full Stack, AI, Cloud, DSA & System Design with step-by-step notes, diagrams and hand-picked videos.",
@@ -34,12 +36,7 @@ export default function Home() {
           <Link href="/learning" className="accent-chip auth-submit rounded-xl px-5 py-2.5 text-[15px] font-semibold">
             Start Learning →
           </Link>
-          <Link href="/login" className="glass-tile rounded-xl px-5 py-2.5 text-[15px] font-semibold transition hover:scale-[1.03]">
-            Login
-          </Link>
-          <Link href="/signup" className="glass-tile rounded-xl px-5 py-2.5 text-[15px] font-semibold transition hover:scale-[1.03]">
-            Create Account
-          </Link>
+          <GuestActions />
         </div>
       </section>
 
@@ -87,10 +84,14 @@ export default function Home() {
             <h2 id="creator-heading" className="text-2xl font-bold tracking-tight">
               Meet the Creator
             </h2>
-            <p className="font-medium">
-              D N Singh <span className="text-muted">· [Role / Title]</span>
+            <div>
+              <p className="text-lg font-semibold">D. N. Singh</p>
+              <p className="text-sm text-muted">Senior Application Developer</p>
+            </div>
+            <p className="text-muted">
+              Building scalable applications, intelligent AI systems, and next-generation technology solutions. Creator of
+              TechOrbitInd, making technology learning structured, practical, and accessible.
             </p>
-            <p className="text-muted">[A short introduction: your background and what you work on.]</p>
             <p>
               <a
                 href="https://www.linkedin.com/in/dnsingh123"
@@ -100,14 +101,6 @@ export default function Home() {
               >
                 Connect on LinkedIn ↗
               </a>
-            </p>
-            <p className="text-muted">
-              TechOrbitInd was created to bring scattered technology learning resources into one structured place, so learners
-              can build strong foundations step by step instead of searching across many sources.
-            </p>
-            <p className="text-muted">
-              The vision is simple: make technology learning accessible and structured, with clear notes, visual
-              diagrams and curated videos for every topic.
             </p>
           </div>
         </div>
