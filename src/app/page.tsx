@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { TRACKS, techsInTrack } from "@/lib/content";
 
-export default function Dashboard() {
+// Public Home page: the entry point for visitors. Signed-in users are sent straight to /learning by the proxy.
+export const metadata: Metadata = {
+  title: { absolute: "TechOrbitInd – Learn, Build & Grow" },
+  description: "Learn Full Stack, AI, Cloud, DSA & System Design with step-by-step notes, diagrams and hand-picked videos.",
+};
+
+export default function Home() {
   const totalTopics = TRACKS.reduce(
     (sum, track) => sum + techsInTrack(track.id).reduce((n, t) => n + t.topics.length, 0),
     0,
@@ -17,38 +24,94 @@ export default function Dashboard() {
           {TRACKS.length} tracks · {totalTopics} topics
         </p>
         <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-          What do you want to <span className="text-gradient">learn</span>?
+          Learn, build and grow with <span className="text-gradient">TechOrbitInd</span>
         </h1>
         <p className="mt-4 max-w-2xl text-pretty text-muted sm:text-lg">
-          Step-by-step notes with diagrams and hand-picked videos for Full Stack, Cloud, AI, DSA and System Design.
+          TechOrbitInd is a technology learning platform. Learn Full Stack, AI, Cloud, DSA &amp; System Design through
+          step-by-step notes, diagrams and hand-picked videos, organised so you always know what to learn next.
         </p>
+        <div className="relative mt-7 flex flex-wrap items-center gap-3">
+          <Link href="/learning" className="accent-chip auth-submit rounded-xl px-5 py-2.5 text-[15px] font-semibold">
+            Start Learning →
+          </Link>
+          <Link href="/login" className="glass-tile rounded-xl px-5 py-2.5 text-[15px] font-semibold transition hover:scale-[1.03]">
+            Login
+          </Link>
+          <Link href="/signup" className="glass-tile rounded-xl px-5 py-2.5 text-[15px] font-semibold transition hover:scale-[1.03]">
+            Create Account
+          </Link>
+        </div>
       </section>
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {TRACKS.map((track) => {
-          const techs = techsInTrack(track.id);
-          const topics = techs.reduce((n, t) => n + t.topics.length, 0);
-          return (
-            <Link
-              key={track.id}
-              href={`/track/${track.id}`}
-              style={{ "--accent": track.color } as CSSProperties}
-              className="glass glass-hover group relative overflow-hidden rounded-2xl p-6"
-            >
-              <span className="accent-orb" aria-hidden />
-              <span className="glass-tile relative flex h-14 w-14 items-center justify-center rounded-2xl text-3xl">
-                {track.icon}
-              </span>
-              <h2 className="relative mt-5 text-xl font-semibold tracking-tight">{track.label}</h2>
-              <p className="relative mt-1 text-sm text-muted">{track.blurb}</p>
-              <p className="relative mt-5 inline-flex items-center gap-1.5 text-sm font-medium" style={{ color: track.color }}>
-                {topics} topics
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </p>
-            </Link>
-          );
-        })}
-      </div>
+      <section aria-labelledby="tracks-heading" className="space-y-4">
+        <h2 id="tracks-heading" className="text-sm font-semibold uppercase tracking-wider text-muted">
+          What you can learn
+        </h2>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {TRACKS.map((track) => {
+            const topics = techsInTrack(track.id).reduce((n, t) => n + t.topics.length, 0);
+            return (
+              <Link
+                key={track.id}
+                href={`/track/${track.id}`}
+                style={{ "--accent": track.color } as CSSProperties}
+                className="glass glass-hover group relative overflow-hidden rounded-2xl p-6"
+              >
+                <span className="accent-orb" aria-hidden />
+                <span className="glass-tile relative flex h-14 w-14 items-center justify-center rounded-2xl text-3xl">
+                  {track.icon}
+                </span>
+                <h3 className="relative mt-5 text-xl font-semibold tracking-tight">{track.label}</h3>
+                <p className="relative mt-1 text-sm text-muted">{track.blurb}</p>
+                <p className="relative mt-5 inline-flex items-center gap-1.5 text-sm font-medium" style={{ color: track.color }}>
+                  {topics} topics
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </p>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Placeholders in [brackets] are for the creator to fill in. */}
+      <section aria-labelledby="creator-heading" className="glass relative overflow-hidden rounded-3xl p-6 sm:p-10">
+        <span className="accent-orb" aria-hidden />
+        <div className="relative flex flex-col gap-6 sm:flex-row sm:items-start">
+          <span
+            className="accent-chip flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-3xl"
+            aria-hidden
+          >
+            ⚡
+          </span>
+          <div className="space-y-3">
+            <h2 id="creator-heading" className="text-2xl font-bold tracking-tight">
+              Meet the Creator
+            </h2>
+            <p className="font-medium">
+              D N Singh <span className="text-muted">· [Role / Title]</span>
+            </p>
+            <p className="text-muted">[A short introduction: your background and what you work on.]</p>
+            <p>
+              <a
+                href="https://www.linkedin.com/in/dnsingh123"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[var(--accent-default)] hover:underline"
+              >
+                Connect on LinkedIn ↗
+              </a>
+            </p>
+            <p className="text-muted">
+              TechOrbitInd was created to bring scattered technology learning resources into one structured place, so learners
+              can build strong foundations step by step instead of searching across many sources.
+            </p>
+            <p className="text-muted">
+              The vision is simple: make technology learning accessible and structured, with clear notes, visual
+              diagrams and curated videos for every topic.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

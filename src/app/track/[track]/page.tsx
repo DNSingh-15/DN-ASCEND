@@ -37,7 +37,7 @@ export default async function TrackPage({ params }: Props) {
   return (
     <div className="space-y-8">
       <nav className="text-sm text-muted">
-        <Link href="/" className="hover:text-[var(--fg)]">
+        <Link href="/learning" className="hover:text-[var(--fg)]">
           Dashboard
         </Link>
         <span className="mx-2">/</span>

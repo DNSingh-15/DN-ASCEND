@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import ThemeToggle from "@/components/ThemeToggle";
+import Footer from "@/components/Footer";
 import UserMenu from "@/components/auth/UserMenu";
 
 export const metadata: Metadata = {
   title: {
-    default: "Full Stack & AI Notes",
-    template: "%s · Full Stack & AI Notes",
+    default: "TechOrbitInd – Learn, Build & Grow",
+    template: "%s · TechOrbitInd",
   },
-  description: "Full Stack, Cloud, AI, DSA and System Design notes with step-by-step diagrams and YouTube videos.",
+  description: "Learn Full Stack, AI, Cloud, DSA & System Design with step-by-step notes, diagrams and hand-picked videos.",
 };
 
 // Runs before paint so the saved theme applies without a flash.
@@ -28,7 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500 text-white shadow-lg shadow-indigo-500/30 dark:from-cyan-500 dark:via-teal-500 dark:to-sky-600 dark:shadow-teal-500/30">
                 ⚡
               </span>
-              <span>Full Stack &amp; AI</span>
+              <span>TechOrbitInd</span>
             </Link>
             <div className="flex items-center gap-2">
               <UserMenu />
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </div>
         </header>
         <main className="mx-auto max-w-6xl px-4 py-10">{children}</main>
+        <Footer />
       </body>
     </html>
   );

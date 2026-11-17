@@ -10,6 +10,13 @@ export function isAuthPage(pathname: string): boolean {
   return AUTH_PAGES.some((p) => pathname === p || pathname === `${p}/`);
 }
 
+/** Pages anyone may open without an account: the public Home and the information pages. Everything else needs sign-in. */
+export const PUBLIC_PAGES = ["/", "/contact", "/privacy", "/terms"];
+
+export function isPublicPage(pathname: string): boolean {
+  return PUBLIC_PAGES.some((p) => pathname === p || (p !== "/" && pathname === `${p}/`));
+}
+
 /** Only allow same-site relative paths as a post-login destination (no open redirects). */
 export function safeNextPath(raw: string | null | undefined): string {
   if (!raw || !raw.startsWith("/") || raw.startsWith("//") || raw.startsWith("/\\")) return "/";

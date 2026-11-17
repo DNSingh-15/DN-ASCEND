@@ -35,7 +35,7 @@ export default async function TopicPage({ params }: Props) {
   return (
     <div className="mx-auto max-w-4xl space-y-8" style={{ "--accent": t.color } as CSSProperties}>
       <nav className="flex flex-wrap items-center gap-1 text-sm text-muted">
-        <Link href="/" className="hover:text-[var(--fg)]">
+        <Link href="/learning" className="hover:text-[var(--fg)]">
           Dashboard
         </Link>
         <span>/</span>

@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { SESSION_COOKIE, isAuthPage } from "@/lib/auth/config";
+import { SESSION_COOKIE, isAuthPage, isPublicPage } from "@/lib/auth/config";
 import { verifySessionToken } from "@/lib/auth/session-token";
 
 // Route protection (optimistic check): only reads and verifies the signed cookie, never touches the database.
@@ -11,6 +11,12 @@ export function proxy(req: NextRequest) {
   if (isAuthPage(pathname)) {
     // Already signed in: no reason to see the login / signup forms again.
     if (signedIn) return NextResponse.redirect(new URL("/", req.url));
+    return NextResponse.next();
+  }
+
+  if (isPublicPage(pathname)) {
+    // Signed-in users keep their old landing page: the learning dashboard that used to live at "/".
+    if (pathname === "/" && signedIn) return NextResponse.redirect(new URL("/learning", req.url));
     return NextResponse.next();
   }
 

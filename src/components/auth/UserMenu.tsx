@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { isAuthPage } from "@/lib/auth/config";
+import { isAuthPage, isPublicPage } from "@/lib/auth/config";
 import { fetchSession, goTo, logout, type ClientUser } from "./auth-client";
 
 function initials(name: string) {
@@ -13,11 +13,14 @@ function initials(name: string) {
 
 /**
  * Header account area. Content pages stay statically rendered, so the signed-in user is fetched here
- * on the client. If the cookie points to an account that no longer exists, the user is sent to login.
+ * on the client. On the public pages (Home, Contact, Privacy, Terms) a visitor without a session sees Log in / Sign up;
+ * on any other page, a missing or stale session sends them to login, as before.
  */
 export default function UserMenu() {
   const pathname = usePathname();
   const onAuthPage = isAuthPage(pathname);
+  const onPublicPage = isPublicPage(pathname);
+  const [guest, setGuest] = useState(false);
   const [user, setUser] = useState<ClientUser | null>(null);
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -29,12 +32,13 @@ export default function UserMenu() {
     fetchSession().then(({ user, status }) => {
       if (cancelled) return;
       if (user) setUser(user);
+      else if (status === 401 && onPublicPage) setGuest(true);
       else if (status === 401) goTo(`/login?next=${encodeURIComponent(location.pathname + location.search)}`);
     });
     return () => {
       cancelled = true;
     };
-  }, [onAuthPage]);
+  }, [onAuthPage, onPublicPage]);
 
   useEffect(() => {
     if (!open) return;
@@ -54,7 +58,7 @@ export default function UserMenu() {
     goTo("/login");
   }
 
-  if (onAuthPage) {
+  if (onAuthPage || guest) {
     return (
       <nav className="flex items-center gap-1 text-sm font-medium">
         <Link href="/login" className={`rounded-xl px-3 py-2 transition ${pathname.startsWith("/login") ? "glass-tile" : "text-muted hover:text-[var(--fg)]"}`}>
