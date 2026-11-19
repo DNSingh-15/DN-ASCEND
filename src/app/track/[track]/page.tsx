@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
+import JsonLd from "@/components/JsonLd";
 import SystemDesignTabs from "@/components/SystemDesignTabs";
 import { TRACKS, getTrack, groupByCategory, techsInTrack } from "@/lib/content";
+import { breadcrumbJsonLd, trackJsonLd, trackMeta } from "@/lib/seo";
+
+// Public track page: lists the courses (or, for System Design, the topic titles) in one learning track.
 
 type Props = { params: Promise<{ track: string }> };
 
@@ -10,9 +14,13 @@ export function generateStaticParams() {
   return TRACKS.map((t) => ({ track: t.id }));
 }
 
+// Only the five tracks exist; anything else is a real 404.
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: Props) {
   const { track } = await params;
-  return { title: getTrack(track)?.label ?? "Not found" };
+  const t = getTrack(track);
+  return t ? trackMeta(t) : { title: "Not found" };
 }
 
 export default async function TrackPage({ params }: Props) {
@@ -36,7 +44,14 @@ export default async function TrackPage({ params }: Props) {
 
   return (
     <div className="space-y-8">
-      <nav className="text-sm text-muted">
+      <JsonLd data={trackJsonLd(track)} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: track.label, path: `/track/${track.id}` },
+        ])}
+      />
+      <nav aria-label="Breadcrumb" className="text-sm text-muted">
         <Link href="/learning" className="hover:text-[var(--fg)]">
           Dashboard
         </Link>
@@ -53,7 +68,9 @@ export default async function TrackPage({ params }: Props) {
           {track.icon}
         </span>
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">{track.label}</h1>
+          <h1 className="text-3xl font-bold tracking-tight">
+            {track.label} <span className="sr-only">tutorials and learning roadmap</span>
+          </h1>
           <p className="mt-1 text-muted">{track.blurb}</p>
         </div>
       </header>
@@ -61,9 +78,9 @@ export default async function TrackPage({ params }: Props) {
       {tabs.length > 0 ? (
         <SystemDesignTabs tabs={tabs} />
       ) : (
-        groupByCategory(techs).map(([category, items]) => (
+        groupByCategory(techs).map(([category, items], _i, all) => (
           <section key={category} className="space-y-3">
-            {groupByCategory(techs).length > 1 && (
+            {all.length > 1 && (
               <h2 className="text-sm font-semibold uppercase tracking-wider text-muted">{category}</h2>
             )}
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -78,7 +95,12 @@ export default async function TrackPage({ params }: Props) {
                   <span className="glass-tile flex h-12 w-12 items-center justify-center rounded-xl text-2xl">
                     {t.icon}
                   </span>
-                  <h3 className="mt-4 text-lg font-semibold">{t.name}</h3>
+                  {/* h3 under a category heading, h2 when the cards sit directly under the page title. */}
+                  {all.length > 1 ? (
+                    <h3 className="mt-4 text-lg font-semibold">{t.name}</h3>
+                  ) : (
+                    <h2 className="mt-4 text-lg font-semibold">{t.name}</h2>
+                  )}
                   <p className="mt-1 line-clamp-2 text-sm text-muted">{t.description}</p>
                   <p className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium" style={{ color: t.color }}>
                     {t.topics.length} topics

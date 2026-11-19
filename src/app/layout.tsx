@@ -1,16 +1,44 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import "./globals.css";
 import ThemeToggle from "@/components/ThemeToggle";
 import Footer from "@/components/Footer";
 import UserMenu from "@/components/auth/UserMenu";
+import { LOGO_MARK, OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: {
-    default: "TechOrbitInd – Learn, Build & Grow",
-    template: "%s · TechOrbitInd",
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: `%s · ${SITE_NAME}` },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: "D. N. Singh", url: "https://www.linkedin.com/in/dnsingh123" }],
+  creator: "D. N. Singh",
+  publisher: SITE_NAME,
+  category: "education",
+  // Canonical URLs and robots directives are set per page (src/lib/seo.ts), never here: a site-wide default would leak
+  // into the 404 page as "index" plus a canonical pointing at /_not-found.
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    locale: "en_IN",
+    url: "/",
+    images: [OG_IMAGE],
   },
-  description: "Learn Full Stack, AI, Cloud, DSA & System Design with step-by-step notes, diagrams and hand-picked videos.",
+  twitter: { card: "summary_large_image", title: SITE_TITLE, description: SITE_DESCRIPTION, images: [OG_IMAGE.url] },
+  // Google Search Console "HTML tag" method: set GOOGLE_SITE_VERIFICATION in Netlify's environment variables, then redeploy.
+  ...(process.env.GOOGLE_SITE_VERIFICATION ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } } : {}),
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#eef1fb" },
+    { media: "(prefers-color-scheme: dark)", color: "#060914" },
+  ],
 };
 
 // Runs before paint so the saved theme applies without a flash.
@@ -25,11 +53,17 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="min-h-screen antialiased">
         <header className="sticky top-3 z-40 mx-auto max-w-6xl px-4">
           <div className="glass flex h-14 items-center justify-between gap-4 rounded-2xl px-3 sm:px-4">
-            <Link href="/" className="flex items-center gap-2.5 font-semibold tracking-tight">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500 text-white shadow-lg shadow-indigo-500/30 dark:from-cyan-500 dark:via-teal-500 dark:to-sky-600 dark:shadow-teal-500/30">
-                ⚡
-              </span>
-              <span>TechOrbitInd</span>
+            <Link href="/" className="flex items-center gap-2.5 font-semibold tracking-tight" aria-label={`${SITE_NAME} home`}>
+              <Image
+                src={LOGO_MARK}
+                alt=""
+                width={36}
+                height={36}
+                priority
+                unoptimized
+                className="h-9 w-9 rounded-xl shadow-lg shadow-indigo-500/30 dark:shadow-teal-500/30"
+              />
+              <span>{SITE_NAME}</span>
             </Link>
             <div className="flex items-center gap-2">
               <UserMenu />
@@ -37,7 +71,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             </div>
           </div>
         </header>
-        <main className="mx-auto max-w-6xl px-4 py-10">{children}</main>
+        <main id="main" className="mx-auto max-w-6xl px-4 py-10">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

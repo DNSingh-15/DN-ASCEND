@@ -2,6 +2,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 import { getAllTech, getTech, getTrack } from "@/lib/content";
+import { breadcrumbJsonLd, courseJsonLd, courseMeta, crumbsFor, relatedCourses } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import { RelatedLinks } from "@/components/TopicParts";
+
+// Public course page: topic titles and one-line summaries only, so it is safe to show everyone and to index.
 
 type Props = { params: Promise<{ tech: string }> };
 
@@ -9,10 +14,13 @@ export function generateStaticParams() {
   return getAllTech().map((t) => ({ tech: t.slug }));
 }
 
+// Only the courses in content/ exist; anything else is a real 404 (not a page that redirects to login).
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: Props) {
   const { tech } = await params;
   const t = getTech(tech);
-  return { title: t ? `${t.name} topics` : "Not found" };
+  return t ? courseMeta(t) : { title: "Not found" };
 }
 
 export default async function TechPage({ params }: Props) {
@@ -31,7 +39,9 @@ export default async function TechPage({ params }: Props) {
 
   return (
     <div className="space-y-8">
-      <nav className="text-sm text-muted">
+      <JsonLd data={courseJsonLd(t)} />
+      <JsonLd data={breadcrumbJsonLd(crumbsFor(t))} />
+      <nav aria-label="Breadcrumb" className="text-sm text-muted">
         <Link href="/learning" className="hover:text-[var(--fg)]">
           Dashboard
         </Link>
@@ -56,7 +66,9 @@ export default async function TechPage({ params }: Props) {
           {t.icon}
         </span>
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">{t.name}</h1>
+          <h1 className="text-3xl font-bold tracking-tight">
+            {t.name} <span className="sr-only">tutorial and interview notes</span>
+          </h1>
           <p className="mt-1 max-w-3xl text-muted">{t.description}</p>
         </div>
       </header>
@@ -98,6 +110,8 @@ export default async function TechPage({ params }: Props) {
             </section>
           );
         })}
+
+        <RelatedLinks heading="Keep learning" links={relatedCourses(t)} />
       </div>
     </div>
   );

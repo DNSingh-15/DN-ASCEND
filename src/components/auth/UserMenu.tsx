@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { isAuthPage, isPublicPage } from "@/lib/auth/config";
+import { isAuthPage, isOpenPage } from "@/lib/auth/config";
 import { fetchSession, goTo, logout, type ClientUser } from "./auth-client";
 
 function initials(name: string) {
@@ -13,13 +13,13 @@ function initials(name: string) {
 
 /**
  * Header account area. Content pages stay statically rendered, so the signed-in user is fetched here
- * on the client. On the public pages (Home, Contact, Privacy, Terms) a visitor without a session sees Log in / Sign up;
+ * on the client. On the open pages (Home, Contact, Privacy, Terms, category pages and topic previews) a visitor without a session sees Log in / Sign up;
  * on any other page, a missing or stale session sends them to login, as before.
  */
 export default function UserMenu() {
   const pathname = usePathname();
   const onAuthPage = isAuthPage(pathname);
-  const onPublicPage = isPublicPage(pathname);
+  const onPublicPage = isOpenPage(pathname);
   const [guest, setGuest] = useState(false);
   const [user, setUser] = useState<ClientUser | null>(null);
   const [open, setOpen] = useState(false);

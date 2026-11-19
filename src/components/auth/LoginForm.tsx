@@ -64,7 +64,7 @@ export default function LoginForm({ next, notice }: { next: string; notice?: str
       <SubmitButton pending={pending} label="Log in" pendingLabel="Logging in…" />
 
       <p className="text-center text-sm text-muted">
-        New to ASCEND?{" "}
+        New to TechOrbitInd?{" "}
         <Link href={next === "/" ? "/signup" : `/signup?next=${encodeURIComponent(next)}`} className="auth-link font-semibold">
           Create an account
         </Link>

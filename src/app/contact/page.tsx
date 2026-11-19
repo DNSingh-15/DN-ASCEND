@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
 import InfoPage from "@/components/InfoPage";
+import { CONTACT_EMAIL } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
-  description: "How to get in touch with TechOrbitInd.",
-};
+  description: "Contact TechOrbitInd with questions, feedback or a topic you would like to see covered. Email us and we will reply as soon as we can.",
+  path: "/contact",
+});
 
-// Placeholders in [brackets] are for the owner to fill in.
 export default function ContactPage() {
   return (
     <InfoPage title="Contact" intro="Questions, feedback or a topic you would like to see? Get in touch.">
       <p>
-        Email: <strong>[contact email]</strong>
+        Email:{" "}
+        <a href={`mailto:${CONTACT_EMAIL}`}>
+          <strong>{CONTACT_EMAIL}</strong>
+        </a>
       </p>
       <p>We read every message and reply as soon as we can.</p>
     </InfoPage>

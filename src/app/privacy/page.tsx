@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import InfoPage from "@/components/InfoPage";
+import { CONTACT_EMAIL } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
-  description: "What information TechOrbitInd collects and how it is used.",
-};
+  description: "What information TechOrbitInd collects when you create an account, how cookies are used, and how to request deletion of your data.",
+  path: "/privacy",
+});
 
 // Describes what the app does today. Placeholders in [brackets] are for the owner to fill in, and the text should be reviewed before relying on it.
 export default function PrivacyPage() {
@@ -26,7 +29,7 @@ export default function PrivacyPage() {
         YouTube&apos;s privacy-enhanced embed only after you press play.
       </p>
       <h2>Contact</h2>
-      <p>For questions or to request deletion of your account data, email [contact email].</p>
+      <p>For questions or to request deletion of your account data, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
     </InfoPage>
   );
 }

@@ -3,7 +3,7 @@ import AuthShell from "@/components/auth/AuthShell";
 import LoginForm from "@/components/auth/LoginForm";
 import { safeNextPath } from "@/lib/auth/config";
 
-export const metadata: Metadata = { title: "Log in" };
+export const metadata: Metadata = { title: "Log in", alternates: { canonical: "/login" }, robots: { index: false, follow: true } };
 
 type Props = { searchParams: Promise<{ [key: string]: string | string[] | undefined }> };
 

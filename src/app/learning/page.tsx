@@ -1,6 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { TRACKS, techsInTrack } from "@/lib/content";
+
+// Signed-in dashboard: requires an account, so it is not indexed. The same tracks are public on Home and /track/*.
+export const metadata: Metadata = { title: "Dashboard", alternates: { canonical: "/learning" }, robots: { index: false, follow: true } };
 
 export default function Dashboard() {
   const totalTopics = TRACKS.reduce(

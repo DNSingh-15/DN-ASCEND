@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import InfoPage from "@/components/InfoPage";
+import { CONTACT_EMAIL } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Terms & Conditions",
-  description: "The terms for using TechOrbitInd.",
-};
+  description: "The terms for using TechOrbitInd: your account, acceptable use of the learning material, and third-party videos and practice links.",
+  path: "/terms",
+});
 
 // Plain-language starting point. Placeholders in [brackets] are for the owner to fill in, and the text should be reviewed before relying on it.
 export default function TermsPage() {
@@ -20,7 +23,7 @@ export default function TermsPage() {
         link to LeetCode; their own terms apply.
       </p>
       <h2>Contact</h2>
-      <p>Questions about these terms: [contact email].</p>
+      <p>Questions about these terms: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
     </InfoPage>
   );
 }

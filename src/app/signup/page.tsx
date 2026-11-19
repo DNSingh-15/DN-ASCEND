@@ -3,7 +3,7 @@ import AuthShell from "@/components/auth/AuthShell";
 import SignupForm from "@/components/auth/SignupForm";
 import { safeNextPath } from "@/lib/auth/config";
 
-export const metadata: Metadata = { title: "Create account" };
+export const metadata: Metadata = { title: "Create account", alternates: { canonical: "/signup" }, robots: { index: false, follow: true } };
 
 type Props = { searchParams: Promise<{ [key: string]: string | string[] | undefined }> };
 
@@ -12,7 +12,7 @@ export default async function SignupPage({ searchParams }: Props) {
   const next = safeNextPath(typeof params.next === "string" ? params.next : undefined);
 
   return (
-    <AuthShell title="Create your account" subtitle="Join ASCEND and start learning step by step.">
+    <AuthShell title="Create your account" subtitle="Join TechOrbitInd and start learning step by step.">
       <SignupForm next={next} />
     </AuthShell>
   );

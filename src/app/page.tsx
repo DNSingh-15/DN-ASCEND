@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import GuestActions from "@/components/auth/GuestActions";
+import JsonLd from "@/components/JsonLd";
 import { TRACKS, techsInTrack } from "@/lib/content";
+import { HOME_META, courseLabel, homeJsonLd, pageMetadata } from "@/lib/seo";
 
 // Public Home page: the entry point for everyone. Static, so it is served from the CDN; the Login / Create Account
 // buttons appear client-side only for visitors without a session (see GuestActions).
-export const metadata: Metadata = {
-  title: { absolute: "TechOrbitInd – Learn, Build & Grow" },
-  description: "Learn Full Stack, AI, Cloud, DSA & System Design with step-by-step notes, diagrams and hand-picked videos.",
-};
+export const metadata: Metadata = pageMetadata({ ...HOME_META, absoluteTitle: true });
 
 export default function Home() {
   const totalTopics = TRACKS.reduce(
@@ -19,6 +18,7 @@ export default function Home() {
 
   return (
     <div className="space-y-8 sm:space-y-10">
+      <JsonLd data={homeJsonLd()} />
       <section className="glass relative overflow-hidden rounded-3xl px-6 py-10 sm:px-10 sm:py-14">
         <span className="accent-orb" style={{ "--accent": "var(--hero-accent)" } as CSSProperties} aria-hidden />
         <p className="glass-tile inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium text-muted">
@@ -46,11 +46,11 @@ export default function Home() {
         </h2>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {TRACKS.map((track) => {
-            const topics = techsInTrack(track.id).reduce((n, t) => n + t.topics.length, 0);
+            const techs = techsInTrack(track.id);
+            const topics = techs.reduce((n, t) => n + t.topics.length, 0);
             return (
-              <Link
+              <div
                 key={track.id}
-                href={`/track/${track.id}`}
                 style={{ "--accent": track.color } as CSSProperties}
                 className="glass glass-hover group relative overflow-hidden rounded-2xl p-6"
               >
@@ -58,19 +58,30 @@ export default function Home() {
                 <span className="glass-tile relative flex h-14 w-14 items-center justify-center rounded-2xl text-3xl">
                   {track.icon}
                 </span>
-                <h3 className="relative mt-5 text-xl font-semibold tracking-tight">{track.label}</h3>
+                <h3 className="relative mt-5 text-xl font-semibold tracking-tight">
+                  {/* The whole card is the link (stretched ::after), so the inner course links below stay separate, crawlable anchors. */}
+                  <Link href={`/track/${track.id}`} className="after:absolute after:inset-0 after:content-['']">
+                    {track.label}
+                  </Link>
+                </h3>
                 <p className="relative mt-1 text-sm text-muted">{track.blurb}</p>
+                <p className="relative mt-3 flex flex-wrap gap-x-2 gap-y-1 text-xs text-muted">
+                  {techs.map((t) => (
+                    <Link key={t.slug} href={`/${t.slug}`} className="relative z-10 hover:text-[var(--fg)] hover:underline">
+                      {courseLabel(t)}
+                    </Link>
+                  ))}
+                </p>
                 <p className="relative mt-5 inline-flex items-center gap-1.5 text-sm font-medium" style={{ color: track.color }}>
                   {topics} topics
                   <span className="transition-transform group-hover:translate-x-1">→</span>
                 </p>
-              </Link>
+              </div>
             );
           })}
         </div>
       </section>
 
-      {/* Placeholders in [brackets] are for the creator to fill in. */}
       <section aria-labelledby="creator-heading" className="glass relative overflow-hidden rounded-3xl p-6 sm:p-10">
         <span className="accent-orb" aria-hidden />
         <div className="relative flex flex-col gap-6 sm:flex-row sm:items-start">
