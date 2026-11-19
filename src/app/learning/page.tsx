@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { CSSProperties } from "react";
-import { TRACKS, techsInTrack } from "@/lib/content";
+import { TRACKS, techsInTrack, totalTopics } from "@/lib/content";
 
 // Signed-in dashboard: requires an account, so it is not indexed. The same tracks are public on Home and /track/*.
 export const metadata: Metadata = { title: "Dashboard", alternates: { canonical: "/learning" }, robots: { index: false, follow: true } };
 
 export default function Dashboard() {
-  const totalTopics = TRACKS.reduce(
-    (sum, track) => sum + techsInTrack(track.id).reduce((n, t) => n + t.topics.length, 0),
-    0,
-  );
+  const topicTotal = totalTopics();
 
   return (
     <div className="space-y-8 sm:space-y-10">
@@ -18,7 +15,7 @@ export default function Dashboard() {
         <span className="accent-orb" style={{ "--accent": "var(--hero-accent)" } as CSSProperties} aria-hidden />
         <p className="glass-tile inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium text-muted">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          {TRACKS.length} tracks · {totalTopics} topics
+          {TRACKS.length} tracks · {topicTotal} topics
         </p>
         <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
           What do you want to <span className="text-gradient">learn</span>?

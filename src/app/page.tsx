@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import GuestActions from "@/components/auth/GuestActions";
 import JsonLd from "@/components/JsonLd";
-import { TRACKS, techsInTrack } from "@/lib/content";
+import { TRACKS, techsInTrack, totalTopics } from "@/lib/content";
 import { HOME_META, courseLabel, homeJsonLd, pageMetadata } from "@/lib/seo";
 
 // Public Home page: the entry point for everyone. Static, so it is served from the CDN; the Login / Create Account
@@ -11,10 +11,7 @@ import { HOME_META, courseLabel, homeJsonLd, pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({ ...HOME_META, absoluteTitle: true });
 
 export default function Home() {
-  const totalTopics = TRACKS.reduce(
-    (sum, track) => sum + techsInTrack(track.id).reduce((n, t) => n + t.topics.length, 0),
-    0,
-  );
+  const topicTotal = totalTopics();
 
   return (
     <div className="space-y-8 sm:space-y-10">
@@ -23,7 +20,7 @@ export default function Home() {
         <span className="accent-orb" style={{ "--accent": "var(--hero-accent)" } as CSSProperties} aria-hidden />
         <p className="glass-tile inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium text-muted">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          {TRACKS.length} tracks · {totalTopics} topics
+          {TRACKS.length} tracks · {topicTotal} topics
         </p>
         <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
           Learn, build and grow with <span className="text-gradient">TechOrbitInd</span>

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { MetadataRoute } from "next";
-import { TRACKS, getAllTech } from "@/lib/content";
+import { TRACKS, getAllTech, techsInTrack } from "@/lib/content";
 import { isIndexableTopic, topicPath } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl("/"), lastModified: siteUpdated, changeFrequency: "weekly", priority: 1 },
     ...TRACKS.map((track) => ({
       url: absoluteUrl(`/track/${track.id}`),
-      lastModified: latest(techs.filter((t) => t.track === track.id).map((t) => t.slug)),
+      lastModified: latest(techsInTrack(track.id).map((t) => t.slug)),
       changeFrequency: "weekly" as const,
       priority: 0.9,
     })),

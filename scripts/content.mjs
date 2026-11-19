@@ -67,6 +67,11 @@ export function parseTech(slug, raw) {
     level: meta.level ?? "",
     color: meta.color ?? "#14b8a6",
     order: Number(meta.order ?? 99),
+    // Optional second listing, e.g. Python is a Full Stack course that also appears in the AI track.
+    // The course keeps ONE url (/<slug>) and one primary track; this only adds a card in the other track.
+    alsoTracks: meta.also_track
+      ? [{ track: meta.also_track, category: meta.also_category ?? meta.category ?? "Other", order: Number(meta.also_order ?? meta.order ?? 99) }]
+      : [],
     description: meta.description ?? "",
     topics: topics.map((t) => {
       let s = slugify(t.title) || "topic";

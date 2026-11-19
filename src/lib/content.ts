@@ -29,8 +29,24 @@ export function getTrack(id: string): TrackInfo | undefined {
   return TRACKS.find((t) => t.id === id);
 }
 
+/**
+ * Courses shown in a track, in that track's order. A course with an also_track line is listed in its primary track and in
+ * the second one (with that track's own category and position), but has a single URL.
+ */
 export function techsInTrack(id: TrackId): Tech[] {
-  return getAllTech().filter((t) => t.track === id);
+  return getAllTech()
+    .flatMap((t) => {
+      if (t.track === id) return [{ t, order: t.order, category: t.category }];
+      const also = t.alsoTracks.find((a) => a.track === id);
+      return also ? [{ t, order: also.order, category: also.category }] : [];
+    })
+    .sort((a, b) => a.order - b.order)
+    .map(({ t, category }) => (category === t.category ? t : { ...t, category }));
+}
+
+/** Topics across the whole catalogue, counting a course listed in two tracks once. */
+export function totalTopics(): number {
+  return getAllTech().reduce((n, t) => n + t.topics.length, 0);
 }
 
 export type Topic = {
@@ -53,6 +69,8 @@ export type Tech = {
   level: string;
   color: string;
   order: number;
+  /** Extra tracks this course is also listed in (see techsInTrack). */
+  alsoTracks: { track: TrackId; category: string; order: number }[];
   description: string;
   topics: Topic[];
 };

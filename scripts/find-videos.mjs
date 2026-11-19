@@ -77,6 +77,10 @@ const TECH_WORDS = {
   postgresql: ["postgres", "sql"],
   aws: ["aws", "amazon"],
   azure: ["azure"],
+  nestjs: ["nest"],
+  mongodb: ["mongo"],
+  langchain: ["langchain", "langgraph"],
+  "vector-databases": ["vector", "pinecone", "pgvector", "chroma", "qdrant", "weaviate", "milvus", "hnsw", "faiss"],
 };
 
 // Relevant = title has one of the technology's words (when it has any) AND shares at

@@ -76,6 +76,30 @@ const COURSE_SEO: Record<string, { label: string; title: string; description: st
     description:
       "Learn Microsoft Azure: resource groups, Entra ID, App Service, Blob Storage, Functions, API Management, Cosmos DB, Key Vault, containers, AKS and CI/CD.",
   },
+  nestjs: {
+    label: "Nest.js",
+    title: "NestJS Tutorial: Modules, Dependency Injection & Guards",
+    description:
+      "Learn NestJS for Node.js backends: modules, providers, dependency injection, pipes, guards, interceptors, TypeORM, Prisma, JWT auth and testing.",
+  },
+  mongodb: {
+    label: "MongoDB",
+    title: "MongoDB Tutorial: CRUD, Indexing, Aggregation & Modeling",
+    description:
+      "Learn MongoDB: documents, CRUD and query operators, indexes, aggregation pipelines, data modeling, transactions, replication, sharding and Mongoose.",
+  },
+  "vector-databases": {
+    label: "Vector Databases",
+    title: "Vector Databases Tutorial: Pinecone, pgvector, Chroma & HNSW",
+    description:
+      "Learn vector databases: embeddings, similarity search, HNSW and IVF indexes, Pinecone, pgvector, Chroma, Qdrant, Weaviate and Milvus for RAG.",
+  },
+  langchain: {
+    label: "LangChain",
+    title: "LangChain Tutorial: RAG Chains, Retrievers, Tools & LangSmith",
+    description:
+      "Build LLM apps with LangChain in Python: chat models, structured output, document loaders, text splitters, retrievers, RAG chains, tools and LangSmith.",
+  },
   "ai-fundamentals": {
     label: "AI",
     title: "Generative AI & LLM Fundamentals for Developers",
@@ -130,7 +154,7 @@ const TRACK_SEO: Record<string, { title: string; description: string; h2?: strin
   fullstack: {
     title: "Full Stack Developer Roadmap: React, Node.js & Python",
     description:
-      "A step-by-step full stack developer learning path: JavaScript, TypeScript, React, Next.js, Node.js, FastAPI, Python and PostgreSQL, with notes, diagrams and videos.",
+      "Full stack developer roadmap: JavaScript, TypeScript, React, Next.js, Python, FastAPI, Node.js, Nest.js, PostgreSQL, MongoDB and vector databases.",
   },
   cloud: {
     title: "Cloud Computing Tutorials: AWS & Azure for Developers",
@@ -138,9 +162,9 @@ const TRACK_SEO: Record<string, { title: string; description: string; h2?: strin
       "Learn cloud computing with AWS and Azure: IAM, networking, compute, storage, serverless, containers, databases and CI/CD, explained step by step.",
   },
   ai: {
-    title: "AI Tutorials: Generative AI, RAG, Agentic AI & MCP",
+    title: "AI Tutorials: Python, Generative AI, RAG, Agents & LangChain",
     description:
-      "Learn Artificial Intelligence as a developer: LLM fundamentals, Retrieval-Augmented Generation (RAG), agentic AI with LangChain and LangGraph, and MCP.",
+      "Learn AI as a developer: Python, LLM fundamentals, RAG, agentic AI with LangGraph, MCP, LangChain and vector databases like Pinecone, step by step.",
   },
   dsa: {
     title: "DSA Tutorials: Data Structures & Algorithms Interview Prep",
@@ -352,7 +376,8 @@ export function relatedTopics(t: Tech, tp: Topic, limit = 6): RelatedLink[] {
 /** Other courses in the same track, then the rest of the catalogue, for the bottom of a course page. */
 export function relatedCourses(t: Tech, limit = 6): RelatedLink[] {
   const sameTrack = techsInTrack(t.track).filter((x) => x.slug !== t.slug);
-  const rest = getAllTech().filter((x) => x.slug !== t.slug && x.track !== t.track);
+  const listed = new Set(sameTrack.map((x) => x.slug));
+  const rest = getAllTech().filter((x) => x.slug !== t.slug && !listed.has(x.slug));
   return [...sameTrack, ...rest].slice(0, limit).map((x) => ({
     href: `/${x.slug}`,
     title: courseLabel(x),

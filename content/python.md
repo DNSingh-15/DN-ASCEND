@@ -4,7 +4,10 @@ icon: 🐍
 category: Backend
 track: fullstack
 color: #3776ab
-order: 7
+order: 5
+also_track: ai
+also_category: AI
+also_order: 11
 description: Python is a readable, general-purpose language used for backends, automation, data analysis and AI, covered here from basics to OOP and data libraries.
 ---
 
