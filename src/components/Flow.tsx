@@ -1,11 +1,3 @@
-// Renders a ```flow fence from the .md notes as numbered boxes joined by arrows.
-//
-//   title: Optional caption
-//   direction: right            (optional, default is top-to-bottom)
-//   Client | browser or app     ("Title | small note")
-//   > cache miss                (label on the arrow after the previous row)
-//   App 1 || App 2 || App 3     (boxes side by side = one parallel row)
-
 type Cell = { title: string; note: string };
 type Row = { cells: Cell[]; label?: string };
 
