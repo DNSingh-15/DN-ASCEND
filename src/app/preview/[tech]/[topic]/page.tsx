@@ -7,11 +7,6 @@ import JsonLd from "@/components/JsonLd";
 import ShareButtons from "@/components/ShareButtons";
 import { RelatedLinks, TopicBreadcrumbs, TopicHeader, TopicPager } from "@/components/TopicParts";
 
-// Public preview of a topic, for visitors without a session and search engines. Internal route: the proxy rewrites
-// /<course>/<topic> here for signed-out requests (same URL, no redirect) and 308s direct visits back to the real URL.
-//
-// Security: only the title, summary, a short plain-text teaser and counts are rendered. The full notes, code, diagrams,
-// video list and practice list are never passed to the output, so they are absent from the HTML and the RSC payload.
 
 type Props = { params: Promise<{ tech: string; topic: string }> };
 
