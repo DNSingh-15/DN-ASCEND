@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 import { getAllTech, getPractice, getTech, getVideos } from "@/lib/content";
 import { breadcrumbJsonLd, crumbsFor, previewExcerpt, relatedTopics, topicJsonLd, topicMeta, topicPath } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
+import ShareButtons from "@/components/ShareButtons";
 import { RelatedLinks, TopicBreadcrumbs, TopicHeader, TopicPager } from "@/components/TopicParts";
 
 // Public preview of a topic, for visitors without a session and search engines. Internal route: the proxy rewrites
@@ -87,6 +88,8 @@ export default async function TopicPreviewPage({ params }: Props) {
           </div>
         </div>
       </article>
+
+      <ShareButtons path={topicPath(t, tp)} title={tp.title} />
 
       <RelatedLinks heading="Related topics" links={relatedTopics(t, tp)} />
       <TopicPager t={t} index={index} />

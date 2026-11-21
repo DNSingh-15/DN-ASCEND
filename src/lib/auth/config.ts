@@ -11,7 +11,7 @@ export function isAuthPage(pathname: string): boolean {
 }
 
 /** Information pages and the Home page: anyone may open them. */
-export const PUBLIC_PAGES = ["/", "/contact", "/privacy", "/terms"];
+export const PUBLIC_PAGES = ["/", "/about", "/contact", "/privacy", "/terms", "/disclaimer", "/editorial-policy"];
 
 /** First path segments that belong to the app itself, so they are never a course (tech) slug. */
 const RESERVED_ROOTS = new Set(["login", "signup", "learning", "api", "preview", "track"]);

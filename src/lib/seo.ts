@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   CONTACT_EMAIL,
   CREATOR,
+  CREATOR_READY,
   LOGO_512,
   OG_IMAGE,
   SITE_DESCRIPTION,
@@ -10,6 +11,7 @@ import {
   absoluteUrl,
 } from "./site";
 import { getAllTech, getTrack, techsInTrack, type Tech, type Topic, type TrackInfo } from "./content";
+import { notesUpdated } from "./content-dates";
 
 // Everything SEO that depends on the notes: titles, descriptions, preview text, related links, structured data.
 // The notes themselves (content/*.md) are never changed or exposed from here: only titles, summaries and a short teaser.
@@ -407,8 +409,8 @@ export function homeJsonLd() {
         logo: { "@type": "ImageObject", url: absoluteUrl(LOGO_512), width: 512, height: 512 },
         image: absoluteUrl(OG_IMAGE.url),
         description: SITE_DESCRIPTION,
-        founder: { "@id": CREATOR_ID },
-        sameAs: [CREATOR.linkedin],
+        ...(CREATOR_READY ? { founder: { "@id": CREATOR_ID } } : {}),
+        ...(CREATOR.profileUrl ? { sameAs: [CREATOR.profileUrl] } : {}),
         contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: CONTACT_EMAIL, availableLanguage: ["English"] },
       },
       {
@@ -420,16 +422,19 @@ export function homeJsonLd() {
         inLanguage: "en",
         publisher: publisherRef,
       },
-      {
-        "@type": "Person",
-        "@id": CREATOR_ID,
-        name: CREATOR.name,
-        jobTitle: CREATOR.jobTitle,
-        url: CREATOR.linkedin,
-        sameAs: [CREATOR.linkedin],
-        worksFor: publisherRef,
-      },
+      ...(CREATOR_READY ? [{ ...creatorPerson(), worksFor: publisherRef }] : []),
     ],
+  };
+}
+
+/** The creator as a schema.org Person, with only the details that are actually filled in (see CREATOR in site.ts). */
+function creatorPerson() {
+  return {
+    "@type": "Person",
+    "@id": CREATOR_ID,
+    name: CREATOR.name,
+    ...(CREATOR.jobTitle ? { jobTitle: CREATOR.jobTitle } : {}),
+    ...(CREATOR.profileUrl ? { url: CREATOR.profileUrl, sameAs: [CREATOR.profileUrl] } : {}),
   };
 }
 
@@ -474,6 +479,9 @@ export function courseJsonLd(t: Tech) {
     inLanguage: "en",
     isAccessibleForFree: true,
     educationalLevel: "Beginner to Advanced",
+    dateModified: notesUpdated(t.slug).toISOString(),
+    offers: { "@type": "Offer", category: "Free", price: 0, priceCurrency: "INR" },
+    hasCourseInstance: { "@type": "CourseInstance", courseMode: "Online" },
     hasPart: t.topics.slice(0, 100).map((tp) => ({
       "@type": "LearningResource",
       name: tp.title,
@@ -494,10 +502,40 @@ export function topicJsonLd(t: Tech, tp: Topic) {
     mainEntityOfPage: url,
     image: absoluteUrl(OG_IMAGE.url),
     inLanguage: "en",
+    dateModified: notesUpdated(t.slug).toISOString(),
     about: courseLabel(t),
     isPartOf: { "@type": "Course", name: COURSE_SEO[t.slug]?.title ?? t.name, url: absoluteUrl(`/${t.slug}`) },
-    author: { "@id": CREATOR_ID, "@type": "Person", name: CREATOR.name, url: CREATOR.linkedin },
+    // Until a real creator name is set, the brand itself is credited as the author (never placeholder text).
+    author: CREATOR_READY ? creatorPerson() : { "@type": "Organization", "@id": ORG_ID, name: SITE_NAME, url: absoluteUrl("/") },
     publisher: { "@type": "Organization", "@id": ORG_ID, name: SITE_NAME, logo: { "@type": "ImageObject", url: absoluteUrl(LOGO_512) } },
+  };
+}
+
+/** AboutPage, ContactPage or plain WebPage for the information pages, with breadcrumbs, tied to the site and organization. */
+export function infoPageJsonLd({ type = "WebPage", name, description, path, updated }: { type?: "WebPage" | "AboutPage" | "ContactPage"; name: string; description: string; path: string; updated?: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": type,
+        "@id": absoluteUrl(`${path}#webpage`),
+        url: absoluteUrl(path),
+        name,
+        description,
+        inLanguage: "en",
+        isPartOf: { "@id": SITE_ID },
+        publisher: publisherRef,
+        ...(type === "AboutPage" ? { about: publisherRef, mainEntity: publisherRef } : {}),
+        ...(updated ? { dateModified: updated } : {}),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name, item: absoluteUrl(path) },
+        ],
+      },
+    ],
   };
 }
 

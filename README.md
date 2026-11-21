@@ -14,7 +14,7 @@ DN ASCEND is a personal technology learning hub focused on mastering the skills 
 ### 🎯 Goal
 Build strong technical foundations, prepare for FAANG-level interviews, and grow continuously as an engineer.
 
-**Built by D N Singh.**
+**A family-owned TechOrbitInd project.**
 
 ## Public pages and SEO
 
@@ -24,6 +24,8 @@ Build strong technical foundations, prepare for FAANG-level interviews, and grow
 - A course can be listed in a second track by adding `also_track`, `also_category` and `also_order` to its frontmatter (Python is in Full Stack and AI). It keeps one URL, `/<slug>`.
 - Topics with very little public text are `noindex` and left out of the sitemap until their notes have an intro paragraph.
 - Optional env vars: `SITE_URL` (defaults to `https://techorbitind.in`) and `GOOGLE_SITE_VERIFICATION` (the Search Console HTML-tag code).
+- Information pages: About, Contact, Privacy, Terms, Disclaimer and Editorial Policy. Their "Last updated" date is `POLICY_UPDATED` in `src/lib/site.ts`; change it whenever one of them changes.
+- AdSense (off by default, nothing ad-related ships until configured): set `ADSENSE_CLIENT_ID` (`ca-pub-…`) and optionally `ADSENSE_SLOT_ID` in Netlify, then redeploy. That adds the script, the `google-adsense-account` meta tag, `/ads.txt` and a labelled `<AdUnit />` on Home, track, course and full topic pages only (never login, signup, dashboard or information pages).
 - Logo: the master is `public/logo/techorbitind.png`. After replacing it, run `node scripts/make-brand-assets.mjs` to regenerate the favicon, header mark and share image.
 
 ## Authentication

@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 import { getAllTech, getPractice, getTech, getVideos, youtubeSearchUrl } from "@/lib/content";
-import { breadcrumbJsonLd, crumbsFor, relatedTopics, topicJsonLd, topicMeta } from "@/lib/seo";
+import { breadcrumbJsonLd, crumbsFor, relatedTopics, topicJsonLd, topicMeta, topicPath } from "@/lib/seo";
+import AdUnit from "@/components/AdUnit";
 import JsonLd from "@/components/JsonLd";
+import ShareButtons from "@/components/ShareButtons";
 import LeetCodePractice from "@/components/LeetCodePractice";
 import Markdown from "@/components/Markdown";
 import { RelatedLinks, TopicBreadcrumbs, TopicHeader, TopicPager } from "@/components/TopicParts";
@@ -47,6 +49,10 @@ export default async function TopicPage({ params }: Props) {
       <article className="glass glass-strong prose prose-slate dark:prose-invert max-w-none rounded-3xl p-6 sm:p-10 prose-headings:scroll-mt-24 prose-pre:text-sm prose-pre:rounded-xl">
         <Markdown>{tp.body}</Markdown>
       </article>
+
+      <ShareButtons path={topicPath(t, tp)} title={tp.title} />
+
+      <AdUnit />
 
       <LeetCodePractice problems={practice} />
 

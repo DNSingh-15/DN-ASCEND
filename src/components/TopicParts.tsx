@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getTrack, type Tech, type Topic } from "@/lib/content";
+import { notesUpdated } from "@/lib/content-dates";
 import type { RelatedLink } from "@/lib/seo";
+import { CREATOR, CREATOR_READY, SITE_NAME, formatDate } from "@/lib/site";
 
 // Pieces shared by the full topic page (signed in) and its public preview (signed out), so both look the same.
 
@@ -30,6 +32,7 @@ export function TopicBreadcrumbs({ t, tp }: { t: Tech; tp: Topic }) {
 }
 
 export function TopicHeader({ t, tp, index }: { t: Tech; tp: Topic; index: number }) {
+  const updated = notesUpdated(t.slug);
   return (
     <header className="space-y-3">
       <p className="glass-tile inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium" style={{ color: t.color }}>
@@ -37,6 +40,13 @@ export function TopicHeader({ t, tp, index }: { t: Tech; tp: Topic; index: numbe
       </p>
       <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{tp.title}</h1>
       {tp.summary && <p className="text-lg text-muted">{tp.summary}</p>}
+      <p className="text-sm text-muted">
+        By{" "}
+        <Link href="/about" className="font-medium hover:text-[var(--fg)] hover:underline">
+          {CREATOR_READY ? CREATOR.name : SITE_NAME}
+        </Link>{" "}
+        · Updated <time dateTime={updated.toISOString()}>{formatDate(updated)}</time>
+      </p>
     </header>
   );
 }

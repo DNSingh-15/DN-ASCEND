@@ -6,7 +6,7 @@ import { verifySessionToken } from "@/lib/auth/session-token";
 // API handlers check the user themselves, and the header menu re-checks the session in the browser.
 //
 // Access rules:
-//   - Home, Contact, Privacy, Terms and the category pages (/track/*, /<course>) are open to everyone, search engines included.
+//   - Home, the information pages (About, Contact, Privacy, Terms, Disclaimer, Editorial Policy) and the category pages (/track/*, /<course>) are open to everyone, search engines included.
 //   - Topic pages (/<course>/<topic>): signed-in users get the full notes. Everyone else is served a short public preview
 //     from the internal /preview route (a rewrite, so the URL stays the same and no redirect happens). The full notes
 //     are never sent to a visitor without a valid session.
@@ -43,10 +43,10 @@ export function proxy(req: NextRequest) {
 
 export const config = {
   // Skipped entirely: API routes (they enforce auth themselves), Next internals, static files (images, logo, icons,
-  // robots.txt, sitemap.xml, a Search Console verification file) and the fixed public pages (Home, Contact, Privacy, Terms),
+  // robots.txt, ads.txt, sitemap.xml, a Search Console verification file) and the fixed public pages (Home and the information pages),
   // so those are served straight from the CDN. Category pages still pass through here and are let through by isPublicPage,
   // which keeps every protected route behind one check.
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|images/|logo/|google[a-z0-9]+\\.html$|$|contact/?$|privacy/?$|terms/?$|.*\\.(?:png|jpg|jpeg|gif|svg|webp|ico|txt|xml|json)$).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|images/|logo/|google[a-z0-9]+\\.html$|$|about/?$|contact/?$|privacy/?$|terms/?$|disclaimer/?$|editorial-policy/?$|.*\\.(?:png|jpg|jpeg|gif|svg|webp|ico|txt|xml|json)$).*)",
   ],
 };

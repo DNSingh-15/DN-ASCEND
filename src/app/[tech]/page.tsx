@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 import { getAllTech, getTech, getTrack } from "@/lib/content";
 import { breadcrumbJsonLd, courseJsonLd, courseMeta, crumbsFor, relatedCourses } from "@/lib/seo";
+import AdUnit from "@/components/AdUnit";
 import JsonLd from "@/components/JsonLd";
+import ShareButtons from "@/components/ShareButtons";
 import { RelatedLinks } from "@/components/TopicParts";
 
 // Public course page: topic titles and one-line summaries only, so it is safe to show everyone and to index.
@@ -111,7 +113,11 @@ export default async function TechPage({ params }: Props) {
           );
         })}
 
+        <AdUnit />
+
         <RelatedLinks heading="Keep learning" links={relatedCourses(t)} />
+
+        <ShareButtons path={`/${t.slug}`} title={`${t.name} tutorial on TechOrbitInd`} />
       </div>
     </div>
   );

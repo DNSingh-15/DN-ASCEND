@@ -316,6 +316,77 @@ body::after {
   }
 }
 
+/* Topic notes: Markdown.tsx renders ### as h2, #### as h3 and ##### as h4 for a correct heading outline.
+   These keep each heading at the size and spacing it had before (the typography plugin's h3 / h4 / h5 styles). */
+.prose :where(h2.md-h3) {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  line-height: 1.6;
+}
+
+.prose :where(h3.md-h4) {
+  font-size: 1em;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+
+.prose :where(h4.md-h5) {
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+
+/* Keyboard users: a visible focus ring on links and buttons (mouse clicks are unaffected). */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent-default);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+/* "Skip to content" link: hidden until it receives keyboard focus. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 60;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background: var(--accent-default);
+  color: #fff;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.dark .skip-link {
+  color: #06201d;
+}
+
+/* Reserved space for a display ad, so the page does not jump when it loads (Core Web Vitals: CLS). */
+.ad-slot {
+  min-height: 280px;
+}
+
+.ad-slot ins.adsbygoogle[data-ad-status="unfilled"] {
+  display: none !important;
+}
+
+/* Login, signup, dashboard and information pages never show ads, even Auto ads carried over by a client-side navigation (see AdGuard). */
+html[data-no-ads] ins.adsbygoogle,
+html[data-no-ads] .google-auto-placed {
+  display: none !important;
+}
+
 /* Code blocks inside the typography plugin */
 .prose pre {
   background: rgb(8 12 28 / 0.9);

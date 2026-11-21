@@ -4,18 +4,23 @@ import Link from "next/link";
 import "./globals.css";
 import ThemeToggle from "@/components/ThemeToggle";
 import Footer from "@/components/Footer";
+import AdGuard from "@/components/AdGuard";
 import UserMenu from "@/components/auth/UserMenu";
-import { LOGO_MARK, OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
+import { ADSENSE_CLIENT } from "@/lib/ads";
+import { CREATOR, CREATOR_READY, LOGO_MARK, OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: SITE_TITLE, template: `%s · ${SITE_NAME}` },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
-  authors: [{ name: "D. N. Singh", url: "https://www.linkedin.com/in/dnsingh123" }],
-  creator: "D. N. Singh",
+  // Author tags only once a real name is set in CREATOR (src/lib/site.ts); never a placeholder.
+  ...(CREATOR_READY
+    ? { authors: [{ name: CREATOR.name, ...(CREATOR.profileUrl ? { url: CREATOR.profileUrl } : {}) }], creator: CREATOR.name }
+    : {}),
   publisher: SITE_NAME,
   category: "education",
+  formatDetection: { telephone: false, email: false, address: false },
   // Canonical URLs and robots directives are set per page (src/lib/seo.ts), never here: a site-wide default would leak
   // into the 404 page as "index" plus a canonical pointing at /_not-found.
   openGraph: {
@@ -30,6 +35,8 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: SITE_TITLE, description: SITE_DESCRIPTION, images: [OG_IMAGE.url] },
   // Google Search Console "HTML tag" method: set GOOGLE_SITE_VERIFICATION in Netlify's environment variables, then redeploy.
   ...(process.env.GOOGLE_SITE_VERIFICATION ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } } : {}),
+  // AdSense site ownership ("Meta tag" method), only once ADSENSE_CLIENT_ID is set (see src/lib/ads.ts).
+  ...(ADSENSE_CLIENT ? { other: { "google-adsense-account": ADSENSE_CLIENT } } : {}),
 };
 
 export const viewport: Viewport = {
@@ -51,6 +58,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-screen antialiased">
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <header className="sticky top-3 z-40 mx-auto max-w-6xl px-4">
           <div className="glass flex h-14 items-center justify-between gap-4 rounded-2xl px-3 sm:px-4">
             <Link href="/" className="flex items-center gap-2.5 font-semibold tracking-tight" aria-label={`${SITE_NAME} home`}>
@@ -71,10 +81,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             </div>
           </div>
         </header>
-        <main id="main" className="mx-auto max-w-6xl px-4 py-10">
+        <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 py-10 outline-none">
           {children}
         </main>
         <Footer />
+        {ADSENSE_CLIENT && <AdGuard />}
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
+import AdUnit from "@/components/AdUnit";
 import JsonLd from "@/components/JsonLd";
 import SystemDesignTabs from "@/components/SystemDesignTabs";
 import { TRACKS, getTrack, groupByCategory, techsInTrack } from "@/lib/content";
@@ -112,6 +113,8 @@ export default async function TrackPage({ params }: Props) {
           </section>
         ))
       )}
+
+      <AdUnit />
     </div>
   );
 }

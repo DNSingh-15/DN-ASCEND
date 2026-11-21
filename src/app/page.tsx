@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import GuestActions from "@/components/auth/GuestActions";
+import AdUnit from "@/components/AdUnit";
 import JsonLd from "@/components/JsonLd";
 import { TRACKS, techsInTrack, totalTopics } from "@/lib/content";
 import { HOME_META, courseLabel, homeJsonLd, pageMetadata } from "@/lib/seo";
@@ -79,6 +80,8 @@ export default function Home() {
         </div>
       </section>
 
+      <AdUnit />
+
       <section aria-labelledby="creator-heading" className="glass relative overflow-hidden rounded-3xl p-6 sm:p-10">
         <span className="accent-orb" aria-hidden />
         <div className="relative flex flex-col gap-6 sm:flex-row sm:items-start">
@@ -92,6 +95,8 @@ export default function Home() {
             <h2 id="creator-heading" className="text-2xl font-bold tracking-tight">
               Meet the Creator
             </h2>
+            {/* Home page only: the original creator details, kept as literal text on purpose. The shared CREATOR block in
+                src/lib/site.ts (About, Contact, Editorial Policy, bylines, structured data) holds the family-brand placeholders. */}
             <div>
               <p className="text-lg font-semibold">D. N. Singh</p>
               <p className="text-sm text-muted">Senior Application Developer</p>
@@ -109,6 +114,12 @@ export default function Home() {
               >
                 Connect on LinkedIn ↗
               </a>
+              <span className="mx-2 text-muted" aria-hidden>
+                ·
+              </span>
+              <Link href="/about" className="font-medium text-[var(--accent-default)] hover:underline">
+                About TechOrbitInd →
+              </Link>
             </p>
           </div>
         </div>
